@@ -7,12 +7,14 @@ public class scr_skyslugMovement : MonoBehaviour {
     public float speed = 0;
     private float movement = 0;
     public float swarmDistance = 0;
+    public float swarmTrigger = 0;
     public float swarmDistanceMax = 0;
     public float swarmDistanceMin = 0;
-    public float swarmTrigger = 0;
 
     private float randomDistance = 0;
     private float randomDistanceAcceleration = 0;
+
+    public bool rotate = false;
 
     public float attackCooldown = 0;
     private float attackTimer = 0;
@@ -76,7 +78,9 @@ public class scr_skyslugMovement : MonoBehaviour {
             //move toward player
             destination = playerPosition;
         }
-        transform.Translate(destination.normalized * movement);
+        if (rotate)
+            transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, destination));
+        transform.Translate(destination.normalized * movement, Space.World);
         //collision
     }
 }
