@@ -10,6 +10,7 @@ public class scr_skyslugMovement : MonoBehaviour {
     public float swarmDistanceMax = 0;
     public float swarmDistanceMin = 0;
     public float swarmTrigger = 0;
+    private float randomDistance = 0;
 
     private float distanceToPlayer = 0;
     private Vector2 playerPosition;
@@ -28,18 +29,23 @@ public class scr_skyslugMovement : MonoBehaviour {
 	void Update ()
     {
         movement = Time.deltaTime * speed;
-        playerPosition = GameObject.Find("nameofplayerobject").transform.position - transform.position;
+        playerPosition = GameObject.Find("obj_player").transform.position - transform.position;
         distanceToPlayer = playerPosition.magnitude;
         if (distanceToPlayer < swarmTrigger)
         {
             //swarm player
-            circlePosition = Mathf.Cos(-playerPosition.normalized.x);
-            
+            circlePosition = Mathf.Atan2((-playerPosition.normalized).y, (-playerPosition.normalized).x);
             circlePosition += movement / swarmDistance;
+
+            randomDistance += Random.Range(-1.0f, 1.0f)/10;
+            if (randomDistance < swarmDistanceMin)
+                randomDistance = swarmDistanceMin;
+            if (randomDistance > swarmDistanceMax)
+                randomDistance = swarmDistanceMax;
 
             circleVector.x = Mathf.Cos(circlePosition);
             circleVector.y = Mathf.Sin(circlePosition);
-            circleVector *= swarmDistance + Random.Range(swarmDistanceMin, swarmDistanceMax);
+            circleVector *= swarmDistance + randomDistance;
             destination = playerPosition + circleVector;
         }
         else
