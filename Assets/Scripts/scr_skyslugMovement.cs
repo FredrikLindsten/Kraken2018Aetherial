@@ -38,7 +38,7 @@ public class scr_skyslugMovement : MonoBehaviour {
 	void Update ()
     {
         movement = Time.deltaTime * speed;
-        playerPosition = GameObject.Find("obj_player").transform.position - transform.position;
+        playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position - transform.position;
         distanceToPlayer = playerPosition.magnitude;
         attackTimer += Time.deltaTime;
 
