@@ -75,29 +75,3 @@ public class scr_playerMovement : MonoBehaviour {
 
     }
 }
-
-
-
-
-
-/*if (Input.anyKey)
-        {
-
-            if (Input.GetKey(UpKey) && rb.velocity.x < 1)
-            {
-                rb.velocity += new Vector2(0, 0.25f);
-            }
-            if (Input.GetKey(DownKey) && rb.velocity.x > -1)
-            {
-                rb.velocity += new Vector2(0, -0.25f);
-            }
-            if (Input.GetKey(RightKey) && rb.velocity.y < 1)
-            {
-                rb.velocity += new Vector2(0.25f, 0);
-            }
-            if (Input.GetKey(LeftKey) && rb.velocity.y > -1)
-            {
-                rb.velocity += new Vector2(-0.25f, 0);
-            }
-        } 
-*/
