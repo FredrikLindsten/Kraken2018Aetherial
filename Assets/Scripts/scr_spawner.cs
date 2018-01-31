@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class scr_spawner : MonoBehaviour {
 
+    //TODO should be static/global
     public enum SpawnerEnum { Skyslug, Tangler, Ray};
     private string[] spawnType = {
         "obj_skyslug",
@@ -11,26 +12,74 @@ public class scr_spawner : MonoBehaviour {
         "" };
     public SpawnerEnum spawnId;
 
-    public enum Position { Top, Bottom, Left, Right };
-    private Vector3[] spawnPos = {
-        new Vector3(0, 5),
-        new Vector3(0, -5),
-        new Vector3(-9, 0),
-        new Vector3(9, 0) };
-    public Position spawnPosition;
+    public float spawnOffsetRange = 0;
+    private bool edgeX = false;
+    private Vector3 spawnPos;
 
     public float timer = 0;
     public float spawnDelay = 0;
     public float number = 0;
     public bool debugSpawnLocation = false;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
+        //TODO should be static/global
+        float[] edges =
+        {
+            Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)).x, //left
+            Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 0)).x,//right
+            Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)).y,//bottom
+            Camera.main.ViewportToWorldPoint(new Vector3(0, 1, 0)).y//top
+        };
+
+        float[] distancetoedge =
+        {
+            transform.position.x - edges[0], //left
+            -(transform.position.x - edges[1]),//right
+            transform.position.y - edges[2],//bottom
+            -(transform.position.y - edges[3])//top
+        };
+
+        int smallest = 0;
+        for (int i =0;i < 3;++i)
+        {
+            if(distancetoedge[i] > distancetoedge[i + 1])
+            {
+                smallest = i + 1;
+            }
+        }
+
+        //TODO refactor for neatness
+        if (smallest == 0)
+        {
+            edgeX = false;
+            spawnPos.x = edges[0];
+            spawnPos.y = transform.position.y;
+        }
+        if (smallest == 1)
+        {
+            edgeX = false;
+            spawnPos.x = edges[1];
+            spawnPos.y = transform.position.y;
+        }
+        if (smallest == 2)
+        {
+            edgeX = true;
+            spawnPos.x = transform.position.x;
+            spawnPos.y = edges[2];
+        }
+        if (smallest == 3)
+        {
+            edgeX = true;
+            spawnPos.x = transform.position.x;
+            spawnPos.y = edges[3];
+        }
+
         GetComponent<Renderer>().enabled = false;
         if (debugSpawnLocation)
         {
-            GameObject go = GameObject.Instantiate(Resources.Load("debugIcon"), spawnPos[(int)spawnPosition], Quaternion.identity) as GameObject;
+            GameObject go = GameObject.Instantiate(Resources.Load("debugIcon"), spawnPos, Quaternion.identity) as GameObject;
             go.transform.localScale = new Vector3(2, 2, 1);
         }
         StartCoroutine(Spawn());
@@ -42,7 +91,15 @@ public class scr_spawner : MonoBehaviour {
 
         for (int i = 0; i < number; ++i)
         {
-            Instantiate(Resources.Load(spawnType[(int)spawnId]), spawnPos[(int)spawnPosition], Quaternion.identity);
+            Vector3 offset = new Vector3(0,0,0);
+            if (edgeX)
+                offset.x = Random.Range(-spawnOffsetRange, spawnOffsetRange);
+            else
+                offset.y = Random.Range(-spawnOffsetRange, spawnOffsetRange);
+            
+            Debug.Log(spawnPos + offset);
+
+            Instantiate(Resources.Load(spawnType[(int)spawnId]), spawnPos + offset, Quaternion.identity);
             yield return new WaitForSeconds(spawnDelay);
         }
         Destroy(this);
