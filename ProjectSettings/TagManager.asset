@@ -7,6 +7,7 @@ TagManager:
   - Weapon
   - Dummy
   - Beam
+  - Enemy
   layers:
   - Default
   - TransparentFX

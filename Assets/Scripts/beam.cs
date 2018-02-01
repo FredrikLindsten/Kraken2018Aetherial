@@ -36,7 +36,7 @@ public class beam : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Dummy")
+        if (other.tag == "Enemy")
         {
             Debug.Log(other.GetComponent<scr_hpsystem>().health);
             if (other.GetComponent<scr_hpsystem>())
