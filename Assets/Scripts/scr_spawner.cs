@@ -49,31 +49,18 @@ public class scr_spawner : MonoBehaviour {
                 smallest = i + 1;
             }
         }
-
-        //TODO refactor for neatness
-        if (smallest == 0)
+        
+        if (smallest == 0 || smallest == 1)
         {
             edgeX = false;
-            spawnPos.x = edges[0];
+            spawnPos.x = edges[smallest];
             spawnPos.y = transform.position.y;
         }
-        if (smallest == 1)
-        {
-            edgeX = false;
-            spawnPos.x = edges[1];
-            spawnPos.y = transform.position.y;
-        }
-        if (smallest == 2)
+        if (smallest == 2 || smallest == 3)
         {
             edgeX = true;
             spawnPos.x = transform.position.x;
-            spawnPos.y = edges[2];
-        }
-        if (smallest == 3)
-        {
-            edgeX = true;
-            spawnPos.x = transform.position.x;
-            spawnPos.y = edges[3];
+            spawnPos.y = edges[smallest];
         }
 
         GetComponent<Renderer>().enabled = false;
