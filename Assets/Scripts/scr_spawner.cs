@@ -42,9 +42,9 @@ public class scr_spawner : MonoBehaviour {
         };
 
         int smallest = 0;
-        for (int i =0;i < 3;++i)
+        for (int i =1;i < 4;++i)
         {
-            if(distancetoedge[i] > distancetoedge[i + 1])
+            if(distancetoedge[smallest] > distancetoedge[i])
             {
                 smallest = i + 1;
             }
