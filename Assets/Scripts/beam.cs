@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class beam : MonoBehaviour {
 
+    public int damage;
     public Vector3 originPoint;
     private Vector3 endPoint;
     LineRenderer lineRenderer;
@@ -33,12 +34,15 @@ public class beam : MonoBehaviour {
      
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Dummy")
         {
-            Debug.Log("PEWWWWW");
-            Destroy(other.gameObject);
+            Debug.Log(other.GetComponent<scr_hpsystem>().health);
+            if (other.GetComponent<scr_hpsystem>())
+            {
+                other.GetComponent<scr_hpsystem>().takeDamage(damage);
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class scr_weapon : MonoBehaviour {
     // Use this for initialization
-    public Transform transform;
+    new public Transform transform;
     public GameObject beam;
     Quaternion targetRotation;
 

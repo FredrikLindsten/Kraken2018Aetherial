@@ -52,8 +52,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9165e522bcaea0942bdb469abc278741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
   originPoint: {x: 0, y: 0, z: 0}
-  beamLength: 10
+  beamLength: 20
   material: {fileID: 6200000, guid: 23d0c7014cdce9247a8a1937eb920a91, type: 2}
 --- !u!120 &120745624633379712
 LineRenderer:
@@ -99,14 +100,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
-        time: 0.0093746185
-        value: 0.6326523
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.28436583
-        value: 0.36734474
+        time: 0.0065574646
+        value: 0.44786835
         inSlope: 0
         outSlope: 0
         tangentMode: 0
