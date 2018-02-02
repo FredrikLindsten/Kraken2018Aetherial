@@ -31,5 +31,12 @@ public class scr_weapon : MonoBehaviour {
         {
             Destroy(GameObject.FindGameObjectWithTag("Beam"));
         }
+        if (!Input.GetMouseButton(0))
+        {
+            if (!GameObject.FindGameObjectWithTag("Beam"))
+            {
+                Destroy(GameObject.FindGameObjectWithTag("Beam"));
+            }
+        }
     }
 }

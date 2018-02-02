@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114048553196451406}
   - component: {fileID: 61958484541970262}
   - component: {fileID: 50470175552944442}
+  - component: {fileID: 114239470249030132}
   m_Layer: 0
   m_Name: obj_skyslug
   m_TagString: Enemy
@@ -102,6 +103,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   invincibilityTime: 0.5
+--- !u!114 &114239470249030132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1366649574126776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1725c4686d914d945a24186e9d14aa0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!114 &114772425525139842
 MonoBehaviour:
   m_ObjectHideFlags: 1
