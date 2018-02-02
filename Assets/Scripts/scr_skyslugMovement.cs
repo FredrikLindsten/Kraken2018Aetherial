@@ -20,11 +20,9 @@ public class scr_skyslugMovement : MonoBehaviour {
 
     public float attackCooldown = 0;
     private float attackTimer = 0;
-    private bool attacking = false;
     private float attackMove = 0;
 
     private float distanceToPlayer = 0;
-    private Vector2 playerPosition;
     private Vector2 vectorToPlayer;
 
     private Vector2 circleVector;
@@ -33,6 +31,10 @@ public class scr_skyslugMovement : MonoBehaviour {
     private Vector2 destination;
 
     public static bool visibility = true;
+    
+    private enum stateEnum { Hunting, Swarming, Attacking, Searching};
+    private stateEnum state = stateEnum.Hunting;
+
 
     // Use this for initialization
     void Start () {
@@ -43,66 +45,104 @@ public class scr_skyslugMovement : MonoBehaviour {
 	void Update ()
     {
         movement = Time.deltaTime * speed;
-        if (visibility)
+        switch (state)
         {
-            playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-            attackTimer += Time.deltaTime;
+            case stateEnum.Hunting:
+                Hunting();
+                break;
+            case stateEnum.Swarming:
+                Swarming();
+                break;
+            case stateEnum.Attacking:
+                Attacking();
+                break;
+            case stateEnum.Searching:
+                Searching();
+                break;
         }
-        else
-        {
-            attackTimer = 0;
-            attacking = false;
-        }
-        vectorToPlayer  = playerPosition - (Vector2)transform.position;
-        distanceToPlayer = vectorToPlayer.magnitude;
-
-        if (attackTimer > attackCooldown)
-        {
-            //attack player
-            attacking = true;
-        }
-        if (distanceToPlayer < 0.8f)//TODO change for if collision
-        {
-            scr_utilities.instance.Hide(20);
-            attackTimer = 0;
-            attacking = false;
-        }
-        if (distanceToPlayer < swarmTrigger)
-        {
-            //swarm player
-            circlePosition = Mathf.Atan2((-vectorToPlayer.normalized).y, (-vectorToPlayer.normalized).x);
-            circlePosition += 2 * movement / swarmDistance;
-
-            //TODO This block needs fewer magic values and better handling of when the slug moves out of range
-            randomDistanceAcceleration += Random.Range(-1.0f, 1.0f) / 100;
-            randomDistance += randomDistanceAcceleration;
-            if (randomDistance < swarmDistanceMin || randomDistance > swarmDistanceMax)
-                randomDistanceAcceleration = 0;
-
-            if (attacking)
-                attackMove -= Time.deltaTime * 2.5f;
-            if (!attacking && attackMove < 0)
-                attackMove += Time.deltaTime * 3.5f;
-
-            circleVector.x = Mathf.Cos(circlePosition);
-            circleVector.y = Mathf.Sin(circlePosition);
-            circleVector *= swarmDistance + randomDistance + attackMove;
-            destination = vectorToPlayer + circleVector;
-        }
-        else
-        {
-            //move toward player
-            destination = vectorToPlayer;
-        }
-
+        
         if (rotate)
             transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, destination));
         if (altrotate) { 
             transform.rotation = Quaternion.Euler(0, 0, altrotatemagnitude * (destination.normalized*movement).y - 90);
-            if (attacking && rotate)
+            if (state == stateEnum.Attacking && rotate)
                 transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, destination));
         }
         transform.Translate(destination.normalized * movement, Space.World);
         //collision
+    }
+
+    void FindTarget(Vector2 target)
+    {
+        if (!visibility)
+        {
+            //lose sight
+            state = stateEnum.Searching;
+        }
+        vectorToPlayer = target - (Vector2)transform.position;
+        distanceToPlayer = vectorToPlayer.magnitude;
+    }
+
+    void FindPointOnCircle()
+    {
+        circlePosition = Mathf.Atan2((-vectorToPlayer.normalized).y, (-vectorToPlayer.normalized).x);
+        circlePosition += 2 * movement / swarmDistance;
+
+        //TODO This block needs fewer magic values and better handling of when the slug moves out of range
+        randomDistanceAcceleration += Random.Range(-1.0f, 1.0f) / 100;
+        randomDistance += randomDistanceAcceleration;
+        if (randomDistance < swarmDistanceMin || randomDistance > swarmDistanceMax)
+            randomDistanceAcceleration = 0;
+
+        circleVector.x = Mathf.Cos(circlePosition);
+        circleVector.y = Mathf.Sin(circlePosition);
+        circleVector *= swarmDistance + randomDistance + attackMove;
+        destination = vectorToPlayer + circleVector;
+    }
+
+    void Hunting()
+    {
+        FindTarget(scr_utilities.player.transform.position);
+        if (distanceToPlayer < swarmTrigger)
+            state = stateEnum.Swarming;
+        destination = vectorToPlayer;
+    }
+
+    void Swarming()
+    {
+        FindTarget(scr_utilities.player.transform.position);
+        if (distanceToPlayer > swarmDistance)
+            state = stateEnum.Hunting;
+        attackTimer += Time.deltaTime;
+        if (attackTimer > attackCooldown)
+        {
+            //attack player
+            state = stateEnum.Attacking;
+        }
+        if(attackMove < 0)
+            attackMove += Time.deltaTime * 3.5f;
+        FindPointOnCircle();
+    }
+
+    void Attacking()
+    {
+        FindTarget(scr_utilities.player.transform.position);
+
+        attackMove -= Time.deltaTime * 2.5f;
+
+        if (distanceToPlayer < 0.8f)//TODO change for if collision
+        {
+            attackTimer = 0;
+            state = stateEnum.Swarming;
+        }
+        FindPointOnCircle();
+    }
+
+    void Searching()
+    {
+        if (visibility)
+        {
+            state = stateEnum.Hunting;
+        }
     }
 }

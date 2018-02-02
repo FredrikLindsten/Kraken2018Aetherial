@@ -12,6 +12,7 @@ public class scr_spawner : MonoBehaviour {
         "" };
     public SpawnerEnum spawnId;
 
+    //TODO move to scr_spawner
     public static float[] edges = new float[4];
 
     public float spawnOffsetRange = 0;
