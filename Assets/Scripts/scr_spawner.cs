@@ -12,6 +12,8 @@ public class scr_spawner : MonoBehaviour {
         "" };
     public SpawnerEnum spawnId;
 
+    public static float[] edges;
+
     public float spawnOffsetRange = 0;
     private bool edgeX = false;
     private Vector3 spawnPos;
@@ -24,15 +26,6 @@ public class scr_spawner : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        //TODO should be static/global
-        float[] edges =
-        {
-            Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)).x, //left
-            Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 0)).x,//right
-            Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)).y,//bottom
-            Camera.main.ViewportToWorldPoint(new Vector3(0, 1, 0)).y//top
-        };
-
         float[] distancetoedge =
         {
             transform.position.x - edges[0], //left
