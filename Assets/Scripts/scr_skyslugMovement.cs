@@ -111,7 +111,7 @@ public class scr_skyslugMovement : MonoBehaviour {
     void Swarming()
     {
         FindTarget(scr_utilities.player.transform.position);
-        if (distanceToPlayer > swarmDistance)
+        if (distanceToPlayer > swarmTrigger)
             state = stateEnum.Hunting;
         attackTimer += Time.deltaTime;
         if (attackTimer > attackCooldown)
