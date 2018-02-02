@@ -12,7 +12,7 @@ public class scr_spawner : MonoBehaviour {
         "" };
     public SpawnerEnum spawnId;
 
-    public static float[] edges;
+    public static float[] edges = new float[4];
 
     public float spawnOffsetRange = 0;
     private bool edgeX = false;
@@ -39,7 +39,7 @@ public class scr_spawner : MonoBehaviour {
         {
             if(distancetoedge[smallest] > distancetoedge[i])
             {
-                smallest = i + 1;
+                smallest = i;
             }
         }
         
@@ -59,6 +59,7 @@ public class scr_spawner : MonoBehaviour {
         GetComponent<Renderer>().enabled = false;
         if (debugSpawnLocation)
         {
+            Debug.Log(spawnPos);
             GameObject go = GameObject.Instantiate(Resources.Load("debugIcon"), spawnPos, Quaternion.identity) as GameObject;
             go.transform.localScale = new Vector3(2, 2, 1);
         }
@@ -76,8 +77,6 @@ public class scr_spawner : MonoBehaviour {
                 offset.x = Random.Range(-spawnOffsetRange, spawnOffsetRange);
             else
                 offset.y = Random.Range(-spawnOffsetRange, spawnOffsetRange);
-            
-            Debug.Log(spawnPos + offset);
 
             Instantiate(Resources.Load(spawnType[(int)spawnId]), spawnPos + offset, Quaternion.identity);
             yield return new WaitForSeconds(spawnDelay);
