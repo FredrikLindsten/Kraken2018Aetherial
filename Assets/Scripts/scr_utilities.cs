@@ -4,8 +4,27 @@ using UnityEngine;
 
 public class scr_utilities : MonoBehaviour {
 
+    public static scr_utilities instance;
+
+    public void Hide(float timer)
+    {
+        if (scr_skyslugMovement.visibility)
+        {
+            //remove powerup here
+            scr_skyslugMovement.visibility = false;
+            StartCoroutine(LoseSight(timer));
+        }
+    }
+
+    IEnumerator LoseSight(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+        scr_skyslugMovement.visibility = true;
+    }
+
     private void Awake()
     {
+        instance = this;
         scr_spawner.edges[0] = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)).x;
         scr_spawner.edges[1] = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 0)).x;
         scr_spawner.edges[2] = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)).y;

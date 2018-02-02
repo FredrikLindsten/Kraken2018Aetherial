@@ -25,11 +25,14 @@ public class scr_skyslugMovement : MonoBehaviour {
 
     private float distanceToPlayer = 0;
     private Vector2 playerPosition;
+    private Vector2 vectorToPlayer;
 
     private Vector2 circleVector;
     private float circlePosition = 0;
 
     private Vector2 destination;
+
+    public static bool visibility = true;
 
     // Use this for initialization
     void Start () {
@@ -40,9 +43,18 @@ public class scr_skyslugMovement : MonoBehaviour {
 	void Update ()
     {
         movement = Time.deltaTime * speed;
-        playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position - transform.position;
-        distanceToPlayer = playerPosition.magnitude;
-        attackTimer += Time.deltaTime;
+        if (visibility)
+        {
+            playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+            attackTimer += Time.deltaTime;
+        }
+        else
+        {
+            attackTimer = 0;
+            attacking = false;
+        }
+        vectorToPlayer  = playerPosition - (Vector2)transform.position;
+        distanceToPlayer = vectorToPlayer.magnitude;
 
         if (attackTimer > attackCooldown)
         {
@@ -51,13 +63,14 @@ public class scr_skyslugMovement : MonoBehaviour {
         }
         if (distanceToPlayer < 0.8f)//TODO change for if collision
         {
+            scr_utilities.instance.Hide(20);
             attackTimer = 0;
             attacking = false;
         }
         if (distanceToPlayer < swarmTrigger)
         {
             //swarm player
-            circlePosition = Mathf.Atan2((-playerPosition.normalized).y, (-playerPosition.normalized).x);
+            circlePosition = Mathf.Atan2((-vectorToPlayer.normalized).y, (-vectorToPlayer.normalized).x);
             circlePosition += 2 * movement / swarmDistance;
 
             //TODO This block needs fewer magic values and better handling of when the slug moves out of range
@@ -74,13 +87,14 @@ public class scr_skyslugMovement : MonoBehaviour {
             circleVector.x = Mathf.Cos(circlePosition);
             circleVector.y = Mathf.Sin(circlePosition);
             circleVector *= swarmDistance + randomDistance + attackMove;
-            destination = playerPosition + circleVector;
+            destination = vectorToPlayer + circleVector;
         }
         else
         {
             //move toward player
-            destination = playerPosition;
+            destination = vectorToPlayer;
         }
+
         if (rotate)
             transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, destination));
         if (altrotate) { 
