@@ -19,6 +19,7 @@ public class scr_hpsystem : MonoBehaviour {
         if (time >= invincibilityTime)
         {
             invincible = false;
+            gameObject.GetComponent<Renderer>().material.color = Color.white;
         } else
         {
             invincible = true;
@@ -33,6 +34,7 @@ public class scr_hpsystem : MonoBehaviour {
     {
         if (invincible == false)
         {
+            gameObject.GetComponent<Renderer>().material.color = Color.red;
             health -= damage;
             time = 0.0f;
         }
