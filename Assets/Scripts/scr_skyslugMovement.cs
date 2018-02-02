@@ -13,6 +13,7 @@ public class scr_skyslugMovement : MonoBehaviour {
 
     private float randomDistance = 0;
     private float randomDistanceAcceleration = 0;
+    public float randomDistanceSpeed = 0;
 
     public bool rotate = false;
     public bool altrotate = false;
@@ -69,7 +70,18 @@ public class scr_skyslugMovement : MonoBehaviour {
                 transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, destination));
         }
         transform.Translate(destination.normalized * movement, Space.World);
-        //collision
+        //TODO collision
+    }
+
+    void UpdateRandomMovement()
+    {
+        float accRange = 0.01f * Time.deltaTime * randomDistanceSpeed;
+        randomDistanceAcceleration += Random.Range(-accRange, accRange);
+
+        if (randomDistance < swarmDistanceMin || randomDistance > swarmDistanceMax)
+            randomDistanceAcceleration *= -1;
+        randomDistance += randomDistanceAcceleration;
+        randomDistanceAcceleration *= 0.9f;
     }
 
     void FindTarget(Vector2 target)
@@ -88,11 +100,7 @@ public class scr_skyslugMovement : MonoBehaviour {
         circlePosition = Mathf.Atan2((-vectorToPlayer.normalized).y, (-vectorToPlayer.normalized).x);
         circlePosition += 2 * movement / swarmDistance;
 
-        //TODO This block needs fewer magic values and better handling of when the slug moves out of range
-        randomDistanceAcceleration += Random.Range(-1.0f, 1.0f) / 100;
-        randomDistance += randomDistanceAcceleration;
-        if (randomDistance < swarmDistanceMin || randomDistance > swarmDistanceMax)
-            randomDistanceAcceleration = 0;
+        UpdateRandomMovement();
 
         circleVector.x = Mathf.Cos(circlePosition);
         circleVector.y = Mathf.Sin(circlePosition);

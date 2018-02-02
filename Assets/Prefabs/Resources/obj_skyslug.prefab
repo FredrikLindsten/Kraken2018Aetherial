@@ -57,6 +57,7 @@ MonoBehaviour:
   swarmTrigger: 6
   swarmDistanceMax: 0.5
   swarmDistanceMin: -0.5
+  randomDistanceSpeed: 30
   rotate: 0
   altrotate: 1
   altrotatemagnitude: 150
