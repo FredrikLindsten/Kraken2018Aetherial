@@ -12,9 +12,6 @@ public class scr_spawner : MonoBehaviour {
         "" };
     public SpawnerEnum spawnId;
 
-    //TODO move to scr_spawner
-    public static float[] edges = new float[4];
-
     public float spawnOffsetRange = 0;
     private bool edgeX = false;
     private Vector3 spawnPos;
@@ -29,10 +26,10 @@ public class scr_spawner : MonoBehaviour {
     {
         float[] distancetoedge =
         {
-            transform.position.x - edges[0], //left
-            -(transform.position.x - edges[1]),//right
-            transform.position.y - edges[2],//bottom
-            -(transform.position.y - edges[3])//top
+            transform.position.x - scr_utilities.edges[0], //left
+            -(transform.position.x - scr_utilities.edges[1]),//right
+            transform.position.y - scr_utilities.edges[2],//bottom
+            -(transform.position.y - scr_utilities.edges[3])//top
         };
 
         int smallest = 0;
@@ -47,14 +44,14 @@ public class scr_spawner : MonoBehaviour {
         if (smallest == 0 || smallest == 1)
         {
             edgeX = false;
-            spawnPos.x = edges[smallest];
+            spawnPos.x = scr_utilities.edges[smallest];
             spawnPos.y = transform.position.y;
         }
         if (smallest == 2 || smallest == 3)
         {
             edgeX = true;
             spawnPos.x = transform.position.x;
-            spawnPos.y = edges[smallest];
+            spawnPos.y = scr_utilities.edges[smallest];
         }
 
         GetComponent<Renderer>().enabled = false;
