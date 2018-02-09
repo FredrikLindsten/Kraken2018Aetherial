@@ -7,6 +7,7 @@ public class scr_weapon : MonoBehaviour {
     new public Transform transform;
     public GameObject beam;
     Quaternion targetRotation;
+    public GameObject harpoon;
 
     void Start () {
         transform = GetComponent<Transform>();
@@ -37,6 +38,10 @@ public class scr_weapon : MonoBehaviour {
             {
                 Destroy(GameObject.FindGameObjectWithTag("Beam"));
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().Fire();
         }
     }
 }

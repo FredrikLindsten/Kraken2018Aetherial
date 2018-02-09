@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 09beb6d022cb0484eb0c4c48a8191048
+timeCreated: 1518117929
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - stuckSprite: {fileID: 21300000, guid: e25e4b0510b4ca44581ce7193280f2b1, type: 3}
+  - defaultSprite: {fileID: 21300000, guid: 3e3c3909f347889498173b0c9bd579be, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
