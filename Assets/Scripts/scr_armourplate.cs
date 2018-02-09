@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class scr_armourplate : MonoBehaviour {
     public GameObject crystal;
+    public GameObject hitbox;
     public float health;
     float hpcounter;
     bool harpStuck;
@@ -25,6 +26,7 @@ public class scr_armourplate : MonoBehaviour {
                 hpcounter += Time.deltaTime;
                 if (hpcounter >= health)
                 {
+                    Instantiate(hitbox, transform.position, Quaternion.identity).transform.parent = transform.parent.parent;
                     Destroy(transform.parent.gameObject);
                     Destroy(this.gameObject);
                 }

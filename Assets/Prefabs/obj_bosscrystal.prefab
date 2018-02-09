@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crystal: {fileID: 1440636095815264}
+  hitbox: {fileID: 1365493718218930, guid: 86e6f0e48c26ed24db3d408d43327f6c, type: 2}
   health: 2
   pulloffset: 2
 --- !u!212 &212346393815490524
