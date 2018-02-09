@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Mainmenu.unity
+    guid: 0c736560817736a49b1b7afd17267181
+  - enabled: 1
+    path: Assets/Scenes/AetherialSandbox.unity
+    guid: 078014fcbbe464041a6152e49ab6bc4a
