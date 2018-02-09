@@ -22,7 +22,7 @@ public class scr_weapon : MonoBehaviour {
         Debug.DrawRay(transform.position, transform.right);
         if (Input.GetMouseButtonDown(0))
         {
-            if(!GameObject.FindGameObjectWithTag("Beam"))
+            if(!GameObject.FindGameObjectWithTag("Beam") && scr_utilities.instance.aetherLeft > 0)
             {
                 Instantiate(beam);
             }

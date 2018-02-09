@@ -74,7 +74,7 @@ public class scr_skyslugMovement : MonoBehaviour {
         if (rotate)
             transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, destination));
         if (altrotate) { 
-            transform.rotation = Quaternion.Euler(0, 0, altrotatemagnitude * (destination.normalized*movement).y - 90);
+            transform.rotation = Quaternion.Euler(0, 0, altrotatemagnitude * (destination.normalized*movement).y);
             if (state == stateEnum.Attacking && rotate)
                 transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, destination));
         }
@@ -142,7 +142,7 @@ public class scr_skyslugMovement : MonoBehaviour {
 
         attackMove -= Time.deltaTime * 2.5f;
 
-        if (distanceToPlayer < 0.8f)//TODO change for if collision
+        if (distanceToPlayer < 0.6f)//TODO change for if collision
         {
             attackTimer = 0;
             state = stateEnum.Swarming;

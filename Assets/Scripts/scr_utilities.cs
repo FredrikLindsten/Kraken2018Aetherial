@@ -14,7 +14,11 @@ public class scr_utilities : MonoBehaviour {
     public enum edgeId { Left, Right, Bottom, Top};
 
     public Slider playerHealthUI;
+    public Slider playerAetherUI;
     public Slider leviathanHealthUI;
+
+    public float aetherLeft = 0;
+    private float aetherMax = 0;
 
     public static float padding = 2;
 
@@ -34,6 +38,7 @@ public class scr_utilities : MonoBehaviour {
     {
         if(instance != null)
             Destroy(this);
+        aetherMax = aetherLeft;
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
         leviathan = GameObject.FindGameObjectWithTag("Boss");
@@ -54,6 +59,7 @@ public class scr_utilities : MonoBehaviour {
 	void Update () {
         //TODO update aether bar
         playerHealthUI.value = player.GetComponent<scr_hpsystem>().getHealthPercent();
+        playerAetherUI.value = aetherLeft/aetherMax;
         leviathanHealthUI.value = leviathan.GetComponent<scr_hpsystem>().getHealthPercent();
     }
 }
