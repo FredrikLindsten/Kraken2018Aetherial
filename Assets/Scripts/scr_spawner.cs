@@ -14,16 +14,24 @@ public class scr_spawner : MonoBehaviour {
 
     public float spawnOffsetRange = 0;
     private bool edgeX = false;
-    private Vector3 spawnPos;
 
     public float timer = 0;
     public float spawnDelay = 0;
     public float number = 0;
     public bool debugSpawnLocation = false;
+    private bool childOfLeviathan = false;
 
     // Use this for initialization
     void Start()
     {
+        GetComponent<Renderer>().enabled = false;
+        StartCoroutine(Spawn());
+        if (GetComponentInParent<scr_leviathan>() != null)
+        {
+            childOfLeviathan = true;
+            return;
+        }
+
         float[] distancetoedge =
         {
             transform.position.x - scr_utilities.edges[0], //left
@@ -33,7 +41,7 @@ public class scr_spawner : MonoBehaviour {
         };
 
         int smallest = 0;
-        for (int i =1;i < 4;++i)
+        for (int i = 1; i < 4; ++i)
         {
             if(distancetoedge[smallest] > distancetoedge[i])
             {
@@ -44,24 +52,20 @@ public class scr_spawner : MonoBehaviour {
         if (smallest == 0 || smallest == 1)
         {
             edgeX = false;
-            spawnPos.x = scr_utilities.edges[smallest];
-            spawnPos.y = transform.position.y;
+            transform.position = new Vector3(scr_utilities.edges[smallest], transform.position.y, 0);
         }
         if (smallest == 2 || smallest == 3)
         {
             edgeX = true;
-            spawnPos.x = transform.position.x;
-            spawnPos.y = scr_utilities.edges[smallest];
+            transform.position = new Vector3(transform.position.x, scr_utilities.edges[smallest], 0);
         }
 
-        GetComponent<Renderer>().enabled = false;
         if (debugSpawnLocation)
         {
-            Debug.Log(spawnPos);
-            GameObject go = GameObject.Instantiate(Resources.Load("debugIcon"), spawnPos, Quaternion.identity) as GameObject;
+            Debug.Log(transform.position);
+            GameObject go = GameObject.Instantiate(Resources.Load("debugIcon"), transform.position, Quaternion.identity) as GameObject;
             go.transform.localScale = new Vector3(2, 2, 1);
         }
-        StartCoroutine(Spawn());
 	}
 
     IEnumerator Spawn()
@@ -76,7 +80,7 @@ public class scr_spawner : MonoBehaviour {
             else
                 offset.y = Random.Range(-spawnOffsetRange, spawnOffsetRange);
 
-            Instantiate(Resources.Load(spawnType[(int)spawnId]), spawnPos + offset, Quaternion.identity);
+            Instantiate(Resources.Load(spawnType[(int)spawnId]), transform.position + offset, Quaternion.identity);
             yield return new WaitForSeconds(spawnDelay);
         }
         Destroy(this);

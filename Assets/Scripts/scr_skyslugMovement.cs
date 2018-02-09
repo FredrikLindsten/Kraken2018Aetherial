@@ -35,17 +35,26 @@ public class scr_skyslugMovement : MonoBehaviour {
     
     private enum stateEnum { Hunting, Swarming, Attacking, Searching};
     private stateEnum state = stateEnum.Hunting;
-
-
+    
     // Use this for initialization
     void Start () {
         attackTimer += Random.Range(0, attackCooldown);
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    private void OnDestroy()
+    {
+        scr_utilities.instance.Hide(0);
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         movement = Time.deltaTime * speed;
+        if (!visibility)
+        {
+            //lose sight
+            state = stateEnum.Searching;
+        }
         switch (state)
         {
             case stateEnum.Hunting:
@@ -86,18 +95,13 @@ public class scr_skyslugMovement : MonoBehaviour {
 
     void FindTarget(Vector2 target)
     {
-        if (!visibility)
-        {
-            //lose sight
-            state = stateEnum.Searching;
-        }
         vectorToPlayer = target - (Vector2)transform.position;
         distanceToPlayer = vectorToPlayer.magnitude;
     }
 
     void FindPointOnCircle()
     {
-        circleAngle = Mathf.Atan2((-vectorToPlayer.normalized).y, (-vectorToPlayer.normalized).x);
+        circleAngle = Mathf.Atan2(-vectorToPlayer.y, -vectorToPlayer.x);
         circleAngle += movement / swarmDistance;
 
         UpdateRandomMovement();
