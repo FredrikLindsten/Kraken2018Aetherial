@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4065236273309908}
   - component: {fileID: 212380329608311640}
   - component: {fileID: 114045366919028908}
+  - component: {fileID: 114388202911525290}
   m_Layer: 0
   m_Name: obj_leviathan
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,7 +54,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToArrive: 10
-  speed: 1
+  speed: 2
+--- !u!114 &114388202911525290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1027010199432554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f90f5b154e6c24429e2ee631d8084a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  invincibilityTime: 0
 --- !u!212 &212380329608311640
 SpriteRenderer:
   m_ObjectHideFlags: 1

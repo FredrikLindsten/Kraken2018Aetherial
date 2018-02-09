@@ -11,6 +11,7 @@ TagManager:
   - Harpoon
   - Crystal
   - BossCrystal
+  - Boss
   layers:
   - Default
   - TransparentFX

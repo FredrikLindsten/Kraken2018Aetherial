@@ -23,7 +23,7 @@ public class scr_playerMovement : MonoBehaviour {
 
     private void OnDestroy()
     {
-        scr_utilities.instance.Hide(10000);
+        //scr_utilities.instance.Hide(10000);
     }
 
     // Update is called once per frame

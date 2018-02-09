@@ -19,7 +19,6 @@ public class scr_spawner : MonoBehaviour {
     public float spawnDelay = 0;
     public float number = 0;
     public bool debugSpawnLocation = false;
-    private bool childOfLeviathan = false;
 
     // Use this for initialization
     void Start()
@@ -28,7 +27,6 @@ public class scr_spawner : MonoBehaviour {
         StartCoroutine(Spawn());
         if (GetComponentInParent<scr_leviathan>() != null)
         {
-            childOfLeviathan = true;
             return;
         }
 
