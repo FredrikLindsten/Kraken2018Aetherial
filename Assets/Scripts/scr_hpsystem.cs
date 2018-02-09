@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class scr_hpsystem : MonoBehaviour {
     public int health;
+    private int maxhealth;
     public float invincibilityTime;
     private float time;
     private bool invincible;
@@ -11,6 +12,7 @@ public class scr_hpsystem : MonoBehaviour {
 	void Start () {
         time = 0.0f;
         invincible = false;
+        maxhealth = health;
 	}
 	
 	// Update is called once per frame
@@ -37,6 +39,9 @@ public class scr_hpsystem : MonoBehaviour {
             gameObject.GetComponent<Renderer>().material.color = Color.red;
             health -= damage;
             time = 0.0f;
+            scr_hpsystem parent = gameObject.GetComponentInParent<scr_hpsystem>();
+            if (parent != this)
+                parent.takeDamage(damage);
         }
 
 
@@ -46,6 +51,11 @@ public class scr_hpsystem : MonoBehaviour {
     public int getHealth()
     {
         return health;
+    }
+
+    public float getHealthPercent()
+    {
+        return (float)health / (float)maxhealth;
     }
 
     public void healDamage(int healing)

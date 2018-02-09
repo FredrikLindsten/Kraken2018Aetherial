@@ -27,7 +27,7 @@ public class scr_skyslugMovement : MonoBehaviour {
     private Vector2 vectorToPlayer;
 
     private Vector2 circleVector;
-    private float circlePosition = 0;
+    private float circleAngle = 0;
 
     private Vector2 destination;
 
@@ -35,17 +35,26 @@ public class scr_skyslugMovement : MonoBehaviour {
     
     private enum stateEnum { Hunting, Swarming, Attacking, Searching};
     private stateEnum state = stateEnum.Hunting;
-
-
+    
     // Use this for initialization
     void Start () {
         attackTimer += Random.Range(0, attackCooldown);
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    private void OnDestroy()
+    {
+        scr_utilities.instance.Hide(0);
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         movement = Time.deltaTime * speed;
+        if (!visibility)
+        {
+            //lose sight
+            state = stateEnum.Searching;
+        }
         switch (state)
         {
             case stateEnum.Hunting:
@@ -86,24 +95,19 @@ public class scr_skyslugMovement : MonoBehaviour {
 
     void FindTarget(Vector2 target)
     {
-        if (!visibility)
-        {
-            //lose sight
-            state = stateEnum.Searching;
-        }
         vectorToPlayer = target - (Vector2)transform.position;
         distanceToPlayer = vectorToPlayer.magnitude;
     }
 
     void FindPointOnCircle()
     {
-        circlePosition = Mathf.Atan2((-vectorToPlayer.normalized).y, (-vectorToPlayer.normalized).x);
-        circlePosition += 2 * movement / swarmDistance;
+        circleAngle = Mathf.Atan2(-vectorToPlayer.y, -vectorToPlayer.x);
+        circleAngle += movement / swarmDistance;
 
         UpdateRandomMovement();
 
-        circleVector.x = Mathf.Cos(circlePosition);
-        circleVector.y = Mathf.Sin(circlePosition);
+        circleVector.x = Mathf.Cos(circleAngle);
+        circleVector.y = Mathf.Sin(circleAngle);
         circleVector *= swarmDistance + randomDistance + attackMove;
         destination = vectorToPlayer + circleVector;
     }

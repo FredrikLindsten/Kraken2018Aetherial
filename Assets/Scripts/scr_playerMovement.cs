@@ -20,9 +20,14 @@ public class scr_playerMovement : MonoBehaviour {
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
     }
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+    private void OnDestroy()
+    {
+        scr_utilities.instance.Hide(10000);
+    }
+
+    // Update is called once per frame
+    void FixedUpdate () {
         if (Input.GetKey(UpKey) && thrustY < maxThrust) {
             thrustY += shipSpeed;
         } else if(!Input.GetKey(UpKey) && thrustY > standStill) {
