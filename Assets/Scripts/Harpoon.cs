@@ -79,10 +79,15 @@ public class Harpoon : MonoBehaviour {
         }
         if(other.gameObject.tag == "BossCrystal")
         {
-            stuck(other.gameObject);
-            other.GetComponentInChildren<scr_armourplate>().harpoonHit(Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position));
+            Destroy(other.gameObject);
+            scr_utilities.leviathan.GetComponentInChildren<scr_leviathan>().Leave();
+            scr_utilities.instance.powerUpIndicator.enabled = true;
         }
-       
+        if (other.gameObject.tag == "Crystal")
+        {
+            Destroy(other.gameObject);
+        }
+
     }
 
     public void stuck (GameObject tempcrystal)

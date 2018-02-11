@@ -12,6 +12,7 @@ public class scr_cloudcontroller : MonoBehaviour {
 
     private void Awake()
     {
+        GetComponent<Renderer>().enabled = false;
         if (instance != null)
             Destroy(this);
         instance = this;

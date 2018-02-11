@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 114240926993014894}
   - component: {fileID: 114152214815195900}
   - component: {fileID: 61988856066482848}
-  - component: {fileID: 114583538942257196}
   m_Layer: 0
   m_Name: obj_player
   m_TagString: Player
@@ -148,17 +147,6 @@ MonoBehaviour:
   shipSpeed: 0.2
   inertia: 0.1
   maxThrust: 3
---- !u!114 &114583538942257196
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1811129498192544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b476aa59f0ba8994a873a64e3a2a1f44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114658257840663986
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -16,6 +16,8 @@ public class scr_utilities : MonoBehaviour {
     public Slider playerHealthUI;
     public Slider playerAetherUI;
     public Slider leviathanHealthUI;
+    public Image powerUpIndicator;
+    public GameObject deathscreen;
 
     public float aetherLeft = 0;
     private float aetherMax = 0;
@@ -38,6 +40,8 @@ public class scr_utilities : MonoBehaviour {
     {
         if(instance != null)
             Destroy(this);
+        powerUpIndicator.enabled = false;
+        scr_skyslugMovement.visibility = true;
         aetherMax = aetherLeft;
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
@@ -58,8 +62,13 @@ public class scr_utilities : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //TODO update aether bar
+        if(player != null)
         playerHealthUI.value = player.GetComponent<scr_hpsystem>().getHealthPercent();
         playerAetherUI.value = aetherLeft/aetherMax;
         leviathanHealthUI.value = leviathan.GetComponent<scr_hpsystem>().getHealthPercent();
-    }
+
+
+        if(player == null)
+        Instantiate(deathscreen, Vector3.zero, Quaternion.identity);
+}
 }

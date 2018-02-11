@@ -41,11 +41,6 @@ public class scr_skyslugMovement : MonoBehaviour {
         attackTimer += Random.Range(0, attackCooldown);
 	}
 
-    private void OnDestroy()
-    {
-        scr_utilities.instance.Hide(0);
-    }
-
     // Update is called once per frame
     void Update ()
     {
