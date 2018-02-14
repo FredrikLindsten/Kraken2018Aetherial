@@ -20,6 +20,12 @@ public class scr_weapon : MonoBehaviour {
         float z = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, z);
         Debug.DrawRay(transform.position, transform.right);
+
+        if (!GameObject.FindGameObjectWithTag("Beam"))
+        {
+            scr_utilities.instance.aetherLeft += 0.2f * Time.deltaTime; //passive aether regeneration
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             if(!GameObject.FindGameObjectWithTag("Beam") && scr_utilities.instance.aetherLeft > 0)
@@ -39,8 +45,14 @@ public class scr_weapon : MonoBehaviour {
                 Destroy(GameObject.FindGameObjectWithTag("Beam"));
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.F))
         {
+            Debug.Log("REEE");
+            GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().transform.rotation = Quaternion.Euler(0, 0, -45);
+            GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().Fire();
+        }
+        else if (Input.GetKeyDown(KeyCode.Space)) {
+            GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().transform.rotation = Quaternion.Euler(0, 0, 0);
             GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().Fire();
         }
     }

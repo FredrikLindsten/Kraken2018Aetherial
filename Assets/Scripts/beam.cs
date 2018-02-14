@@ -23,7 +23,7 @@ public class beam : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         scr_utilities.instance.aetherLeft -= 1 * Time.deltaTime;
         if (scr_utilities.instance.aetherLeft < 0)
             Destroy(this.gameObject);
@@ -41,7 +41,6 @@ public class beam : MonoBehaviour {
     {
         if (other.tag == "Enemy")
         {
-            Debug.Log(other.GetComponent<scr_hpsystem>().health);
             if (other.GetComponent<scr_hpsystem>())
             {
                 other.GetComponent<scr_hpsystem>().takeDamage(damage);

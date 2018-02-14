@@ -103,6 +103,7 @@ MonoBehaviour:
   speed: 6
   stuckSprite: {fileID: 21300000, guid: e25e4b0510b4ca44581ce7193280f2b1, type: 3}
   defaultSprite: {fileID: 21300000, guid: 55f7951abf43535488543acd5ae84111, type: 3}
+  chain: {fileID: 1426152409513608, guid: 885749273aa24f74caf992d5ffacfbda, type: 2}
 --- !u!212 &212877575692885854
 SpriteRenderer:
   m_ObjectHideFlags: 1

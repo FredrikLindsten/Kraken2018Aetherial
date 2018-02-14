@@ -28,7 +28,15 @@ public class scr_hpsystem : MonoBehaviour {
         }
         if (getHealth() <= 0)
         {
-            Destroy(this.gameObject);
+            if (GetComponent<Animator>())
+            {
+                GetComponent<Animator>().SetBool("destroyed", true);
+                Destroy(this.gameObject, GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+            } else
+            {
+                Destroy(this.gameObject);
+            }
+            
         }
 	}
 

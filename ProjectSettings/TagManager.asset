@@ -12,6 +12,7 @@ TagManager:
   - Crystal
   - BossCrystal
   - Boss
+  - Chain
   layers:
   - Default
   - TransparentFX
