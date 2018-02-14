@@ -981,6 +981,12 @@ Prefab:
       propertyPath: powerupIcon
       value: 
       objectReference: {fileID: 394220327}
+    - target: {fileID: 212682294173288316, guid: ac2a7097abad45c47892b556ca629537,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300010, guid: e3002f8cebc0d44429a5fce037567983,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: ac2a7097abad45c47892b556ca629537, type: 2}
@@ -2311,7 +2317,7 @@ Prefab:
     - target: {fileID: 114548725493440148, guid: ee1ed5e0a30fad44282c8b2e69f37bfc,
         type: 2}
       propertyPath: spawnDelay
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 114548725493440148, guid: ee1ed5e0a30fad44282c8b2e69f37bfc,
         type: 2}
@@ -2321,7 +2327,7 @@ Prefab:
     - target: {fileID: 114548725493440148, guid: ee1ed5e0a30fad44282c8b2e69f37bfc,
         type: 2}
       propertyPath: number
-      value: 100
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114548725493440148, guid: ee1ed5e0a30fad44282c8b2e69f37bfc,
         type: 2}
