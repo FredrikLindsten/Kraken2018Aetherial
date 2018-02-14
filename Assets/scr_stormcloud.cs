@@ -20,7 +20,7 @@ public class scr_stormcloud : MonoBehaviour {
             wait = true;
         }
         if(speed < 0.001f)
-            gameObject.GetComponent<Renderer>().material.SetTextureOffset("_MainTex", new Vector2(Time.deltaTime, 0));
+            gameObject.GetComponentInChildren<Renderer>().material.SetTextureOffset("_MainTex", new Vector2(-Time.time * scr_cloud.speed/20, 0));
 
         if (transform.position.x < -(scr_utilities.screenWidth + (2 * scr_utilities.padding)))
             Destroy(this.gameObject);
