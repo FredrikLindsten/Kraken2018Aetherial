@@ -987,6 +987,16 @@ Prefab:
       value: 
       objectReference: {fileID: 21300010, guid: e3002f8cebc0d44429a5fce037567983,
         type: 3}
+    - target: {fileID: 114240926993014894, guid: ac2a7097abad45c47892b556ca629537,
+        type: 2}
+      propertyPath: shipSpeed
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114240926993014894, guid: ac2a7097abad45c47892b556ca629537,
+        type: 2}
+      propertyPath: inertia
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: ac2a7097abad45c47892b556ca629537, type: 2}
@@ -2197,6 +2207,11 @@ Prefab:
     - target: {fileID: 4207317872236106, guid: 3c052992b8149fb489a1f378d953e237, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114574782694824698, guid: 3c052992b8149fb489a1f378d953e237,
+        type: 2}
+      propertyPath: speed
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3c052992b8149fb489a1f378d953e237, type: 2}

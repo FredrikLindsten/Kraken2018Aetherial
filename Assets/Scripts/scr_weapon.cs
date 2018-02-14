@@ -40,14 +40,13 @@ public class scr_weapon : MonoBehaviour {
         }
         if (!Input.GetMouseButton(0))
         {
-            if (!GameObject.FindGameObjectWithTag("Beam"))
+            if (GameObject.FindGameObjectWithTag("Beam"))
             {
                 Destroy(GameObject.FindGameObjectWithTag("Beam"));
             }
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
-            Debug.Log("REEE");
             GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().transform.rotation = Quaternion.Euler(0, 0, -45);
             GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().Fire();
         }
@@ -55,5 +54,10 @@ public class scr_weapon : MonoBehaviour {
             GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().transform.rotation = Quaternion.Euler(0, 0, 0);
             GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().Fire();
         }
+    }
+
+    void OnMouseButtonPressed()
+    {
+
     }
 }

@@ -60,7 +60,7 @@ public class scr_leviathan : MonoBehaviour {
     public void Leave()
     {
         targetAngle = Mathf.PI;
-        Instantiate(restartscreen, Vector3.zero, Quaternion.identity);
+        //Instantiate(restartscreen, Vector3.zero, Quaternion.identity);
     }
 
     IEnumerator Timer()
