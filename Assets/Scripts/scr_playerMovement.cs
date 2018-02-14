@@ -24,8 +24,6 @@ public class scr_playerMovement : MonoBehaviour {
 
     private void OnDestroy()
     {
-        if (scr_skyslugMovement.visibility)
-            scr_skyslugMovement.visibility = false;
         Destroy(GameObject.FindGameObjectWithTag("Harpoon"));
     }
 
