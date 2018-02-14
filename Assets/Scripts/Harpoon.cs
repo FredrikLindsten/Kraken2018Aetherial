@@ -80,8 +80,6 @@ public class Harpoon : MonoBehaviour {
         if(other.gameObject.tag == "BossCrystal")
         {
             Destroy(other.gameObject);
-            scr_utilities.leviathan.GetComponentInChildren<scr_leviathan>().Leave();
-            scr_utilities.instance.powerUpIndicator.enabled = true;
         }
         if (other.gameObject.tag == "Crystal")
         {

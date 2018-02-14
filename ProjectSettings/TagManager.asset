@@ -12,6 +12,8 @@ TagManager:
   - Crystal
   - BossCrystal
   - Boss
+  - Stormcloud
+  - Powerup
   layers:
   - Default
   - TransparentFX

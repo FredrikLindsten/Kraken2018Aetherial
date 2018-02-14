@@ -26,7 +26,7 @@ public class scr_armourplate : MonoBehaviour {
                 hpcounter += Time.deltaTime;
                 if (hpcounter >= health)
                 {
-                    Instantiate(hitbox, transform.position, Quaternion.identity).transform.parent = transform.parent.parent;
+                    Instantiate(hitbox, transform.parent.position, Quaternion.identity).transform.parent = transform.parent.parent;
                     Destroy(transform.parent.gameObject);
                     Destroy(this.gameObject);
                 }

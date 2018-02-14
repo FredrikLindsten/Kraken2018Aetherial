@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class scr_cloudcontroller : MonoBehaviour {
 
-    public int cloudcover = 0;
+    public float speed = 0;
+    private int cloudcoverBg = 0;
     public GameObject cloudRef;
-    public static scr_cloudcontroller instance;
+    public static scr_cloudcontroller instance = null;
 
-    private List<GameObject> clouds = new List<GameObject>();
+    private List<GameObject> cloudsBg = new List<GameObject>();
 
     private void Awake()
     {
@@ -18,46 +19,33 @@ public class scr_cloudcontroller : MonoBehaviour {
         instance = this;
     }
 
+    public void SetCloudCover(int val)
+    {
+        int diff = val - cloudcoverBg;
+        cloudcoverBg = val;
+        for (int i = 0; i < diff; ++i)
+        {
+            //spawn clouds
+            float distance = (scr_utilities.screenWidth + (2 * scr_utilities.padding));
+            cloudsBg.Add(Instantiate(cloudRef, new Vector3(distance * (1 + (float)i / diff) - scr_utilities.edges[(int)scr_utilities.edgeId.Right], 0), Quaternion.identity));
+        }
+        while (cloudsBg.Count > cloudcoverBg)
+        {
+            //mark clouds for destruction
+            int pickedCloud = Random.Range(0, cloudsBg.Count - 1);
+            cloudsBg[pickedCloud].GetComponent<scr_cloud>().MarkForRemoval();
+            cloudsBg.RemoveAt(pickedCloud);
+        }
+    }
+
     // Use this for initialization
     void Start () {
-        StartCoroutine(SpawnClouds());
+        scr_cloud.speed = speed;
     }
 	
 	// Update is called once per frame
-	void Update () {
-
-    }
-
-    void SetCloudCover(int val)
+	void Update ()
     {
-        cloudcover = val;
-    }
 
-    void ReevaluateCloudCover()
-    {
-    }
-
-    GameObject spawnCloud()
-    {
-        return Instantiate(cloudRef, Vector3.zero, Quaternion.identity);
-    }
-
-    IEnumerator SpawnClouds()
-    {
-        while (true) {
-            if(clouds.Count < cloudcover)
-            {
-                //spawn clouds
-                clouds.Add(spawnCloud());
-            }
-            while(clouds.Count > cloudcover)
-            {
-                //mark clouds for destruction
-                int pickedCloud = Random.Range(0, clouds.Count - 1);
-                clouds[pickedCloud].GetComponent<scr_cloud>().MarkForRemoval();
-                clouds.RemoveAt(pickedCloud);
-            }
-            yield return new WaitForSeconds((scr_utilities.screenWidth + (2*scr_utilities.padding)) / cloudcover);
-        }
     }
 }

@@ -8,9 +8,10 @@ public class scr_hpsystem : MonoBehaviour {
     public float invincibilityTime;
     private float time;
     private bool invincible;
+    public Color std = Color.white;
 	// Use this for initialization
 	void Start () {
-        time = 0.0f;
+        time = 1.0f;
         invincible = false;
         maxhealth = health;
 	}
@@ -21,7 +22,7 @@ public class scr_hpsystem : MonoBehaviour {
         if (time >= invincibilityTime)
         {
             invincible = false;
-            gameObject.GetComponent<Renderer>().material.color = Color.white;
+            gameObject.GetComponent<Renderer>().material.color = std;
         } else
         {
             invincible = true;
