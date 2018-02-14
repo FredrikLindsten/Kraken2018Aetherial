@@ -35,7 +35,7 @@ public class scr_cloud : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         movement = speed * Time.deltaTime;
-        transform.position = new Vector3(transform.position.x - movement, height + Mathf.Cos(transform.position.x)*verticalSpeed,1);
+        transform.position = new Vector3(transform.position.x - movement, height + Mathf.Cos(transform.position.x)*verticalSpeed,2);
 
         if (transform.position.x < scr_utilities.edges[(int)scr_utilities.edgeId.Left] - scr_utilities.padding)
         {
