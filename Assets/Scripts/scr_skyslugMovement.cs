@@ -84,9 +84,10 @@ public class scr_skyslugMovement : MonoBehaviour {
         if (rotate)
             transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, destination));
         if (altrotate) { 
-            transform.rotation = Quaternion.Euler(0, 0, altrotatemagnitude * (destination.normalized*movement).y -10);
             if (state == stateEnum.Attacking && rotate)
                 transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, destination));
+            transform.rotation = Quaternion.Euler(0, 0, altrotatemagnitude * ((destination.normalized*movement).y - (destination.normalized * movement).x));
+        gameObject.GetComponent<Animator>().speed = 0.8f + (destination.normalized.x/2);
         }
         transform.Translate(destination.normalized * movement, Space.World);
         //TODO collision
