@@ -63,6 +63,8 @@ public class scr_skyslugMovement : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+        if (Time.timeScale == 0)
+            return;
         movement = Time.deltaTime * speed;
         if (visibility)
             FindTarget(scr_utilities.player.transform.position);
