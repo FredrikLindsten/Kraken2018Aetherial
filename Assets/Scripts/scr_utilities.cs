@@ -61,6 +61,7 @@ public class scr_utilities : MonoBehaviour {
             Instantiate(deathscreen, Vector3.zero, Quaternion.identity);
 
         if(aetherLeft > aetherMax)
+        {
              aetherLeft = aetherMax;
         }
 
