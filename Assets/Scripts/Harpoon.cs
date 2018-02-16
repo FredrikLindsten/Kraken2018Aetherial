@@ -19,8 +19,14 @@ public class Harpoon : MonoBehaviour {
     private float crystalOffsetY = -0.2f;
     public GameObject chain;
     STATE harpState;
+
+    AudioSource audioSource;
+    public AudioClip firingClip;
+    public AudioClip hittingClip;
+
     // Use this for initialization
     void Start () {
+        audioSource = GetComponent<AudioSource>();
         harpState = STATE.RELOADED;
         rigidbody = GetComponent<Rigidbody2D>();
         transform = GetComponent<Transform>();
@@ -73,6 +79,7 @@ public class Harpoon : MonoBehaviour {
     {
         if (harpState == STATE.RELOADED)
         {
+            audioSource.PlayOneShot(firingClip);
             harpState = STATE.FIRED;
         }
         if (harpState == STATE.STUCK)
@@ -110,5 +117,6 @@ public class Harpoon : MonoBehaviour {
         crystal = tempcrystal;
         harpState = STATE.STUCK;
         gameObject.GetComponent<SpriteRenderer>().sprite = stuckSprite;
+        audioSource.PlayOneShot(hittingClip);
     }
 }
