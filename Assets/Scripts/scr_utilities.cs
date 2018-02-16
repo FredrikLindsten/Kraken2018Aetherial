@@ -16,6 +16,7 @@ public class scr_utilities : MonoBehaviour {
 
     public int cloudCover = 0;
 
+    public GameObject pauseOverlay;
     public Slider playerHealthUI;
     public Slider playerAetherUI;
     public Slider leviathanHealthUI;
@@ -50,7 +51,6 @@ public class scr_utilities : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        //TODO update aether bar
         if (player != null)
             playerHealthUI.value = player.GetComponent<scr_hpsystem>().getHealthPercent();
         playerAetherUI.value = aetherLeft / aetherMax;
@@ -59,5 +59,19 @@ public class scr_utilities : MonoBehaviour {
 
         if (player == null)
             Instantiate(deathscreen, Vector3.zero, Quaternion.identity);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (pauseOverlay.activeSelf)
+            {
+                pauseOverlay.SetActive(false);
+                Time.timeScale = 1;
+            }
+            else
+            {
+                pauseOverlay.SetActive(true);
+                Time.timeScale = 0;
+            }
+        }
     }
 }
