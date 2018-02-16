@@ -5,25 +5,28 @@ using UnityEngine;
 
 public class scr_startlevel : MonoBehaviour {
 
-    static GameObject instance;
+    public GameObject Mainmenu;
+    public GameObject Controls;
 
-	// Use this for initialization
-	void Start () {
-        if (instance == null)
-            instance = this.gameObject;
-        else
-            Destroy(this.gameObject);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SceneManager.LoadScene("PlaytestScene");
-        }
-    }
-    private void OnDestroy()
+    public void EnterControls()
     {
-        instance = null;
+        Controls.SetActive(true);
+        Mainmenu.SetActive(false);
+    }
+
+    public void LeaveControls()
+    {
+        Controls.SetActive(false);
+        Mainmenu.SetActive(true);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    public void LoadScene()
+    {
+       SceneManager.LoadScene("PlaytestScene");
     }
 }
