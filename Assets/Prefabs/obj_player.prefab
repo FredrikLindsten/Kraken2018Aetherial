@@ -41,7 +41,8 @@ GameObject:
   - component: {fileID: 114240926993014894}
   - component: {fileID: 114152214815195900}
   - component: {fileID: 61988856066482848}
-  - component: {fileID: 114583538942257196}
+  - component: {fileID: 114795766891085714}
+  - component: {fileID: 95137192104979782}
   m_Layer: 0
   m_Name: obj_player
   m_TagString: Player
@@ -121,6 +122,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &95137192104979782
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811129498192544}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c9a4421bfbda94b48b94b1b7a3a0a1f5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114152214815195900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -134,6 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 20
   invincibilityTime: 0.5
+  std: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &114240926993014894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,17 +167,6 @@ MonoBehaviour:
   shipSpeed: 0.2
   inertia: 0.1
   maxThrust: 3
---- !u!114 &114583538942257196
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1811129498192544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b476aa59f0ba8994a873a64e3a2a1f44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114658257840663986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -173,6 +181,23 @@ MonoBehaviour:
   transform: {fileID: 0}
   beam: {fileID: 1044690977345144, guid: 632a780be3ed38549b2713938bfd4f45, type: 2}
   harpoon: {fileID: 1152643724381404, guid: 3c052992b8149fb489a1f378d953e237, type: 2}
+--- !u!114 &114795766891085714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811129498192544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2961efec608733b449d84fb546690a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nrOfGhosts: 10
+  powerupCharges: 1
+  powerupTime: 30
+  stormcloudref: {fileID: 1252820976441552, guid: cd3e775da4a761e4b89e176ee40c1759,
+    type: 2}
+  powerupIcon: {fileID: 0}
 --- !u!212 &212651522284593306
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -30,31 +30,44 @@ public class scr_skyslugMovement : MonoBehaviour {
     private float circleAngle = 0;
 
     private Vector2 destination;
+    private int targetId;
 
-    public static bool visibility = true;
+    private bool visibility = true;
+    public void LoseSight()
+    {
+        if (!visibility)
+            return;
+        visibility = false;
+        targetId = Random.Range(0, scr_powerup.instance.nrOfGhosts);
+        swarmDistance -= 1;
+        speed *= 0.5f;
+    }
+    public void GainSight()
+    {
+        if (visibility)
+            return;
+        visibility = true;
+        swarmDistance += 1;
+        speed *= 2;
+    }
     
-    private enum stateEnum { Hunting, Swarming, Attacking, Searching};
+    private enum stateEnum { Hunting, Swarming, Attacking};
     private stateEnum state = stateEnum.Hunting;
     
     // Use this for initialization
     void Start () {
         attackTimer += Random.Range(0, attackCooldown);
+        scr_utilities.slugs.Add(this);
 	}
-
-    private void OnDestroy()
-    {
-        scr_utilities.instance.Hide(0);
-    }
 
     // Update is called once per frame
     void Update ()
     {
         movement = Time.deltaTime * speed;
-        if (!visibility)
-        {
-            //lose sight
-            state = stateEnum.Searching;
-        }
+        if (visibility)
+            FindTarget(scr_utilities.player.transform.position);
+        else
+            FindTarget(scr_powerup.instance.GetGhost(targetId));
         switch (state)
         {
             case stateEnum.Hunting:
@@ -66,15 +79,12 @@ public class scr_skyslugMovement : MonoBehaviour {
             case stateEnum.Attacking:
                 Attacking();
                 break;
-            case stateEnum.Searching:
-                Searching();
-                break;
         }
         
         if (rotate)
             transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, destination));
         if (altrotate) { 
-            transform.rotation = Quaternion.Euler(0, 0, altrotatemagnitude * (destination.normalized*movement).y);
+            transform.rotation = Quaternion.Euler(0, 0, altrotatemagnitude * (destination.normalized*movement).y -10);
             if (state == stateEnum.Attacking && rotate)
                 transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, destination));
         }
@@ -114,7 +124,6 @@ public class scr_skyslugMovement : MonoBehaviour {
 
     void Hunting()
     {
-        FindTarget(scr_utilities.player.transform.position);
         if (distanceToPlayer < swarmTrigger)
             state = stateEnum.Swarming;
         destination = vectorToPlayer;
@@ -122,10 +131,10 @@ public class scr_skyslugMovement : MonoBehaviour {
 
     void Swarming()
     {
-        FindTarget(scr_utilities.player.transform.position);
         if (distanceToPlayer > swarmTrigger)
             state = stateEnum.Hunting;
-        attackTimer += Time.deltaTime;
+        if(visibility)
+            attackTimer += Time.deltaTime;
         if (attackTimer > attackCooldown)
         {
             //attack player
@@ -138,8 +147,6 @@ public class scr_skyslugMovement : MonoBehaviour {
 
     void Attacking()
     {
-        FindTarget(scr_utilities.player.transform.position);
-
         attackMove -= Time.deltaTime * 2.5f;
 
         if (distanceToPlayer < 0.6f)//TODO change for if collision
@@ -148,13 +155,5 @@ public class scr_skyslugMovement : MonoBehaviour {
             state = stateEnum.Swarming;
         }
         FindPointOnCircle();
-    }
-
-    void Searching()
-    {
-        if (visibility)
-        {
-            state = stateEnum.Hunting;
-        }
     }
 }

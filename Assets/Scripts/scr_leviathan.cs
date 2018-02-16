@@ -21,13 +21,15 @@ public class scr_leviathan : MonoBehaviour {
     private Vector3 target;
     private Vector3 circleCenter;
 
+    public GameObject restartscreen;
+
     //movement == function to move, orig, dest, parabola(yes/no)
     //scripted through ghost objects/their names and controller
 
     //movement == function to start move, dest according to objposition, time scripted by controller, orig implicit
-    
+
     //floating up/down
-    
+
     // Use this for initialization
     void Start () {
         circleCenter = new Vector3(transform.position.x, transform.position.y - 10, 0);
@@ -58,6 +60,7 @@ public class scr_leviathan : MonoBehaviour {
     public void Leave()
     {
         targetAngle = Mathf.PI;
+        //Instantiate(restartscreen, Vector3.zero, Quaternion.identity);
     }
 
     IEnumerator Timer()

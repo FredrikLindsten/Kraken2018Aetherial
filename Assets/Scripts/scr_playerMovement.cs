@@ -7,6 +7,7 @@ public class scr_playerMovement : MonoBehaviour {
     KeyCode DownKey = KeyCode.S;
     KeyCode RightKey = KeyCode.D;
     KeyCode LeftKey = KeyCode.A;
+
     private Rigidbody2D rb;
     public float shipSpeed;
     public float inertia;
@@ -23,7 +24,7 @@ public class scr_playerMovement : MonoBehaviour {
 
     private void OnDestroy()
     {
-        //scr_utilities.instance.Hide(10000);
+        Destroy(GameObject.FindGameObjectWithTag("Harpoon"));
     }
 
     // Update is called once per frame
@@ -78,5 +79,17 @@ public class scr_playerMovement : MonoBehaviour {
 
 
 
+    }
+
+    private void Update()
+    {
+        if (transform.position.x < scr_utilities.edges[(int)scr_utilities.edgeId.Left])
+            transform.position = new Vector3(scr_utilities.edges[(int)scr_utilities.edgeId.Left], transform.position.y);
+        if (transform.position.x > scr_utilities.edges[(int)scr_utilities.edgeId.Right])
+            transform.position = new Vector3(scr_utilities.edges[(int)scr_utilities.edgeId.Right], transform.position.y);
+        if (transform.position.y < scr_utilities.edges[(int)scr_utilities.edgeId.Bottom])
+            transform.position = new Vector3(transform.position.x, scr_utilities.edges[(int)scr_utilities.edgeId.Bottom]);
+        if (transform.position.y > scr_utilities.edges[(int)scr_utilities.edgeId.Top])
+            transform.position = new Vector3(transform.position.x, scr_utilities.edges[(int)scr_utilities.edgeId.Top]);
     }
 }

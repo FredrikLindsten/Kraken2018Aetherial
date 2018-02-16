@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   invincibilityTime: 0.5
+  std: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &114888557093125862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,6 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5257dc3dec75f47b245b5a070a15c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerup: {fileID: 1223110685377086, guid: c85a4de69a8a19c43a2d85eab6b1bd73, type: 2}
 --- !u!212 &212988791365263364
 SpriteRenderer:
   m_ObjectHideFlags: 1

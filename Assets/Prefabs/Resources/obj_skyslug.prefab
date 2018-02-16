@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   invincibilityTime: 0.5
+  std: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &114239470249030132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,14 +128,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  swarmDistance: 4
+  swarmDistance: 3
   swarmTrigger: 6
-  swarmDistanceMax: 0.5
+  swarmDistanceMax: 2
   swarmDistanceMin: -0.5
   randomDistanceSpeed: 30
   rotate: 0
   altrotate: 1
-  altrotatemagnitude: 150
+  altrotatemagnitude: 180
   attackCooldown: 10
 --- !u!212 &212331376917000714
 SpriteRenderer:
