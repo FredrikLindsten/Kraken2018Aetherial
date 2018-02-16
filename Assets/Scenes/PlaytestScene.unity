@@ -2256,7 +2256,7 @@ Prefab:
     - target: {fileID: 114045366919028908, guid: 1e2f9d5ec85c03f42968b3c8aaa650d5,
         type: 2}
       propertyPath: timeToArrive
-      value: 99
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4065236273309908, guid: 1e2f9d5ec85c03f42968b3c8aaa650d5, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class scr_skyslugMovement : MonoBehaviour {
 
+    AudioSource audioSource;
+    public AudioClip attackingClip;
+    bool attackSoundPlayed;
+
     public float speed = 0;
     private float movement = 0;
     public float swarmDistance = 0;
@@ -56,8 +60,10 @@ public class scr_skyslugMovement : MonoBehaviour {
     
     // Use this for initialization
     void Start () {
+        audioSource = GetComponent<AudioSource>();
         attackTimer += Random.Range(0, attackCooldown);
         scr_utilities.slugs.Add(this);
+        attackSoundPlayed = false;
 	}
 
     // Update is called once per frame
@@ -149,10 +155,18 @@ public class scr_skyslugMovement : MonoBehaviour {
     {
         attackMove -= Time.deltaTime * 2.5f;
 
+        if(attackSoundPlayed == false)
+        {
+            audioSource.PlayOneShot(attackingClip);
+            attackSoundPlayed = true;
+        }
+
+
         if (distanceToPlayer < 0.6f)//TODO change for if collision
         {
             attackTimer = 0;
             state = stateEnum.Swarming;
+            attackSoundPlayed = false;
         }
         FindPointOnCircle();
     }
