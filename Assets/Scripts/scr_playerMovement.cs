@@ -24,6 +24,8 @@ public class scr_playerMovement : MonoBehaviour {
 
     private void OnDestroy()
     {
+        scr_utilities.player = scr_utilities.leviathan;
+        scr_utilities.instance.Death();
         Destroy(GameObject.FindGameObjectWithTag("Harpoon"));
     }
 

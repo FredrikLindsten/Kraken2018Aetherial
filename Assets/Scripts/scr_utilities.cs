@@ -20,7 +20,9 @@ public class scr_utilities : MonoBehaviour {
     public Slider playerHealthUI;
     public Slider playerAetherUI;
     public Slider leviathanHealthUI;
-    public GameObject deathscreen;
+
+    public GameObject victoryScreen;
+    public GameObject deathScreen;
 
     public float aetherLeft = 0;
     private float aetherMax = 0;
@@ -56,10 +58,6 @@ public class scr_utilities : MonoBehaviour {
         playerAetherUI.value = aetherLeft / aetherMax;
         leviathanHealthUI.value = leviathan.GetComponent<scr_hpsystem>().getHealthPercent();
 
-
-        if (player == null)
-            Instantiate(deathscreen, Vector3.zero, Quaternion.identity);
-
         if(aetherLeft > aetherMax)
         {
              aetherLeft = aetherMax;
@@ -78,5 +76,15 @@ public class scr_utilities : MonoBehaviour {
                 Time.timeScale = 0;
             }
         }
+    }
+
+    public void Victory()
+    {
+        victoryScreen.SetActive(true);
+    }
+
+    public void Death()
+    {
+        deathScreen.SetActive(true);
     }
 }

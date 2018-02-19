@@ -21,8 +21,6 @@ public class scr_leviathan : MonoBehaviour {
     private Vector3 target;
     private Vector3 circleCenter;
 
-    public GameObject restartscreen;
-
     //movement == function to move, orig, dest, parabola(yes/no)
     //scripted through ghost objects/their names and controller
 
@@ -60,7 +58,7 @@ public class scr_leviathan : MonoBehaviour {
     public void Leave()
     {
         targetAngle = Mathf.PI;
-        //Instantiate(restartscreen, Vector3.zero, Quaternion.identity);
+        scr_utilities.instance.Victory();
     }
 
     IEnumerator Timer()
