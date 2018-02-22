@@ -21,6 +21,7 @@ public class scr_leviathan : MonoBehaviour {
     private Vector3 target;
     private Vector3 circleCenter;
 
+    EdgeCollider2D edgeCollider;
     //movement == function to move, orig, dest, parabola(yes/no)
     //scripted through ghost objects/their names and controller
 
@@ -30,6 +31,7 @@ public class scr_leviathan : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        edgeCollider = GetComponent<EdgeCollider2D>();
         circleCenter = new Vector3(transform.position.x, transform.position.y - 10, 0);
         transform.Translate(-10, -10, 0);
         target = transform.position;
@@ -117,4 +119,21 @@ public class scr_leviathan : MonoBehaviour {
         }
         RandomMovement();
     }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.Log("Collision");
+        if (other.gameObject.tag != "Player")
+        {
+            Physics2D.IgnoreCollision(edgeCollider, other.collider);
+            Debug.Log("Not a Player");
+
+        }
+        else
+        {
+            other.gameObject.GetComponent<scr_hpsystem>().takeDamage(1);
+            Debug.Log("Player Collision");
+        }
+    }
 }
+
