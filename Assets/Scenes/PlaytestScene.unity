@@ -274,6 +274,9 @@ MonoBehaviour:
   health: 1
   invincibilityTime: 0
   std: {r: 1, g: 1, b: 1, a: 1}
+  audioSource: {fileID: 0}
+  hitSound: {fileID: 0}
+  deathSound: {fileID: 0}
 --- !u!212 &111805818
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -476,6 +479,115 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee1ed5e0a30fad44282c8b2e69f37bfc, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &331431846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 331431848}
+  - component: {fileID: 331431847}
+  m_Layer: 0
+  m_Name: MusicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &331431847
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 331431846}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 69556c0de86022c49994ff787b65a3e6, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.3
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!4 &331431848
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 331431846}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.04461962, y: -0.9891074, z: 0.4192824}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 29
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &394220323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,97 +1164,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 17
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: playerHealthUI
-      value: 
-      objectReference: {fileID: 2116780132}
-    - target: {fileID: 0}
-      propertyPath: leviathanHealthUI
-      value: 
-      objectReference: {fileID: 892198419}
-    - target: {fileID: 0}
-      propertyPath: playerAetherUI
-      value: 
-      objectReference: {fileID: 1856094163}
-    - target: {fileID: 0}
-      propertyPath: aetherLeft
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 61988856066482848, guid: ac2a7097abad45c47892b556ca629537,
-        type: 2}
-      propertyPath: m_Offset.y
-      value: -1.1795216
-      objectReference: {fileID: 0}
-    - target: {fileID: 61988856066482848, guid: ac2a7097abad45c47892b556ca629537,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 1.2569275
-      objectReference: {fileID: 0}
-    - target: {fileID: 61988856066482848, guid: ac2a7097abad45c47892b556ca629537,
-        type: 2}
-      propertyPath: m_Offset.x
-      value: 0.21021056
-      objectReference: {fileID: 0}
-    - target: {fileID: 61988856066482848, guid: ac2a7097abad45c47892b556ca629537,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 3.896247
-      objectReference: {fileID: 0}
-    - target: {fileID: 114240926993014894, guid: ac2a7097abad45c47892b556ca629537,
-        type: 2}
-      propertyPath: deathscreen
-      value: 
-      objectReference: {fileID: 1671552505396382, guid: 741f413a539c48c4caafbeeee096fb80,
-        type: 2}
-    - target: {fileID: 114152214815195900, guid: ac2a7097abad45c47892b556ca629537,
-        type: 2}
-      propertyPath: health
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114152214815195900, guid: ac2a7097abad45c47892b556ca629537,
-        type: 2}
-      propertyPath: invincibilityTime
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114795766891085714, guid: ac2a7097abad45c47892b556ca629537,
-        type: 2}
-      propertyPath: stormcloud
-      value: 
-      objectReference: {fileID: 1252820976441552, guid: cd3e775da4a761e4b89e176ee40c1759,
-        type: 2}
-    - target: {fileID: 114795766891085714, guid: ac2a7097abad45c47892b556ca629537,
-        type: 2}
-      propertyPath: powerupTime
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114795766891085714, guid: ac2a7097abad45c47892b556ca629537,
-        type: 2}
-      propertyPath: powerupCharges
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 114795766891085714, guid: ac2a7097abad45c47892b556ca629537,
         type: 2}
       propertyPath: powerupIcon
       value: 
       objectReference: {fileID: 394220327}
-    - target: {fileID: 212682294173288316, guid: ac2a7097abad45c47892b556ca629537,
+    - target: {fileID: 114152214815195900, guid: ac2a7097abad45c47892b556ca629537,
         type: 2}
-      propertyPath: m_Sprite
+      propertyPath: deathSound
       value: 
-      objectReference: {fileID: 21300010, guid: e3002f8cebc0d44429a5fce037567983,
-        type: 3}
-    - target: {fileID: 114240926993014894, guid: ac2a7097abad45c47892b556ca629537,
+      objectReference: {fileID: 8300000, guid: a608e01df82092642b312c3e34c47ad8, type: 3}
+    - target: {fileID: 82996366327826098, guid: ac2a7097abad45c47892b556ca629537,
         type: 2}
-      propertyPath: shipSpeed
-      value: 0.3
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114240926993014894, guid: ac2a7097abad45c47892b556ca629537,
-        type: 2}
-      propertyPath: inertia
-      value: 0.2
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac2a7097abad45c47892b556ca629537, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &635154783
@@ -2157,6 +2194,9 @@ MonoBehaviour:
   health: 1
   invincibilityTime: 0
   std: {r: 1, g: 1, b: 1, a: 1}
+  audioSource: {fileID: 0}
+  hitSound: {fileID: 0}
+  deathSound: {fileID: 0}
 --- !u!212 &1364772885
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2559,6 +2599,9 @@ MonoBehaviour:
   health: 1
   invincibilityTime: 0
   std: {r: 1, g: 1, b: 1, a: 1}
+  audioSource: {fileID: 0}
+  hitSound: {fileID: 0}
+  deathSound: {fileID: 0}
 --- !u!212 &1614922300
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2753,36 +2796,6 @@ MonoBehaviour:
   victoryScreen: {fileID: 737649430}
   deathScreen: {fileID: 1397088730}
   aetherLeft: 10
---- !u!1 &1765331416 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1811129498192544, guid: ac2a7097abad45c47892b556ca629537,
-    type: 2}
-  m_PrefabInternal: {fileID: 616211897}
---- !u!61 &1765331417
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1765331416}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.18420303, y: -1.1973317}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.8, y: 10.8}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.6685107, y: 1.037128}
-  m_EdgeRadius: 0
 --- !u!1001 &1794900030
 Prefab:
   m_ObjectHideFlags: 0

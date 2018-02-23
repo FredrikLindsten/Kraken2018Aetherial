@@ -72,6 +72,11 @@ public class Harpoon : MonoBehaviour {
         {
             Destroy(GameObject.FindGameObjectWithTag("Chain"));
         }
+
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().GetBool("destroyed") == true)
+        {
+            Destroy(this.gameObject);
+        }
 	}
 
 
