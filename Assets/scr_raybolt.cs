@@ -10,7 +10,7 @@ public class scr_raybolt : MonoBehaviour {
 	void Start ()
     {
         LineRenderer line = gameObject.GetComponent<LineRenderer>();
-        line.SetPosition(0, gameObject.transform.parent.transform.position);
+        line.SetPosition(0, gameObject.transform.parent.transform.position + new Vector3(0.936f,0.32f,0));
         line.SetPosition(1, scr_utilities.player.transform.position);
 
         StartCoroutine(timer());

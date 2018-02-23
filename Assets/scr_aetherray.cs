@@ -90,8 +90,9 @@ public class scr_aetherray : MonoBehaviour {
 
     IEnumerator Attack()
     {
-        //Play attack animation here
+        GetComponent<Animator>().SetBool("attacking", true);
         yield return new WaitForSeconds(attackSpeed);
+        GetComponent<Animator>().SetBool("attacking", false);
         if ((scr_utilities.player.transform.position - transform.position).magnitude > maxDist)
             yield break;
         Instantiate(bolt, gameObject.transform);
