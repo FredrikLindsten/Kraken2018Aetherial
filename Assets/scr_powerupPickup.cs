@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class scr_powerupPickup : MonoBehaviour {
 
+    AudioSource audioSource;
 	// Use this for initialization
 	void Start () {
-		
+        audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -18,8 +19,9 @@ public class scr_powerupPickup : MonoBehaviour {
     {
         if(collision.tag == "Player")
         {
+            audioSource.PlayOneShot(audioSource.clip);
             scr_powerup.instance.gainPowerup();
-            Destroy(this.gameObject);
+            Destroy(this.gameObject,audioSource.clip.length);
             //play anim
         }
     }
