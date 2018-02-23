@@ -9,7 +9,7 @@ public class scr_spawner : MonoBehaviour {
     private string[] spawnType = {
         "obj_skyslug",
         "",
-        "" };
+        "obj_aether_ray" };
     public SpawnerEnum spawnId;
 
     public float spawnOffsetRange = 0;
