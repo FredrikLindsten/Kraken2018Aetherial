@@ -15,6 +15,7 @@ public class scr_utilities : MonoBehaviour {
     public enum edgeId { Left, Right, Bottom, Top};
 
     public int cloudCover = 0;
+    public int islandCount = 0;
 
     public GameObject pauseOverlay;
     public Slider playerHealthUI;
@@ -23,6 +24,8 @@ public class scr_utilities : MonoBehaviour {
 
     public GameObject victoryScreen;
     public GameObject deathScreen;
+
+    public GameObject transitionEffect;
 
     public float aetherLeft = 0;
     private float aetherMax = 0;
@@ -48,6 +51,7 @@ public class scr_utilities : MonoBehaviour {
     // Use this for initialization
     void Start () {
         scr_cloudcontroller.instance.SetCloudCover(cloudCover);
+        scr_cloudcontroller.instance.SetIslandCount(islandCount);
 	}
 
     // Update is called once per frame
@@ -86,5 +90,24 @@ public class scr_utilities : MonoBehaviour {
     public void Death()
     {
         deathScreen.SetActive(true);
+    }
+
+    public void Checkpoint()
+    {
+        StartCoroutine(CheckpointWaiting());
+    }
+
+    IEnumerator CheckpointWaiting()
+    {
+        scr_stormcloud transition = Instantiate(transitionEffect, new Vector3(scr_utilities.screenWidth + (2 * scr_utilities.padding), 0, 1), Quaternion.identity).GetComponent<scr_stormcloud>();
+        pauseOverlay.SetActive(true);
+        while(true)
+        {
+            yield return null;
+            if (Input.GetKeyUp(KeyCode.Space))
+                break;
+        }
+        pauseOverlay.SetActive(false);
+        transition.speed = scr_cloud.speed;
     }
 }
