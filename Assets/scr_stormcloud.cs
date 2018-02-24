@@ -20,7 +20,7 @@ public class scr_stormcloud : MonoBehaviour {
             wait = true;
         }
         if(speed < 0.001f)
-            gameObject.GetComponentInChildren<Renderer>().material.SetTextureOffset("_MainTex", new Vector2(-Time.time * scr_cloud.speed/20, 0));
+            gameObject.GetComponentInChildren<Renderer>().material.SetTextureOffset("_MainTex", new Vector2(-Time.time * scr_cloud.speed/80, 0));
 
         if (transform.position.x < -(scr_utilities.screenWidth + (2 * scr_utilities.padding)))
             Destroy(this.gameObject);
@@ -33,7 +33,6 @@ public class scr_stormcloud : MonoBehaviour {
             other.GetComponent<scr_skyslugMovement>().LoseSight();
 
         }
-        if(other.GetComponent<scr_hpsystem>()) other.GetComponent<scr_hpsystem>().std = new Color(0.0f, 0.0f, 0.0f, 0.5f);
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -42,6 +41,11 @@ public class scr_stormcloud : MonoBehaviour {
         {
             other.GetComponent<scr_skyslugMovement>().GainSight();
         }
-        if (other.GetComponent<scr_hpsystem>()) other.GetComponent<scr_hpsystem>().std = Color.white;
+        other.GetComponent<Renderer>().material.color = Color.white;
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        other.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 0.0f, 0.5f);
     }
 }

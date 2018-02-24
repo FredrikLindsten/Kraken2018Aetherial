@@ -8,7 +8,7 @@ public class scr_island : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        transform.Translate(0,0,-1);
 	}
 	
 	// Update is called once per frame
