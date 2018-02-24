@@ -38,7 +38,7 @@ public class scr_hpsystem : MonoBehaviour {
             {
                 audioSource.PlayOneShot(deathSound);
             }
-            if (GetComponent<Animator>())
+            if (GetComponent<Animator>() && GetComponent<Animator>().GetBool("destroyed"))
             {
                
                 GetComponent<Animator>().SetBool("destroyed", true);

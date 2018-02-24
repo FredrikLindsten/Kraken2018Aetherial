@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 82989334970925694}
   m_Layer: 0
   m_Name: Crystal
-  m_TagString: Enemy
+  m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -202,6 +202,9 @@ MonoBehaviour:
   health: 1
   invincibilityTime: 0
   std: {r: 1, g: 1, b: 1, a: 1}
+  audioSource: {fileID: 0}
+  hitSound: {fileID: 0}
+  deathSound: {fileID: 0}
 --- !u!114 &114713089957458736
 MonoBehaviour:
   m_ObjectHideFlags: 1

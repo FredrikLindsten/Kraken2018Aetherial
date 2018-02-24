@@ -30,8 +30,12 @@ public class scr_aetherray : MonoBehaviour {
     private float dist = 0;
     private float dashProgress = 0;
 
+    AudioSource audioSource;
+    public AudioClip shootSound;
+
     // Use this for initialization
     void Start () {
+        audioSource = GetComponent<AudioSource>();
         currentState = State.idling;
         dashTimer += Random.Range(0, dashCooldown);
         attackTimer += Random.Range(0, attackCooldown);
@@ -90,13 +94,14 @@ public class scr_aetherray : MonoBehaviour {
 
     IEnumerator Attack()
     {
-        GetComponent<Animator>().SetBool("attacking", true);
+        GetComponent<Animator>().SetBool("attack", true);
+        audioSource.PlayOneShot(shootSound);
         yield return new WaitForSeconds(attackSpeed);
-        GetComponent<Animator>().SetBool("attacking", false);
+        GetComponent<Animator>().SetBool("attack", false);
         if ((scr_utilities.player.transform.position - transform.position).magnitude > maxDist)
             yield break;
         Instantiate(bolt, gameObject.transform);
-        scr_utilities.player.GetComponent<scr_hpsystem>().takeDamage(damage);
+        //scr_utilities.player.GetComponent<scr_hpsystem>().takeDamage(damage);
 
         currentState = State.idling;
     }

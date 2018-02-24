@@ -19,6 +19,7 @@ public class Harpoon : MonoBehaviour {
     private float crystalOffsetY = -0.2f;
     public GameObject chain;
     STATE harpState;
+    public bool isFired;
 
     AudioSource audioSource;
     public AudioClip firingClip;
@@ -26,6 +27,7 @@ public class Harpoon : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        isFired = false;
         audioSource = GetComponent<AudioSource>();
         harpState = STATE.RELOADED;
         rigidbody = GetComponent<Rigidbody2D>();
@@ -36,9 +38,11 @@ public class Harpoon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+ 
 
 		if (harpState == STATE.FIRED)
         {
+            isFired = true;
             rigidbody.velocity = transform.right * speed;
             reloadTimer += Time.deltaTime;
             if (reloadTimer >= reloadTime)
@@ -50,11 +54,13 @@ public class Harpoon : MonoBehaviour {
         }
         if (harpState == STATE.RELOADED)
         {
+            isFired = false;
             gameObject.GetComponent<SpriteRenderer>().sprite = defaultSprite;
             transform.position = GameObject.FindGameObjectWithTag("Weapon").GetComponent<Transform>().position;
         }
         if (harpState == STATE.STUCK)
-        { 
+        {
+            isFired = false;
             if (!GameObject.FindGameObjectWithTag("Chain"))
             {
                 Instantiate(chain);

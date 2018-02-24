@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+using UnityEngine.SceneManagement; //temp for beta
+
+
 public class scr_utilities : MonoBehaviour {
 
     public static scr_utilities instance = null;
@@ -84,7 +87,16 @@ public class scr_utilities : MonoBehaviour {
 
     public void Victory()
     {
-        victoryScreen.SetActive(true);
+        if (SceneManager.GetActiveScene().buildIndex == 2 )
+        {
+            victoryScreen.SetActive(true);
+        }
+        else
+        {
+            SceneManager.LoadScene(2); //temp for beta
+        }
+        
+        
     }
 
     public void Death()

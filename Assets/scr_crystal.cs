@@ -26,7 +26,7 @@ public class scr_crystal : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Harpoon")
+        if(other.gameObject.tag == "Harpoon" && other.GetComponent<Harpoon>().isFired == true)
         {
             audioSource.Play();
         }

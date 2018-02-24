@@ -94,4 +94,12 @@ public class scr_playerMovement : MonoBehaviour {
         if (transform.position.y > scr_utilities.edges[(int)scr_utilities.edgeId.Top])
             transform.position = new Vector3(transform.position.x, scr_utilities.edges[(int)scr_utilities.edgeId.Top]);
     }
+
+    void OnCollisionEnter2D (Collider2D other)
+    {
+        if (other.gameObject.tag == "BossCrystal")
+        {
+            Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), other);
+        }
+    }
 }
