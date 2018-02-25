@@ -21,6 +21,7 @@ public class scr_utilities : MonoBehaviour {
     public int islandCount = 0;
 
     public GameObject pauseOverlay;
+    public GameObject checkpoint;
     public Slider playerHealthUI;
     public Slider playerAetherUI;
     public Slider leviathanHealthUI;
@@ -32,6 +33,11 @@ public class scr_utilities : MonoBehaviour {
 
     public float aetherLeft = 0;
     private float aetherMax = 0;
+    private bool waitingAtCheckpoint = false;
+    public void StopWaiting()
+    {
+        waitingAtCheckpoint = false;
+    }
 
     public static float padding = 2;
 
@@ -87,16 +93,14 @@ public class scr_utilities : MonoBehaviour {
 
     public void Victory()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 2 )
+        if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings)
         {
             victoryScreen.SetActive(true);
         }
         else
         {
-            SceneManager.LoadScene(2); //temp for beta
+            StartCoroutine(CheckpointWaiting());
         }
-        
-        
     }
 
     public void Death()
@@ -104,22 +108,24 @@ public class scr_utilities : MonoBehaviour {
         deathScreen.SetActive(true);
     }
 
-    public void Checkpoint()
-    {
-        StartCoroutine(CheckpointWaiting());
-    }
-
     IEnumerator CheckpointWaiting()
     {
         scr_stormcloud transition = Instantiate(transitionEffect, new Vector3(scr_utilities.screenWidth + (2 * scr_utilities.padding), 0, 1), Quaternion.identity).GetComponent<scr_stormcloud>();
-        pauseOverlay.SetActive(true);
+        scr_cloudcontroller.instance.SetIslandCount(0);
+        scr_cloudcontroller.instance.SetCloudCover(0);
+        transition.speed = scr_cloud.speed;
+        DontDestroyOnLoad(transition);
+        yield return new WaitForSeconds(5);
+        checkpoint.SetActive(true);
+        waitingAtCheckpoint = true;
         while(true)
         {
             yield return null;
-            if (Input.GetKeyUp(KeyCode.Space))
+            if (!waitingAtCheckpoint)
                 break;
         }
-        pauseOverlay.SetActive(false);
+        checkpoint.SetActive(false);
         transition.speed = scr_cloud.speed;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

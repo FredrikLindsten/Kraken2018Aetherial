@@ -204,7 +204,7 @@ MonoBehaviour:
   minDist: 5
   maxDist: 10
   dashSpeed: 20
-  attackSpeed: 0.9
+  attackSpeed: 1
   damage: 2
   bolt: {fileID: 1565571121715784, guid: 002b626e4fa893449b00a701187ec548, type: 2}
   shootSound: {fileID: 8300000, guid: c5b17574ab1df924697a678d48925427, type: 3}

@@ -413,32 +413,32 @@ Prefab:
     - target: {fileID: 224902474095422694, guid: df050f36b1204b24f88ab7db97d93c27,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224902474095422694, guid: df050f36b1204b24f88ab7db97d93c27,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224189512468231288, guid: df050f36b1204b24f88ab7db97d93c27,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224189512468231288, guid: df050f36b1204b24f88ab7db97d93c27,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224137446323645704, guid: df050f36b1204b24f88ab7db97d93c27,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224137446323645704, guid: df050f36b1204b24f88ab7db97d93c27,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: df050f36b1204b24f88ab7db97d93c27, type: 2}
@@ -723,6 +723,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &694524818 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1538180990127040, guid: df050f36b1204b24f88ab7db97d93c27,
+    type: 2}
+  m_PrefabInternal: {fileID: 486494195}
 --- !u!1001 &723771443
 Prefab:
   m_ObjectHideFlags: 0
@@ -767,7 +772,7 @@ Prefab:
   m_IsPrefabParent: 0
 --- !u!1 &737649430 stripped
 GameObject:
-  m_PrefabParentObject: {fileID: 1538180990127040, guid: df050f36b1204b24f88ab7db97d93c27,
+  m_PrefabParentObject: {fileID: 1629952773526980, guid: df050f36b1204b24f88ab7db97d93c27,
     type: 2}
   m_PrefabInternal: {fileID: 486494195}
 --- !u!1001 &784542932
@@ -1331,7 +1336,7 @@ Prefab:
     - target: {fileID: 114045366919028908, guid: 1e2f9d5ec85c03f42968b3c8aaa650d5,
         type: 2}
       propertyPath: timeToArrive
-      value: 70
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1e2f9d5ec85c03f42968b3c8aaa650d5, type: 2}
@@ -1355,6 +1360,7 @@ MonoBehaviour:
   cloudCover: 20
   islandCount: 3
   pauseOverlay: {fileID: 983708763}
+  checkpoint: {fileID: 694524818}
   playerHealthUI: {fileID: 2116780132}
   playerAetherUI: {fileID: 1856094163}
   leviathanHealthUI: {fileID: 892198419}

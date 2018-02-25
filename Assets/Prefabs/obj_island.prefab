@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   verticalSpeed: 0.05
-  alt: {fileID: 21300000, guid: 71dab5f2fd7c5bf44a400299aacc8774, type: 3}
+  alt: {fileID: 21300000, guid: df0c1f364e438f346ba06cfcd161ea59, type: 3}
 --- !u!114 &114655514100048576
 MonoBehaviour:
   m_ObjectHideFlags: 1
