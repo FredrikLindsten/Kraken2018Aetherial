@@ -39,6 +39,9 @@ public class scr_aetherray : MonoBehaviour {
         currentState = State.idling;
         dashTimer += Random.Range(0, dashCooldown);
         attackTimer += Random.Range(0, attackCooldown);
+
+        currentState = State.waiting;
+        StartCoroutine(TeleportBehaviour());
     }
 
     void RandomMovement()
@@ -98,12 +101,12 @@ public class scr_aetherray : MonoBehaviour {
         audioSource.PlayOneShot(shootSound);
         yield return new WaitForSeconds(attackSpeed);
         GetComponent<Animator>().SetBool("attack", false);
+        currentState = State.idling;
         if ((scr_utilities.player.transform.position - transform.position).magnitude > maxDist)
             yield break;
         Instantiate(bolt, gameObject.transform);
         //scr_utilities.player.GetComponent<scr_hpsystem>().takeDamage(damage);
 
-        currentState = State.idling;
     }
 
     private void Dashmove()

@@ -12,7 +12,7 @@ public class rayprojectile : MonoBehaviour {
 	void Start () {
         rigidbody = GetComponent<Rigidbody2D>();
         lifeTime = 0.0f;
-        transform.position = transform.parent.position;
+        transform.position = transform.parent.position + new Vector3(0.936f, 0.32f, 0);
         transform.parent = null;
         Vector2 dir = GameObject.FindGameObjectWithTag("Player").transform.position - transform.position;
         dir.Normalize();

@@ -95,7 +95,7 @@ public class scr_playerMovement : MonoBehaviour {
             transform.position = new Vector3(transform.position.x, scr_utilities.edges[(int)scr_utilities.edgeId.Top]);
     }
 
-    void OnCollisionEnter2D (Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "BossCrystal")
         {
