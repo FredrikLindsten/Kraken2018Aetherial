@@ -8,7 +8,9 @@ public class scr_island : MonoBehaviour {
     public float damageTime;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
+        GetComponent<SpriteRenderer>().sprite = scr_cloudcontroller.instance.islandArt;
         timer = 0.0f;
         transform.Translate(0,0,-1);
 	}
