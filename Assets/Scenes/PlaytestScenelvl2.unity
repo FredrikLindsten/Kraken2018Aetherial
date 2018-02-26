@@ -2543,6 +2543,12 @@ Prefab:
       value: 
       objectReference: {fileID: 1252820976441552, guid: cd3e775da4a761e4b89e176ee40c1759,
         type: 2}
+    - target: {fileID: 114358483689903544, guid: 34b2b19fee26dd74885cd07c88bb15a1,
+        type: 2}
+      propertyPath: islandArt
+      value: 
+      objectReference: {fileID: 21300000, guid: 71dab5f2fd7c5bf44a400299aacc8774,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 114532681769996788, guid: 34b2b19fee26dd74885cd07c88bb15a1, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 34b2b19fee26dd74885cd07c88bb15a1, type: 2}

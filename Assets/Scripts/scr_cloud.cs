@@ -10,9 +10,6 @@ public class scr_cloud : MonoBehaviour {
     private bool remove = false;
     private float height = 0;
 
-    public Sprite alt;
-    private Sprite def;
-
     public void MarkForRemoval()
     {
         remove = true;
@@ -21,7 +18,6 @@ public class scr_cloud : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        def = GetComponent<SpriteRenderer>().sprite;
         height = Random.Range(
                 scr_utilities.edges[(int)scr_utilities.edgeId.Bottom] - scr_utilities.padding,
                 scr_utilities.edges[(int)scr_utilities.edgeId.Top] + scr_utilities.padding);
@@ -35,10 +31,6 @@ public class scr_cloud : MonoBehaviour {
                 scr_utilities.edges[(int)scr_utilities.edgeId.Top] + scr_utilities.padding);
         transform.position = new Vector3(scr_utilities.edges[(int)scr_utilities.edgeId.Right] + scr_utilities.padding + Random.Range(-0.01f,0.01f), height,transform.position.z);
         transform.localScale = new Vector3(Random.Range(0.6f, 1.4f), Random.Range(0.6f, 1.4f),0);
-        if (Random.value < 0.5f)
-            GetComponent<SpriteRenderer>().sprite = alt;
-        else
-            GetComponent<SpriteRenderer>().sprite = def;
 
     }
 	

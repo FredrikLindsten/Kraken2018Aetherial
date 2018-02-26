@@ -9,6 +9,8 @@ public class scr_cloudcontroller : MonoBehaviour {
     private int islandCount = 0;
     public GameObject islandRef;
     public GameObject cloudRef;
+
+    public Sprite islandArt;
     public static scr_cloudcontroller instance = null;
 
     private List<GameObject> cloudsBg = new List<GameObject>();
