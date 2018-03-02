@@ -50,14 +50,13 @@ public class scr_weapon : MonoBehaviour {
                 Destroy(GameObject.FindGameObjectWithTag("Beam"));
             }
         }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().transform.rotation = Quaternion.Euler(0, 0, -45);
-            GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().Fire();
-        }
-        else if (Input.GetKeyDown(KeyCode.Space)) {
-            GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().transform.rotation = Quaternion.Euler(0, 0, 0);
-            GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().Fire();
+      
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            if (GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().isFired == false)
+            {
+                GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().transform.rotation = Quaternion.Euler(0, 0, 0);
+                GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().Fire();
+            }
         }
     }
 
