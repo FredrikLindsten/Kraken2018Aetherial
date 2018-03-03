@@ -11,14 +11,14 @@ public class Harpoon : MonoBehaviour {
     new Collider2D collider;
     public float speed;
     bool reloaded;
-    public enum STATE { RELOADED, FIRED, STUCK };
+    enum STATE { RELOADED, FIRED, STUCK };
     private GameObject crystal;
     public Sprite stuckSprite;
     public Sprite defaultSprite;
     private float crystalOffsetX = -0.5f; //crystal sprite isn't perfectly alligned so I have to use an offset
     private float crystalOffsetY = -0.2f;
     public GameObject chain;
-    public STATE harpState;
+    STATE harpState;
     public bool isFired;
 
     AudioSource audioSource;
@@ -38,8 +38,8 @@ public class Harpoon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+ 
 
-        transform.rotation = GameObject.FindGameObjectWithTag("Player").transform.rotation;
 		if (harpState == STATE.FIRED)
         {
             isFired = true;

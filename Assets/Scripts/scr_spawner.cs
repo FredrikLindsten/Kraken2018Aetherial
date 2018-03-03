@@ -17,7 +17,7 @@ public class scr_spawner : MonoBehaviour {
 
     public float timer = 0;
     public float spawnDelay = 0;
-    public float number = 0;
+    public int number = 0;
     public bool debugSpawnLocation = false;
 
     // Use this for initialization
@@ -32,10 +32,10 @@ public class scr_spawner : MonoBehaviour {
 
         float[] distancetoedge =
         {
-            transform.position.x - scr_utilities.edges[0], //left
-            -(transform.position.x - scr_utilities.edges[1]),//right
-            transform.position.y - scr_utilities.edges[2],//bottom
-            -(transform.position.y - scr_utilities.edges[3])//top
+            transform.position.x - scr_utilities.GetEdge(edgeId.Left,false),
+            -(transform.position.x - scr_utilities.GetEdge(edgeId.Right,false)),
+            transform.position.y - scr_utilities.GetEdge(edgeId.Bottom,false),
+            -(transform.position.y - scr_utilities.GetEdge(edgeId.Top,false))
         };
 
         int smallest = 0;
@@ -50,12 +50,12 @@ public class scr_spawner : MonoBehaviour {
         if (smallest == 0 || smallest == 1)
         {
             edgeX = false;
-            transform.position = new Vector3(scr_utilities.edges[smallest], transform.position.y, 0);
+            transform.position = new Vector3(scr_utilities.GetEdge(smallest, false), transform.position.y, 0);
         }
         if (smallest == 2 || smallest == 3)
         {
             edgeX = true;
-            transform.position = new Vector3(transform.position.x, scr_utilities.edges[smallest], 0);
+            transform.position = new Vector3(transform.position.x, scr_utilities.GetEdge(smallest, false), 0);
         }
 
         if (debugSpawnLocation)

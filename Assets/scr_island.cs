@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scr_island : MonoBehaviour {
+public class scr_island : scr_cloud {
 
     private float timer;
     public float damageTime;
 
-	// Use this for initialization
-	void Start ()
+    private GameObject crystal;
+
+    // Use this for initialization
+    void Start()
     {
+        height = Random.Range(
+                scr_utilities.GetEdge(edgeId.Bottom, true),
+                scr_utilities.GetEdge(edgeId.Top, true));
         GetComponent<SpriteRenderer>().sprite = scr_cloudcontroller.instance.islandArt;
         timer = 0.0f;
-        transform.Translate(0,0,-1);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        transform.Translate(0, 0, 1);
+    }
     
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -37,7 +37,22 @@ public class scr_island : MonoBehaviour {
                 collision.GetComponent<scr_hpsystem>().takeDamage(1);
                 timer = 0.0f;
             }
-           
+        }
+    }
+
+    protected override void MoveToStart()
+    {
+        height = Random.Range(
+                scr_utilities.GetEdge(edgeId.Bottom, true),
+                scr_utilities.GetEdge(edgeId.Top, true));
+        transform.position = new Vector3(scr_utilities.GetEdge(startSide, true) + Random.Range(-0.01f, 0.01f), height, transform.position.z);
+        transform.localScale = new Vector3(Random.Range(0.6f, 1.4f), Random.Range(0.6f, 1.4f), 0);
+        if(crystal)
+            Destroy(crystal);
+        if(scr_cloudcontroller.instance.GetCrystal())
+        {
+            crystal = Instantiate(scr_cloudcontroller.instance.crystalRef, transform);
+            crystal.transform.localPosition = new Vector3(0, 0.5f, 0);
         }
     }
 }

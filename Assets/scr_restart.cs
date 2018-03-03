@@ -17,7 +17,7 @@ public class scr_restart : MonoBehaviour {
 
     public void LoadLevel(int val)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(val);
     }
 
     public void checkpoint()

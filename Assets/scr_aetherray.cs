@@ -125,8 +125,8 @@ public class scr_aetherray : MonoBehaviour {
     {
         for(int i = 0; i < 10; ++i)
         {
-            dest.x = Random.Range(scr_utilities.edges[(int)scr_utilities.edgeId.Left], scr_utilities.edges[(int)scr_utilities.edgeId.Right]);
-            dest.y = Random.Range(scr_utilities.edges[(int)scr_utilities.edgeId.Bottom], scr_utilities.edges[(int)scr_utilities.edgeId.Top]);
+            dest.x = Random.Range(scr_utilities.GetEdge(edgeId.Left,false), scr_utilities.GetEdge(edgeId.Right, false));
+            dest.y = Random.Range(scr_utilities.GetEdge(edgeId.Bottom,false), scr_utilities.GetEdge(edgeId.Top,false));
             dist = (dest - scr_utilities.player.transform.position).magnitude;
             if (minDist < dist && dist < maxDist)
             {

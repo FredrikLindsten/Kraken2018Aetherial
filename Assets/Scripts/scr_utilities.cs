@@ -5,6 +5,7 @@ using UnityEngine;
 
 using UnityEngine.SceneManagement; //temp for beta
 
+public enum edgeId { Left, Right, Bottom, Top };
 
 public class scr_utilities : MonoBehaviour {
 
@@ -13,9 +14,8 @@ public class scr_utilities : MonoBehaviour {
     public static GameObject leviathan;
     public static List<scr_skyslugMovement> slugs = new List<scr_skyslugMovement>();
 
-    public static float[] edges = new float[4];
+    private static float[] edges = new float[4];
     public static float screenWidth, screenHeight;
-    public enum edgeId { Left, Right, Bottom, Top};
 
     public int cloudCover = 0;
     public int islandCount = 0;
@@ -113,19 +113,30 @@ public class scr_utilities : MonoBehaviour {
         scr_stormcloud transition = Instantiate(transitionEffect, new Vector3(scr_utilities.screenWidth + (2 * scr_utilities.padding), 0, 1), Quaternion.identity).GetComponent<scr_stormcloud>();
         scr_cloudcontroller.instance.SetIslandCount(0);
         scr_cloudcontroller.instance.SetCloudCover(0);
-        transition.speed = scr_cloud.speed;
+        transition.speed = scr_cloud.GetSpeed();
         DontDestroyOnLoad(transition);
         yield return new WaitForSeconds(5);
         checkpoint.SetActive(true);
         waitingAtCheckpoint = true;
-        while(true)
-        {
+        while(waitingAtCheckpoint)
             yield return null;
-            if (!waitingAtCheckpoint)
-                break;
-        }
         checkpoint.SetActive(false);
-        transition.speed = scr_cloud.speed;
+        transition.speed = scr_cloud.GetSpeed();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public static float GetEdge(edgeId val, bool padded)
+    {
+        return GetEdge((int)val, padded);
+    }
+
+    public static float GetEdge(int val, bool padded)
+    {
+        float ret = Mathf.Abs(edges[val]);
+        if (padded)
+            ret += padding;
+        if ((edgeId)val == edgeId.Bottom || (edgeId)val == edgeId.Left)
+            return -ret;
+        return ret;
     }
 }
