@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 1c693e34033e79941bbc7f0856a4e249
-timeCreated: 1520004759
+timeCreated: 1520178709
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -157,12 +157,12 @@ TextureImporter:
       name: whale_mouth_opening_spritesheet(2048x1024)_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 15
         y: 3072
-        width: 2048
-        height: 1024
+        width: 1920
+        height: 1020
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -171,12 +171,12 @@ TextureImporter:
       name: whale_mouth_opening_spritesheet(2048x1024)_1
       rect:
         serializedVersion: 2
-        x: 2000
+        x: 2039
         y: 3072
-        width: 2048
-        height: 1024
+        width: 1920
+        height: 1020
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -185,12 +185,12 @@ TextureImporter:
       name: whale_mouth_opening_spritesheet(2048x1024)_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2048
-        width: 2048
-        height: 1024
+        x: 15
+        y: 2050
+        width: 1920
+        height: 1020
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -199,12 +199,12 @@ TextureImporter:
       name: whale_mouth_opening_spritesheet(2048x1024)_3
       rect:
         serializedVersion: 2
-        x: 2000
-        y: 2048
-        width: 2048
-        height: 1024
+        x: 2039
+        y: 2050
+        width: 1920
+        height: 1020
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -213,12 +213,12 @@ TextureImporter:
       name: whale_mouth_opening_spritesheet(2048x1024)_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1024
-        width: 2048
-        height: 1024
+        x: 15
+        y: 1026
+        width: 1920
+        height: 1020
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -227,12 +227,12 @@ TextureImporter:
       name: whale_mouth_opening_spritesheet(2048x1024)_5
       rect:
         serializedVersion: 2
-        x: 2000
-        y: 1024
-        width: 2048
-        height: 1024
+        x: 2039
+        y: 1026
+        width: 1920
+        height: 1020
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -241,12 +241,12 @@ TextureImporter:
       name: whale_mouth_opening_spritesheet(2048x1024)_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2048
-        height: 1024
+        x: 15
+        y: 2
+        width: 1920
+        height: 1020
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -255,12 +255,12 @@ TextureImporter:
       name: whale_mouth_opening_spritesheet(2048x1024)_7
       rect:
         serializedVersion: 2
-        x: 2000
-        y: 0
-        width: 2048
-        height: 1024
+        x: 2039
+        y: 2
+        width: 1920
+        height: 1020
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
