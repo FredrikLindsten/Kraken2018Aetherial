@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class scr_leviathan : MonoBehaviour {
 
-    public float timeToArrive = 0;
+    public List<float> arrivals;
     private bool arrived = false;
 
     public static scr_leviathan instance;
@@ -45,15 +45,26 @@ public class scr_leviathan : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
         edgeCollider = GetComponent<EdgeCollider2D>();
         circleCenter = new Vector3(transform.position.x, transform.position.y - 10, 0);
-        transform.Translate(-10, -10, 0);
+        transform.position = circleCenter + new Vector3(-10,0,0);
         target = transform.position;
-        StartCoroutine(Timer());
+        StartCoroutine(Timer(arrivals[0]));
 	}
 
     private void OnLevelWasLoaded(int level)
     {
+        Debug.Log(1);
+        if(level == 0)
+        {
+            Destroy(gameObject);
+        }
         if (level == 3)
             Finale();
+        else
+        {
+            transform.position = circleCenter + new Vector3(-10, 0, 0);
+            target = transform.position;
+            StartCoroutine(Timer(arrivals[level-1]));
+        }
     }
 
     bool ShouldMove()
@@ -89,7 +100,7 @@ public class scr_leviathan : MonoBehaviour {
         scr_utilities.instance.Victory();
     }
 
-    IEnumerator Timer()
+    IEnumerator Timer(float timeToArrive)
     {
         yield return new WaitForSeconds(timeToArrive);
         Appear();
