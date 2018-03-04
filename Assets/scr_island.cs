@@ -52,7 +52,7 @@ public class scr_island : scr_cloud {
         if(scr_cloudcontroller.instance.GetCrystal())
         {
             crystal = Instantiate(scr_cloudcontroller.instance.crystalRef, transform);
-            crystal.transform.localPosition = new Vector3(0, 0.5f, 0);
+            crystal.transform.localPosition = new Vector3(0, 0.3f, 0);
         }
     }
 }

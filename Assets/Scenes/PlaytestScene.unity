@@ -507,7 +507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &524967421
 Transform:
   m_ObjectHideFlags: 0
@@ -908,6 +908,8 @@ MonoBehaviour:
   ramDistanceLimit: 0
   soundwaveRef: {fileID: 1045909921676052, guid: 0bbb9d1dd789ccc4dbcfebbba3253065,
     type: 2}
+  breathRef: {fileID: 0}
+  mouth: {fileID: 0}
 --- !u!68 &700317267
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -963,7 +965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191aaf02e33b89b449ea71c86c3e8b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToArrive: 1
+  timeToArrive: 70
   collisionDamage: 0
   speed: 2
 --- !u!212 &700317270
@@ -1088,7 +1090,6 @@ GameObject:
   - component: {fileID: 843501340}
   - component: {fileID: 843501344}
   - component: {fileID: 843501343}
-  - component: {fileID: 843501342}
   - component: {fileID: 843501341}
   m_Layer: 0
   m_Name: crystal_3
@@ -1133,18 +1134,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &843501342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114917735110774122, guid: 1e2f9d5ec85c03f42968b3c8aaa650d5,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 843501339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!60 &843501343
 PolygonCollider2D:
   m_ObjectHideFlags: 0

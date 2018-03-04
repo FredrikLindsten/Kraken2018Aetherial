@@ -48,7 +48,6 @@ public class scr_utilities : MonoBehaviour {
         aetherMax = aetherLeft;
         instance = this;
         player = GameObject.FindGameObjectWithTag("Player");
-        leviathan = GameObject.FindGameObjectWithTag("Boss");
         edges[0] = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)).x;
         edges[1] = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 0)).x;
         edges[2] = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)).y;
@@ -61,7 +60,8 @@ public class scr_utilities : MonoBehaviour {
     void Start () {
         scr_cloudcontroller.instance.SetCloudCover(cloudCover);
         scr_cloudcontroller.instance.SetIslandCount(islandCount);
-	}
+        leviathan = scr_leviathan.instance.gameObject;
+    }
 
     // Update is called once per frame
     void Update()
@@ -69,6 +69,7 @@ public class scr_utilities : MonoBehaviour {
         if (player != null)
             playerHealthUI.value = player.GetComponent<scr_hpsystem>().getHealthPercent();
         playerAetherUI.value = aetherLeft / aetherMax;
+        if(leviathan != null)
         leviathanHealthUI.value = leviathan.GetComponent<scr_hpsystem>().getHealthPercent();
 
         if(aetherLeft > aetherMax)
@@ -93,7 +94,7 @@ public class scr_utilities : MonoBehaviour {
 
     public void Victory()
     {
-        if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings)
+        if (SceneManager.GetActiveScene().buildIndex == (SceneManager.sceneCountInBuildSettings - 1))
         {
             victoryScreen.SetActive(true);
         }
@@ -109,7 +110,7 @@ public class scr_utilities : MonoBehaviour {
     }
 
     IEnumerator CheckpointWaiting()
-    {
+    {   
         scr_stormcloud transition = Instantiate(transitionEffect, new Vector3(scr_utilities.screenWidth + (2 * scr_utilities.padding), 0, 1), Quaternion.identity).GetComponent<scr_stormcloud>();
         scr_cloudcontroller.instance.SetIslandCount(0);
         scr_cloudcontroller.instance.SetCloudCover(0);

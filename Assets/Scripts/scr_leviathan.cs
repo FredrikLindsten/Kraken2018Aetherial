@@ -7,6 +7,8 @@ public class scr_leviathan : MonoBehaviour {
     public float timeToArrive = 0;
     private bool arrived = false;
 
+    public static scr_leviathan instance;
+
     public int collisionDamage;
     
     public float speed = 0;
@@ -25,14 +27,34 @@ public class scr_leviathan : MonoBehaviour {
 
     EdgeCollider2D edgeCollider;
 
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Debug.Log("levAwake");
+        instance = this;
+    }
+
     // Use this for initialization
     void Start () {
+        Debug.Log("levStart");
+        DontDestroyOnLoad(gameObject);
         edgeCollider = GetComponent<EdgeCollider2D>();
         circleCenter = new Vector3(transform.position.x, transform.position.y - 10, 0);
         transform.Translate(-10, -10, 0);
         target = transform.position;
         StartCoroutine(Timer());
 	}
+
+    private void OnLevelWasLoaded(int level)
+    {
+        if (level == 3)
+            Finale();
+    }
 
     bool ShouldMove()
     {
@@ -45,7 +67,6 @@ public class scr_leviathan : MonoBehaviour {
         StopAllCoroutines();
         scr_cloud.SetSpeed(0);
         enabled = false;
-
     }
 
     void OnArrival()

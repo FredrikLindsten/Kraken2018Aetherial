@@ -21,6 +21,9 @@ public class scr_powerup : MonoBehaviour {
     public GameObject stormcloudref;
     public Animator powerupIcon;
 
+    public AudioClip useClip;
+    private AudioSource audioSource;
+
     public void gainPowerup()
     {
         powerupCharges++;
@@ -34,6 +37,7 @@ public class scr_powerup : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        audioSource = GetComponent<AudioSource>();
         if (instance != null)
             Destroy(this);
         instance = this;
@@ -73,6 +77,7 @@ public class scr_powerup : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Q) && powerupCharges > 0)
         {
             //Use powerup
+            audioSource.PlayOneShot(useClip);
             powerupCharges--;
             ScrambleGhosts();
             stormcloud = Instantiate(stormcloudref, new Vector3(scr_utilities.screenWidth + (2 * scr_utilities.padding), 0, 1), Quaternion.identity).GetComponent<scr_stormcloud>();

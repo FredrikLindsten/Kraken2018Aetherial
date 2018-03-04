@@ -16,8 +16,9 @@ public class scr_leviathanFinale : MonoBehaviour {
     public float ramDistanceLimit;
 
     public GameObject soundwaveRef;
+    public GameObject breathRef;
 
-    private GameObject mouth;
+    public GameObject mouth;
     private bool animating;
 
     //private float randomMovement;
@@ -31,16 +32,44 @@ public class scr_leviathanFinale : MonoBehaviour {
 
     private void Awake()
     {
+        Debug.Log("finAwake");
         main = GetComponent<scr_leviathan>();
-        mouth = GetComponentInChildren<scr_mouthHitbox>().gameObject;
-        mouth.SetActive(false);
     }
 
     // Use this for initialization
     void Start ()
     {
+        Debug.Log("finStart");
         transform.localScale = new Vector3(-1, 1, 1);
+        transform.position = new Vector3(20, 0, 0);
+        StartCoroutine(Entry());
+    }
+
+    IEnumerator Entry()
+    {
+        GetComponent<scr_hpsystem>().invincibilityTime = Cooldown;
+        state = StateEnum.Waiting;
+        Vector3 toPos = (position - transform.position).normalized;
+
+        float speed = 2;
+
+        yield return new WaitForSeconds(5);
+        while (scr_cloud.GetSpeed()>0.1)
+        {
+            scr_cloud.SetSpeed(scr_cloud.GetSpeed() - (Time.deltaTime * 2));
+            yield return null;
+        }
+        scr_cloud.SetSpeed(0);
+        yield return new WaitForSeconds(2);
+        Debug.Log(transform.position.x);
+        Debug.Log(position.x);
+        while (transform.position.x > position.x)
+        {
+            transform.Translate(toPos * Time.deltaTime * speed);
+            yield return null;
+        }
         transform.position = position;
+        state = StateEnum.Idling;
     }
 
     private void PickAttack()
@@ -48,18 +77,18 @@ public class scr_leviathanFinale : MonoBehaviour {
         float roll = Random.Range(0, BreathWeight + RamWeight + SummonWeight);
         if (roll < BreathWeight)
         {
-            StartCoroutine(BreathAttack());
             state = StateEnum.BreathAttack;
+            StartCoroutine(BreathAttack());
         }
         else if (roll < BreathWeight + RamWeight)
         {
-            StartCoroutine(RamAttack());
             state = StateEnum.Ram;
+            StartCoroutine(RamAttack());
         }
         else
         {
-            StartCoroutine(CallForHelp());
             state = StateEnum.CallForHelp;
+            StartCoroutine(CallForHelp());
         }
     }
 	
@@ -72,6 +101,11 @@ public class scr_leviathanFinale : MonoBehaviour {
         //randomMovement += randomMovementAcc;
         //transform.Translate(new Vector3(0, randomMovement - transform.position.y * 0.1f, 0));
 
+        if (GetComponent<scr_hpsystem>().health < 1)
+        {
+            transform.Translate(0, -Time.deltaTime * 4, 0);
+            return;
+        }
 
         switch (state)
         {
@@ -105,6 +139,10 @@ public class scr_leviathanFinale : MonoBehaviour {
             yield return null;
         }
 
+        Instantiate(soundwaveRef, transform);
+        yield return new WaitForSeconds(0.2f);
+        Instantiate(soundwaveRef, transform);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(soundwaveRef, transform);
 
         scr_spawner spawn = Instantiate(
@@ -146,8 +184,7 @@ public class scr_leviathanFinale : MonoBehaviour {
             Quaternion.identity).GetComponent<scr_spawner>();
         spawn.number = Random.Range(1, 3);
         spawn.spawnId = scr_spawner.SpawnerEnum.Ray;
-
-        state = StateEnum.Idling;
+        
     }
 
     IEnumerator BreathAttack()
@@ -159,8 +196,10 @@ public class scr_leviathanFinale : MonoBehaviour {
         {
             yield return null;
         }
-
-        state = StateEnum.Idling;
+        Transform breath = Instantiate(breathRef, transform).transform;
+        breath.localPosition = new Vector3(14, -2, 0);
+        breath.localScale = new Vector3(-3, 2, 0);
+        
     }
 
     IEnumerator RamAttack()
@@ -191,8 +230,8 @@ public class scr_leviathanFinale : MonoBehaviour {
             yield return null;
         }
         
-        state = StateEnum.Idling;
         main.collisionDamage = std;
+        state = StateEnum.Idling;
     }
 
     IEnumerator SpeedUp()
@@ -212,15 +251,16 @@ public class scr_leviathanFinale : MonoBehaviour {
         GetComponent<Animator>().SetBool("attack", true);
         yield return new WaitForSeconds(time);
         animating = false;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         GetComponent<Animator>().SetBool("attack", false);
         yield return new WaitForSeconds(1);
         mouth.SetActive(false);
+        state = StateEnum.Idling;
     }
 
     private void OnDestroy()
     {
         //Instantiate gibs
-
+        scr_utilities.instance.Victory();
     }
 }

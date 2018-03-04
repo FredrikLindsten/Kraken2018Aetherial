@@ -9,7 +9,7 @@ public class scr_crystal : MonoBehaviour {
     
 	void Start ()
     {
-        transform.localScale = new Vector3(1 / transform.parent.localScale.x, 1 / transform.parent.localScale.y, 1);
+        transform.localScale = new Vector3(0.2f / transform.parent.localScale.x, 0.2f / transform.parent.localScale.y, 1);
         GetComponent<SpriteRenderer>().sprite = scr_cloudcontroller.instance.crystalArt;
         audioSource = GetComponent<AudioSource>();
 	}
