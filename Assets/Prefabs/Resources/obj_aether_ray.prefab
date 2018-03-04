@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashCooldown: 7
-  attackCooldown: 5
+  attackCooldown: 4
   minDist: 5
   maxDist: 10
   dashSpeed: 20

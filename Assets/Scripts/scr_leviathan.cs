@@ -27,6 +27,10 @@ public class scr_leviathan : MonoBehaviour {
 
     EdgeCollider2D edgeCollider;
 
+    AudioSource audioSource;
+    public AudioClip arrivalSound;
+
+
     private void Awake()
     {
         if (instance != null)
@@ -41,6 +45,7 @@ public class scr_leviathan : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        audioSource = GetComponent<AudioSource>();
         Debug.Log("levStart");
         DontDestroyOnLoad(gameObject);
         edgeCollider = GetComponent<EdgeCollider2D>();
@@ -91,6 +96,7 @@ public class scr_leviathan : MonoBehaviour {
 
     public void Appear()
     {
+        audioSource.PlayOneShot(arrivalSound);
         targetAngle = Mathf.PI / 2;
     }
 

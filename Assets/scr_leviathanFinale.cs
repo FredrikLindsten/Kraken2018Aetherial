@@ -30,6 +30,10 @@ public class scr_leviathanFinale : MonoBehaviour {
 
     private float timer = 0;
 
+    AudioSource audioSource;
+    public AudioClip callSound;
+    public AudioClip deathSound;
+
     private void Awake()
     {
         Debug.Log("finAwake");
@@ -39,6 +43,7 @@ public class scr_leviathanFinale : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        audioSource = GetComponent<AudioSource>();
         Debug.Log("finStart");
         transform.localScale = new Vector3(-1, 1, 1);
         transform.position = new Vector3(20, 0, 0);
@@ -140,6 +145,7 @@ public class scr_leviathanFinale : MonoBehaviour {
         }
 
         Instantiate(soundwaveRef, transform);
+        audioSource.PlayOneShot(callSound);
         yield return new WaitForSeconds(0.2f);
         Instantiate(soundwaveRef, transform);
         yield return new WaitForSeconds(0.2f);

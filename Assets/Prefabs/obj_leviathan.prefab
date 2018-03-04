@@ -625,9 +625,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191aaf02e33b89b449ea71c86c3e8b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToArrive: 1
+  arrivals: []
   collisionDamage: 0
   speed: 2
+  arrivalSound: {fileID: 8300000, guid: 6aa49e8850dde4a4db7982e1c025947d, type: 3}
 --- !u!114 &114137706987961916
 MonoBehaviour:
   m_ObjectHideFlags: 1
