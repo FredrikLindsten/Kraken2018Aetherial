@@ -38,14 +38,19 @@ public class Harpoon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        if (harpState == STATE.FIRED)
+        if (harpState != STATE.FIRED)
         {
             transform.rotation = GameObject.FindGameObjectWithTag("Player").transform.rotation;
-        }
+
+        } 
 
 
         if (harpState == STATE.FIRED)
         {
+            if (isFired == false)
+            {
+                transform.rotation = GameObject.FindGameObjectWithTag("Player").transform.rotation;
+            }
             isFired = true;
             rigidbody.velocity = transform.right * speed;
             reloadTimer += Time.deltaTime;

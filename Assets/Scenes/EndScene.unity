@@ -374,6 +374,11 @@ Prefab:
       propertyPath: health
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 114240926993014894, guid: ac2a7097abad45c47892b556ca629537,
+        type: 2}
+      propertyPath: turnSpeed
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac2a7097abad45c47892b556ca629537, type: 2}
   m_IsPrefabParent: 0
@@ -605,7 +610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cloudCover: 20
-  islandCount: 3
+  islandCount: 0
   pauseOverlay: {fileID: 983708763}
   checkpoint: {fileID: 694524818}
   playerHealthUI: {fileID: 2116780132}
