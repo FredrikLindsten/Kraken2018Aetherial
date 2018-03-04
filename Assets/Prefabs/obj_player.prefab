@@ -277,6 +277,7 @@ MonoBehaviour:
   shipSpeed: 0.3
   inertia: 0.2
   maxThrust: 3
+  turnSpeed: 1
 --- !u!114 &114658257840663986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -308,6 +309,7 @@ MonoBehaviour:
   stormcloudref: {fileID: 1252820976441552, guid: cd3e775da4a761e4b89e176ee40c1759,
     type: 2}
   powerupIcon: {fileID: 0}
+  useClip: {fileID: 0}
 --- !u!212 &212651522284593306
 SpriteRenderer:
   m_ObjectHideFlags: 1
