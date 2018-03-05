@@ -136,7 +136,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.21021056, y: -1.1795216}
+  m_Offset: {x: 0.18607402, y: -1.1915903}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -147,7 +147,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.896247, y: 1.2569275}
+  m_Size: {x: 4.4272485, y: 1.763792}
   m_EdgeRadius: 0
 --- !u!82 &82996366327826098
 AudioSource:
@@ -159,7 +159,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
@@ -257,11 +257,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f90f5b154e6c24429e2ee631d8084a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 300
   invincibilityTime: 0.3
   std: {r: 1, g: 1, b: 1, a: 1}
   audioSource: {fileID: 82996366327826098}
   hitSound: {fileID: 8300000, guid: 53c60aba3d9e8634a8ad129a41b1adef, type: 3}
+  deathSound: {fileID: 8300000, guid: a608e01df82092642b312c3e34c47ad8, type: 3}
 --- !u!114 &114240926993014894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -276,6 +277,7 @@ MonoBehaviour:
   shipSpeed: 0.3
   inertia: 0.2
   maxThrust: 3
+  turnSpeed: 1
 --- !u!114 &114658257840663986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,6 +309,7 @@ MonoBehaviour:
   stormcloudref: {fileID: 1252820976441552, guid: cd3e775da4a761e4b89e176ee40c1759,
     type: 2}
   powerupIcon: {fileID: 0}
+  useClip: {fileID: 8300000, guid: 07603fa1e9e1c5d42b17ef61124ab246, type: 3}
 --- !u!212 &212651522284593306
 SpriteRenderer:
   m_ObjectHideFlags: 1

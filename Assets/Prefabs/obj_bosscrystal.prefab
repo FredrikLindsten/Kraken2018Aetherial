@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212346393815490524}
   - component: {fileID: 60621930423809600}
   - component: {fileID: 50613729634950580}
+  - component: {fileID: 114120303882171678}
   m_Layer: 0
   m_Name: obj_bosscrystal
   m_TagString: BossCrystal
@@ -128,6 +129,18 @@ PolygonCollider2D:
       - {x: -0.46208668, y: -0.962086}
       - {x: -0.009503365, y: -0.68278545}
       - {x: 0.16496658, y: -0.19639924}
+--- !u!114 &114120303882171678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1440636095815264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d8022647ee61d40bdc35a3834444b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteBlue: {fileID: 21300000, guid: 82517cf9abf7a5b47b68608f05711f3f, type: 3}
 --- !u!114 &114584812452160750
 MonoBehaviour:
   m_ObjectHideFlags: 1

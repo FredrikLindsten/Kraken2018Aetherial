@@ -20,6 +20,11 @@ public class scr_weapon : MonoBehaviour {
         float z = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, z);
         Debug.DrawRay(transform.position, transform.right);
+        if (!GameObject.FindGameObjectWithTag("Player"))
+        {
+            Destroy(this.gameObject);
+        }
+
 
         if (!GameObject.FindGameObjectWithTag("Beam"))
         {
@@ -45,14 +50,13 @@ public class scr_weapon : MonoBehaviour {
                 Destroy(GameObject.FindGameObjectWithTag("Beam"));
             }
         }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().transform.rotation = Quaternion.Euler(0, 0, -45);
-            GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().Fire();
-        }
-        else if (Input.GetKeyDown(KeyCode.Space)) {
-            GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().transform.rotation = Quaternion.Euler(0, 0, 0);
-            GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().Fire();
+      
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            if (GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().isFired == false)
+            {
+                GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().transform.rotation = Quaternion.Euler(0, 0, 0);
+                GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().Fire();
+            }
         }
     }
 

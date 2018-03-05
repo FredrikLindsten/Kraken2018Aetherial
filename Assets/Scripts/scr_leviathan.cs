@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class scr_leviathan : MonoBehaviour {
 
-    public float timeToArrive = 0;
+    public List<float> arrivals;
     private bool arrived = false;
+
+    public static scr_leviathan instance;
+
+    public int collisionDamage;
     
     public float speed = 0;
     private float movement = 0;
@@ -22,25 +26,65 @@ public class scr_leviathan : MonoBehaviour {
     private Vector3 circleCenter;
 
     EdgeCollider2D edgeCollider;
-    //movement == function to move, orig, dest, parabola(yes/no)
-    //scripted through ghost objects/their names and controller
 
-    //movement == function to start move, dest according to objposition, time scripted by controller, orig implicit
+    AudioSource audioSource;
+    public AudioClip arrivalSound;
+    public AudioClip leaveSound;
 
-    //floating up/down
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Debug.Log("levAwake");
+        instance = this;
+    }
 
     // Use this for initialization
     void Start () {
+        audioSource = GetComponent<AudioSource>();
+        Debug.Log("levStart");
+        DontDestroyOnLoad(gameObject);
         edgeCollider = GetComponent<EdgeCollider2D>();
         circleCenter = new Vector3(transform.position.x, transform.position.y - 10, 0);
-        transform.Translate(-10, -10, 0);
+        transform.position = circleCenter + new Vector3(-10,0,0);
         target = transform.position;
-        StartCoroutine(Timer());
+        StartCoroutine(Timer(arrivals[0]));
 	}
+
+    private void OnLevelWasLoaded(int level)
+    {
+        Debug.Log(1);
+        if(level == 0)
+        {
+            Destroy(gameObject);
+        }
+        if (level == 3)
+            Finale();
+        else
+        {
+            /*
+            transform.position = circleCenter + new Vector3(-10,0, 0);
+            target = transform.position; */
+            StartCoroutine(Timer(arrivals[level-1]));
+        }
+    }
 
     bool ShouldMove()
     {
         return circleAngle > (targetAngle + 0.1f) || circleAngle < (targetAngle -0.1f);
+    }
+
+    public void Finale()
+    {
+        GetComponent<scr_leviathanFinale>().enabled = true;
+        StopAllCoroutines();
+        scr_cloud.SetSpeed(0);
+        enabled = false;
     }
 
     void OnArrival()
@@ -54,16 +98,18 @@ public class scr_leviathan : MonoBehaviour {
 
     public void Appear()
     {
+        audioSource.PlayOneShot(arrivalSound);
         targetAngle = Mathf.PI / 2;
     }
 
     public void Leave()
     {
+        audioSource.PlayOneShot(leaveSound);
         targetAngle = Mathf.PI;
         scr_utilities.instance.Victory();
     }
 
-    IEnumerator Timer()
+    IEnumerator Timer(float timeToArrive)
     {
         yield return new WaitForSeconds(timeToArrive);
         Appear();
@@ -76,10 +122,10 @@ public class scr_leviathan : MonoBehaviour {
         randomDistanceAccelerationX += Random.Range(-accRange, accRange);
 
         randomDistanceY += randomDistanceAccelerationY;
-        randomDistanceAccelerationY *= 0.87f;
-        randomDistanceY *= 0.90f;
+        randomDistanceAccelerationY *= 0.84f;
+        randomDistanceY *= 0.88f;
         randomDistanceX += randomDistanceAccelerationX;
-        randomDistanceAccelerationX *= 0.90f;
+        randomDistanceAccelerationX *= 0.88f;
         randomDistanceX *= 0.85f;
 
         transform.Translate(randomDistanceX, randomDistanceY, 0);
@@ -103,6 +149,8 @@ public class scr_leviathan : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+        if (Input.GetKeyDown(KeyCode.J))
+            Finale();
         movement = speed * Time.deltaTime;
         Vector3 vectorFromCenter = target - circleCenter;
 
@@ -122,17 +170,14 @@ public class scr_leviathan : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("Collision");
         if (other.gameObject.tag != "Player")
         {
             Physics2D.IgnoreCollision(edgeCollider, other.collider);
-            Debug.Log("Not a Player");
 
         }
         else
         {
-            other.gameObject.GetComponent<scr_hpsystem>().takeDamage(1);
-            Debug.Log("Player Collision");
+            other.gameObject.GetComponent<scr_hpsystem>().takeDamage(collisionDamage);
         }
     }
 }

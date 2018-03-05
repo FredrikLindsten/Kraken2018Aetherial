@@ -69,6 +69,12 @@ public class scr_skyslugMovement : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+        if(GetComponent<scr_hpsystem>().health < 1)
+        {
+            transform.Translate(0, -Time.deltaTime*5, 0);
+            return;
+        }
+
         if (Time.timeScale == 0)
             return;
         movement = Time.deltaTime * speed;

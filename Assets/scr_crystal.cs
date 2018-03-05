@@ -6,8 +6,11 @@ public class scr_crystal : MonoBehaviour {
     // Use this for initialization
 
     AudioSource audioSource;
-    int temp;
-	void Start () {
+    
+	void Start ()
+    {
+        transform.localScale = new Vector3(0.2f / transform.parent.localScale.x, 0.2f / transform.parent.localScale.y, 1);
+        GetComponent<SpriteRenderer>().sprite = scr_cloudcontroller.instance.crystalArt;
         audioSource = GetComponent<AudioSource>();
 	}
 
@@ -18,15 +21,13 @@ public class scr_crystal : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        transform.Translate(-Time.deltaTime, 0, 0);
 
-
-	}
+    }
 
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Harpoon")
+        if(other.gameObject.tag == "Harpoon" && other.GetComponent<Harpoon>().isFired == true)
         {
             audioSource.Play();
         }

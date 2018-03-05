@@ -34,6 +34,11 @@ public class beam : MonoBehaviour {
         collider.size = new Vector2(beamLength, lineRenderer.startWidth * 5);
         //collider.size = new Vector2(originPoint.x, lineRenderer.startWidth);
         collider.transform.position = originPoint + (endPoint - originPoint) / 2;
+
+        if (!GameObject.FindGameObjectWithTag("Player"))
+        {
+            Destroy(this.gameObject);
+        }
      
     }
 

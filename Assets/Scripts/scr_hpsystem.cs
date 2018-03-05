@@ -40,7 +40,6 @@ public class scr_hpsystem : MonoBehaviour {
             }
             if (GetComponent<Animator>())
             {
-               
                 GetComponent<Animator>().SetBool("destroyed", true);
                 Destroy(this.gameObject, GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
             } else

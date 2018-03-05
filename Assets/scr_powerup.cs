@@ -21,6 +21,9 @@ public class scr_powerup : MonoBehaviour {
     public GameObject stormcloudref;
     public Animator powerupIcon;
 
+    public AudioClip useClip;
+    private AudioSource audioSource;
+
     public void gainPowerup()
     {
         powerupCharges++;
@@ -34,6 +37,7 @@ public class scr_powerup : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        audioSource = GetComponent<AudioSource>();
         if (instance != null)
             Destroy(this);
         instance = this;
@@ -47,13 +51,13 @@ public class scr_powerup : MonoBehaviour {
     {
         for(int i = 0; i < ghosts.Count; ++i)
         {
-            ghosts[i].pos = new Vector3(
+            ghosts[i].pos = new Vector2(
                 Random.Range(
-                    scr_utilities.edges[(int)scr_utilities.edgeId.Left], 
-                    scr_utilities.edges[(int)scr_utilities.edgeId.Right]),
+                    scr_utilities.GetEdge(edgeId.Left,false), 
+                    scr_utilities.GetEdge(edgeId.Right, false)),
                 Random.Range(
-                    scr_utilities.edges[(int)scr_utilities.edgeId.Bottom], 
-                    scr_utilities.edges[(int)scr_utilities.edgeId.Top]));
+                    scr_utilities.GetEdge(edgeId.Bottom, false), 
+                    scr_utilities.GetEdge(edgeId.Top,false)));
         }
     }
 
@@ -61,7 +65,7 @@ public class scr_powerup : MonoBehaviour {
     {
         yield return new WaitForSeconds(time);
         powerOn = false;
-        stormcloud.speed = scr_cloud.speed;
+        stormcloud.speed = scr_cloud.GetSpeed();
     }
 	
 	// Update is called once per frame
@@ -73,12 +77,13 @@ public class scr_powerup : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Q) && powerupCharges > 0)
         {
             //Use powerup
+            audioSource.PlayOneShot(useClip);
             powerupCharges--;
             ScrambleGhosts();
             stormcloud = Instantiate(stormcloudref, new Vector3(scr_utilities.screenWidth + (2 * scr_utilities.padding), 0, 1), Quaternion.identity).GetComponent<scr_stormcloud>();
             powerOn = true;
             StartCoroutine(Timer(powerupTime));
-            stormcloud.speed = scr_cloud.speed;
+            stormcloud.speed = scr_cloud.GetSpeed();
         }
         if (powerOn)
         {
@@ -86,11 +91,11 @@ public class scr_powerup : MonoBehaviour {
             {
                 ghosts[i].acc.x += Random.Range(-0.03f, 0.03f);
                 ghosts[i].acc.y += Random.Range(-0.03f, 0.03f);
-                if (ghosts[i].pos.x < scr_utilities.edges[(int)scr_utilities.edgeId.Left] || 
-                    ghosts[i].pos.x > scr_utilities.edges[(int)scr_utilities.edgeId.Right])
+                if (ghosts[i].pos.x < scr_utilities.GetEdge(edgeId.Left, false) || 
+                    ghosts[i].pos.x > scr_utilities.GetEdge(edgeId.Right, false))
                     ghosts[i].acc.x *= -1;
-                if (ghosts[i].pos.y < scr_utilities.edges[(int)scr_utilities.edgeId.Bottom] || 
-                    ghosts[i].pos.y > scr_utilities.edges[(int)scr_utilities.edgeId.Top])
+                if (ghosts[i].pos.y < scr_utilities.GetEdge(edgeId.Bottom, false) || 
+                    ghosts[i].pos.y > scr_utilities.GetEdge(edgeId.Top, false))
                     ghosts[i].acc.y *= -1;
                 ghosts[i].acc *= 0.9f;
                 ghosts[i].pos += ghosts[i].acc;
