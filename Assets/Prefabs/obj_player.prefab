@@ -309,7 +309,7 @@ MonoBehaviour:
   stormcloudref: {fileID: 1252820976441552, guid: cd3e775da4a761e4b89e176ee40c1759,
     type: 2}
   powerupIcon: {fileID: 0}
-  useClip: {fileID: 0}
+  useClip: {fileID: 8300000, guid: 07603fa1e9e1c5d42b17ef61124ab246, type: 3}
 --- !u!212 &212651522284593306
 SpriteRenderer:
   m_ObjectHideFlags: 1

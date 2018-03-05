@@ -29,6 +29,7 @@ public class scr_leviathan : MonoBehaviour {
 
     AudioSource audioSource;
     public AudioClip arrivalSound;
+    public AudioClip leaveSound;
 
 
     private void Awake()
@@ -66,8 +67,9 @@ public class scr_leviathan : MonoBehaviour {
             Finale();
         else
         {
-            transform.position = circleCenter + new Vector3(-10, 0, 0);
-            target = transform.position;
+            /*
+            transform.position = circleCenter + new Vector3(-10,0, 0);
+            target = transform.position; */
             StartCoroutine(Timer(arrivals[level-1]));
         }
     }
@@ -102,6 +104,7 @@ public class scr_leviathan : MonoBehaviour {
 
     public void Leave()
     {
+        audioSource.PlayOneShot(leaveSound);
         targetAngle = Mathf.PI;
         scr_utilities.instance.Victory();
     }
