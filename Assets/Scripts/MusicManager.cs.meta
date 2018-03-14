@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: b3484054631b20143a26134e7643df05
+timeCreated: 1521030519
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - menuTheme: {fileID: 8300000, guid: c98b74540a726ef43afec35b5334dfa1, type: 3}
+  - tutorialTheme: {fileID: 8300000, guid: 69940562c6f74c64388f91aabd5598cf, type: 3}
+  - scene2Theme: {fileID: 8300000, guid: 477369e1c88e68342829916d7988c471, type: 3}
+  - scene3Theme: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

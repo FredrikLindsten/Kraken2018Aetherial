@@ -820,6 +820,11 @@ Prefab:
       propertyPath: m_Volume
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 82866210978707634, guid: 754ef992e5a726041904ec24fb805f7e,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 69940562c6f74c64388f91aabd5598cf, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 754ef992e5a726041904ec24fb805f7e, type: 2}
   m_IsPrefabParent: 0
@@ -1057,7 +1062,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.64371693, y: 0.6647805}
   m_AnchorMax: {x: 0.97028315, y: 1}
-  m_AnchoredPosition: {x: -0.05001831, y: -0.24998474}
+  m_AnchoredPosition: {x: -0.05001831, y: -0.25}
   m_SizeDelta: {x: -0.099991, y: -0.50001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &445033822
@@ -1634,6 +1639,11 @@ Prefab:
       propertyPath: health
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 114658257840663986, guid: ac2a7097abad45c47892b556ca629537,
+        type: 2}
+      propertyPath: rotationSpeed
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac2a7097abad45c47892b556ca629537, type: 2}
   m_IsPrefabParent: 0
@@ -2155,7 +2165,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.086, y: 0.623772}
   m_AnchorMax: {x: 0.27066976, y: 0.7005147}
-  m_AnchoredPosition: {x: 0, y: -0.0000076294}
+  m_AnchoredPosition: {x: 0, y: -0.000015258789}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &798767261
@@ -2280,7 +2290,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.0000038147027, y: 0.0000038148}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0.000015259}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &806595500
@@ -2353,7 +2363,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.72731525}
   m_AnchorMax: {x: 0.12138411, y: 1}
-  m_AnchoredPosition: {x: -3.2999878, y: 1.699997}
+  m_AnchoredPosition: {x: -3.2999878, y: 1.7000122}
   m_SizeDelta: {x: 12.25, y: 38.07}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &878920185
@@ -3563,6 +3573,31 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1198392448}
+--- !u!1 &1221294051 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1107976506336678, guid: ac2a7097abad45c47892b556ca629537,
+    type: 2}
+  m_PrefabInternal: {fileID: 616211897}
+--- !u!50 &1221294055
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1221294051}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1235113109
 GameObject:
   m_ObjectHideFlags: 0
@@ -3742,7 +3777,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.44000003, y: 0.39655173}
   m_AnchorMax: {x: 0.512, y: 0.47579312}
-  m_AnchoredPosition: {x: 0.000020980835, y: 0}
+  m_AnchoredPosition: {x: 0.000022888184, y: 0}
   m_SizeDelta: {x: -0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1241659615
@@ -4384,7 +4419,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.05, y: 0}
+  m_AnchoredPosition: {x: -1.050003, y: 0}
   m_SizeDelta: {x: 2.1, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1535329760
@@ -5453,7 +5488,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.638, y: 0.17231034}
   m_AnchorMax: {x: 0.73700005, y: 0.2517586}
-  m_AnchoredPosition: {x: 0.42999268, y: 0.2599945}
+  m_AnchoredPosition: {x: 0.42999268, y: 0.26000977}
   m_SizeDelta: {x: 1.3199997, y: 0.48999786}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2131359414

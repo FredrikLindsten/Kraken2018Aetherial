@@ -10,7 +10,7 @@ public class scr_weapon : MonoBehaviour {
     public GameObject harpoon;
     public float rotationSpeed;
 
-    private float rotationZone = 2;
+    private float rotationZone = 30;
 
     Rigidbody2D rb;
 
@@ -48,7 +48,7 @@ public class scr_weapon : MonoBehaviour {
                 return;
             }
         }
-        if (Mathf.DeltaAngle(rb.rotation,z)< rotationZone && Mathf.DeltaAngle(rb.rotation, z)> - rotationZone)
+        if (Mathf.DeltaAngle(rb.rotation,z)< rotationZone && Mathf.DeltaAngle(rb.rotation, z)> - rotationZone && !GameObject.FindGameObjectWithTag("Beam"))
         {
             rb.rotation = z;
         }
@@ -59,7 +59,7 @@ public class scr_weapon : MonoBehaviour {
 
         if (!GameObject.FindGameObjectWithTag("Beam"))
         {
-            rotationSpeed = 250;
+            rotationSpeed = 500;
             scr_utilities.instance.aetherLeft += 0.2f * Time.deltaTime; //passive aether regeneration
         } else
         {
