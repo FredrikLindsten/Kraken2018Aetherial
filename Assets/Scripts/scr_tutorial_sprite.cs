@@ -73,7 +73,6 @@ public class scr_tutorial_sprite : MonoBehaviour {
         while (GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Harpoon>().harpState == Harpoon.STATE.STUCK)
             yield return null;
         Deactivate(6);
-        yield return new WaitForSeconds(2);
 
         Activate(7);
         while (scr_utilities.player.GetComponent<scr_powerup>().powerupCharges < 1)

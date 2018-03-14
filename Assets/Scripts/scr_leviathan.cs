@@ -60,7 +60,7 @@ public class scr_leviathan : scr_hpsystem {
     {
         //yield return StartCoroutine(GetComponent<scr_leviathanFinale>().CallForHelp());
 
-        yield return new WaitForSeconds(timer + 6);
+        yield return new WaitForSeconds(timer + 4);
         Instantiate(GetComponent<scr_leviathanFinale>().soundwaveRef, transform);
         yield return new WaitForSeconds(0.2f);
         Instantiate(GetComponent<scr_leviathanFinale>().soundwaveRef, transform);
@@ -75,7 +75,7 @@ public class scr_leviathan : scr_hpsystem {
             Destroy(gameObject);
         }
         if (level == 3)
-            StartCoroutine(Soundwave(arrivals[1]));
+            StartCoroutine(Soundwave(arrivals[2]));
         if (level == 4)
             Finale();
         else
@@ -98,6 +98,7 @@ public class scr_leviathan : scr_hpsystem {
         StopAllCoroutines();
         scr_cloud.SetSpeed(0);
         enabled = false;
+        Destroy(GameObject.FindGameObjectWithTag("BossCrystal").GetComponent<BoxCollider2D>());
     }
 
     void OnArrival()
@@ -166,8 +167,8 @@ public class scr_leviathan : scr_hpsystem {
     {
         //if (Input.GetKeyDown(KeyCode.A))
         //    GetComponent<scr_hpsystem>().takeDamage(1);
-        if (Input.GetKeyDown(KeyCode.J))
-           Finale();
+        //if (Input.GetKeyDown(KeyCode.J))
+        //   Finale();
         movement = speed * Time.deltaTime;
         Vector3 vectorFromCenter = target - circleCenter;
 
@@ -230,19 +231,19 @@ public class scr_leviathan : scr_hpsystem {
         GetComponent<scr_leviathanFinale>().enabled = false;
         GetComponent<Animator>().SetBool("destroyed", true);
         StartCoroutine(Fall());
-        scr_utilities.instance.Victory();
     }
 
     IEnumerator Fall()
     {
         float fallspeed = 0;
-        while (transform.position.y > -20)
+        while (transform.position.y > -10)
         {
             fallspeed += Time.deltaTime;
             fallspeed *= 0.995f;
             transform.Translate(0, -Time.deltaTime * fallspeed, 0);
             yield return null;
         }
+        scr_utilities.instance.Victory();
         Destroy(gameObject);
     }
 }

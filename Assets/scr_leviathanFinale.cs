@@ -56,7 +56,7 @@ public class scr_leviathanFinale : MonoBehaviour {
 
         float speed = 2;
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
 
         while (scr_cloud.GetSpeed()>0.1)
         {
@@ -152,7 +152,7 @@ public class scr_leviathanFinale : MonoBehaviour {
                     scr_utilities.GetEdge(edgeId.Bottom,false), 
                     scr_utilities.GetEdge(edgeId.Top,false))), 
             Quaternion.identity).GetComponent<scr_spawner>();
-        spawn.number = Random.Range(5, 20);
+        spawn.number = Random.Range(5, 15);
         spawn.spawnId = scr_spawner.SpawnerEnum.Skyslug;
         
         spawn = Instantiate(
@@ -165,7 +165,7 @@ public class scr_leviathanFinale : MonoBehaviour {
                     scr_utilities.GetEdge(edgeId.Bottom, false),
                     scr_utilities.GetEdge(edgeId.Top, false))),
             Quaternion.identity).GetComponent<scr_spawner>();
-        spawn.number = Random.Range(5, 20);
+        spawn.number = Random.Range(5, 15);
         spawn.spawnId = scr_spawner.SpawnerEnum.Skyslug;
 
 
@@ -197,8 +197,11 @@ public class scr_leviathanFinale : MonoBehaviour {
         Transform breath = Instantiate(breathRef, transform).transform;
         breath.localPosition = new Vector3(14, -2, 0);
         breath.localScale = new Vector3(-3, 2, 0);
-        while (Mathf.Abs(transform.position.y - position.y) > 0.01f)
+        while (Mathf.Abs(transform.position.y - position.y) > 0.05f)
+        {
             transform.Translate(0, Mathf.Sign(position.y - transform.position.y) * Time.deltaTime, 0);
+            yield return null;
+        }
         transform.position = position;
     }
 

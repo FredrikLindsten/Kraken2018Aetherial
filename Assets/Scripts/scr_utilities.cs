@@ -77,7 +77,7 @@ public class scr_utilities : MonoBehaviour {
             playerHealthUI.value = player.GetComponent<scr_hpsystem>().getHealthPercent();
         playerAetherUI.value = aetherLeft / aetherMax;
         if (leviathan != null)
-            leviathanHealthUI.value = leviathan.GetComponent<scr_hpsystem>().getHealthPercent() + 0.1f;
+            leviathanHealthUI.value = leviathan.GetComponent<scr_hpsystem>().getHealthPercent() + ((1 - leviathan.GetComponent<scr_hpsystem>().getHealthPercent())*0.2f);
 
         if(aetherLeft > aetherMax)
         {

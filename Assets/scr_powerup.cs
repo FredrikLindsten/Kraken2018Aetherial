@@ -102,4 +102,9 @@ public class scr_powerup : MonoBehaviour {
             ghosts[i].pos += ghosts[i].acc;
         }
     }
+
+    private void OnDestroy()
+    {
+        FindObjectOfType<scr_savePowerups>().storePower(powerupCharges);
+    }
 }

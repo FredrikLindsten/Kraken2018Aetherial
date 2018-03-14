@@ -7,7 +7,7 @@ using UnityEngine;
 public class scr_intromovie : MonoBehaviour {
 
     VideoPlayer videoPlayer;
-    scr_intromovie instance;
+    scr_intromovie instance = null;
 
     public GameObject Canvas;
     public GameObject Background;

@@ -113,6 +113,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!95 &353589441 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 95530376958733344, guid: df050f36b1204b24f88ab7db97d93c27,
+    type: 2}
+  m_PrefabInternal: {fileID: 551019526}
 --- !u!1001 &551019526
 Prefab:
   m_ObjectHideFlags: 0
@@ -602,6 +607,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114795766891085714, guid: ac2a7097abad45c47892b556ca629537,
+        type: 2}
+      propertyPath: powerupCharges
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114795766891085714, guid: ac2a7097abad45c47892b556ca629537,
+        type: 2}
+      propertyPath: powerupIcon
+      value: 
+      objectReference: {fileID: 353589441}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac2a7097abad45c47892b556ca629537, type: 2}
   m_IsPrefabParent: 0
@@ -706,7 +721,7 @@ Prefab:
     - target: {fileID: 114358483689903544, guid: 34b2b19fee26dd74885cd07c88bb15a1,
         type: 2}
       propertyPath: crystalSpawnTimers.Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4240570352571668, guid: 34b2b19fee26dd74885cd07c88bb15a1, type: 2}
       propertyPath: m_LocalPosition.x

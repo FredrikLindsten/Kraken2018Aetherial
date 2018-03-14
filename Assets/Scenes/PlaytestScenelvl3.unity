@@ -343,7 +343,7 @@ Transform:
   m_GameObject: {fileID: 567586736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
@@ -487,7 +487,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1226,6 +1226,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bd91464f76448314c92381ae1ad95ec6, type: 2}
+    - target: {fileID: 4218751995038942, guid: 59bab99af5efded45ba35ecbd763c3d4, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59bab99af5efded45ba35ecbd763c3d4, type: 2}
   m_IsPrefabParent: 0
@@ -1407,7 +1411,7 @@ Prefab:
     - target: {fileID: 212877575692885854, guid: 3c052992b8149fb489a1f378d953e237,
         type: 2}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3c052992b8149fb489a1f378d953e237, type: 2}

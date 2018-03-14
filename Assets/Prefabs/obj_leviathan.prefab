@@ -642,7 +642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191aaf02e33b89b449ea71c86c3e8b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 11
   invincibilityTime: 0
   std: {r: 1, g: 1, b: 1, a: 1}
   audioSource: {fileID: 0}

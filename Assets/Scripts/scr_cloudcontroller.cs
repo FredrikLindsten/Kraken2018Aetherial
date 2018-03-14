@@ -36,7 +36,7 @@ public class scr_cloudcontroller : MonoBehaviour {
         for (int i = 0; i < diff; ++i)
         {
             //spawn clouds
-            float distance = (scr_utilities.screenWidth + (2 * scr_utilities.padding));
+            float distance = (scr_utilities.screenWidth + (2 * scr_utilities.padding) + 6);
             cloudsBg.Add(Instantiate(cloudRef, new Vector3(distance * (1 + (float)i / diff) - scr_utilities.GetEdge(edgeId.Right, false), 0), Quaternion.identity));
             cloudsBg[cloudsBg.Count - 1].GetComponent<SpriteRenderer>().sprite = cloudArt;
         }

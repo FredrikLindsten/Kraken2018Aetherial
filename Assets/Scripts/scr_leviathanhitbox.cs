@@ -9,6 +9,7 @@ public class scr_leviathanhitbox : scr_hpsystem {
     protected override void Die()
     {
         GetComponentInParent<scr_leviathan>().Leave();
+        GetComponentInParent<scr_leviathan>().takeDamage(2);
         Instantiate(powerup, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

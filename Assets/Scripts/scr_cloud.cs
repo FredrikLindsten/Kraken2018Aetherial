@@ -52,7 +52,7 @@ public class scr_cloud : MonoBehaviour {
         height = Random.Range(
                 scr_utilities.GetEdge(edgeId.Bottom, true),
                 scr_utilities.GetEdge(edgeId.Top, true));
-        transform.position = new Vector3(scr_utilities.GetEdge(startSide,true) + Random.Range(-0.01f,0.01f), height,transform.position.z);
+        transform.position = new Vector3(scr_utilities.GetEdge(startSide,true) + Random.Range(-0.01f,0.01f) + 3, height,transform.position.z);
         transform.localScale = new Vector3(Random.Range(0.6f, 1.4f), Random.Range(0.6f, 1.4f),0);
     }
 	
@@ -61,7 +61,7 @@ public class scr_cloud : MonoBehaviour {
         movement = speed * Time.deltaTime;
         transform.position = new Vector3(transform.position.x - movement, height + Mathf.Cos(transform.position.x)*verticalSpeed, transform.position.z);
 
-        if (transform.position.x < scr_utilities.GetEdge(endSide, true))
+        if (transform.position.x < (scr_utilities.GetEdge(endSide, true)-3))
         {
             if (remove)
                 Destroy(this.gameObject);

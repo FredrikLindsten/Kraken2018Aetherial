@@ -29,6 +29,23 @@ public class scr_stormcloud : MonoBehaviour {
     {
         movement -= Time.deltaTime;
         rend.material.SetTextureOffset(detailMapId, new Vector2(movement * scr_cloud.GetSpeed() / 80, 0));
+
+        float fade = noise.GetFade();
+        scr_utilities.player.GetComponent<Renderer>().material.color = new Color(
+            1 - fade,
+            1 - fade,
+            1 - fade,
+            Mathf.Clamp01(1.5f - ((fade - 0.5f) * 2)));
+        scr_utilities.leviathan.GetComponent<Renderer>().material.color = new Color(
+            1 - fade,
+            1 - fade,
+            1 - fade,
+            Mathf.Clamp01(1.5f - ((fade - 0.5f) * 2)));
+        GameObject.FindGameObjectWithTag("Harpoon").GetComponent<Renderer>().material.color = new Color(
+            1 - fade,
+            1 - fade,
+            1 - fade,
+            Mathf.Clamp01(1.5f - ((fade - 0.5f) * 2)));
     }
 
     IEnumerator Move()
