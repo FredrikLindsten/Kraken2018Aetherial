@@ -39,7 +39,6 @@ GameObject:
   - component: {fileID: 212682294173288316}
   - component: {fileID: 50584377806090160}
   - component: {fileID: 114240926993014894}
-  - component: {fileID: 114152214815195900}
   - component: {fileID: 61988856066482848}
   - component: {fileID: 114795766891085714}
   - component: {fileID: 95137192104979782}
@@ -246,23 +245,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114152214815195900
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1811129498192544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f90f5b154e6c24429e2ee631d8084a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 300
-  invincibilityTime: 0.3
-  std: {r: 1, g: 1, b: 1, a: 1}
-  audioSource: {fileID: 82996366327826098}
-  hitSound: {fileID: 8300000, guid: 53c60aba3d9e8634a8ad129a41b1adef, type: 3}
-  deathSound: {fileID: 8300000, guid: a608e01df82092642b312c3e34c47ad8, type: 3}
 --- !u!114 &114240926993014894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -274,10 +256,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 389697390c761a04d886e51e528dedee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipSpeed: 0.3
-  inertia: 0.2
+  health: 30
+  invincibilityTime: 0.3
+  std: {r: 1, g: 1, b: 1, a: 1}
+  audioSource: {fileID: 82996366327826098}
+  hitSound: {fileID: 8300000, guid: 53c60aba3d9e8634a8ad129a41b1adef, type: 3}
+  deathSound: {fileID: 8300000, guid: a608e01df82092642b312c3e34c47ad8, type: 3}
+  shipSpeed: 0.7
+  inertia: 0.3
   maxThrust: 3
-  turnSpeed: 1
+  turnSpeed: 1.4
 --- !u!114 &114658257840663986
 MonoBehaviour:
   m_ObjectHideFlags: 1

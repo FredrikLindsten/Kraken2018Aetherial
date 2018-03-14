@@ -20,16 +20,11 @@ public class scr_weapon : MonoBehaviour {
         float z = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, z);
         Debug.DrawRay(transform.position, transform.right);
-        if (!GameObject.FindGameObjectWithTag("Player"))
-        {
-            Destroy(this.gameObject);
-        }
 
-
-        if (!GameObject.FindGameObjectWithTag("Beam"))
-        {
-            scr_utilities.instance.aetherLeft += 0.2f * Time.deltaTime; //passive aether regeneration
-        }
+        //if (!GameObject.FindGameObjectWithTag("Beam"))
+        //{
+        //    scr_utilities.instance.aetherLeft += 0.2f * Time.deltaTime; //passive aether regeneration
+        //}
 
         if (Input.GetMouseButtonDown(0))
         {

@@ -3,49 +3,79 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class scr_stormcloud : MonoBehaviour {
-
-    public float speed = 0;
+    
     public bool wait = false;
+    private float movement = 0;
+    private int detailMapId;
+    private Renderer rend;
+    private scr_noise noise;
+
+    [Range(0f,1f)] public float sightLossPoint;
+
+    private bool active = false;
+
     // Use this for initialization
     void Start () {
-		
+        DontDestroyOnLoad(this);
+        rend = GetComponentInChildren<Renderer>();
+        detailMapId = Shader.PropertyToID("_DetailAlbedoMap");
+        gameObject.GetComponentInChildren<Renderer>().material.SetTextureScale(detailMapId, new Vector2(0.25f, 1));
+        noise = GetComponentInChildren<scr_noise>();
+        active = false;
+        StartCoroutine(Move());
 	}
 
-    // Update is called once per frame
     void Update()
     {
-        transform.Translate(-speed * Time.deltaTime, 0, 0);
-        if (transform.position.x < 0 && !wait) { 
-            speed = 0;
-            wait = true;
-        }
-        if(speed < 0.001f)
-            gameObject.GetComponentInChildren<Renderer>().material.SetTextureOffset("_MainTex", new Vector2(-Time.time * scr_cloud.GetSpeed()/80, 0));
+        movement -= Time.deltaTime;
+        rend.material.SetTextureOffset(detailMapId, new Vector2(movement * scr_cloud.GetSpeed() / 80, 0));
+    }
 
-        if (transform.position.x < -(scr_utilities.screenWidth + (2 * scr_utilities.padding)))
-            Destroy(this.gameObject);
+    IEnumerator Move()
+    {
+        wait = true;
+        yield return new WaitForSeconds(noise.fadeInTime * sightLossPoint);
+        active = true;
+        yield return new WaitForSeconds(noise.fadeInTime * (1 - sightLossPoint));
+        while (wait)
+            yield return null;
+        yield return new WaitForSeconds(noise.fadeInTime * (1 - sightLossPoint));
+        active = false;
+        yield return new WaitForSeconds(noise.fadeInTime * sightLossPoint);
+        Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Enemy")
         {
-            other.GetComponent<scr_skyslugMovement>().LoseSight();
-
+            StartCoroutine(LoseSight(other.GetComponent<scr_hpsystem>()));
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    IEnumerator LoseSight(scr_hpsystem obj)
     {
-        if (other.tag == "Enemy")
-        {
-            other.GetComponent<scr_skyslugMovement>().GainSight();
-        }
-        other.GetComponent<Renderer>().material.color = Color.white;
+        while (!active)
+            yield return null;
+        obj.LoseSight();
+        while (active)
+            yield return null;
+        obj.GainSight();
+        obj.GetComponent<Renderer>().material.color = Color.white;
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        other.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 0.0f, 0.5f);
+        float fade = noise.GetFade();
+        other.GetComponent<Renderer>().material.color = new Color(
+            1 - fade,
+            1 - fade,
+            1 - fade,
+            Mathf.Clamp01(1.5f - ((fade - 0.5f) * 2)));
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }

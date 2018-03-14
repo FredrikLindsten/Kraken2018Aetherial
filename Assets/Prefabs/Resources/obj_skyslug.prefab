@@ -21,10 +21,8 @@ GameObject:
   - component: {fileID: 4008118950206436}
   - component: {fileID: 212331376917000714}
   - component: {fileID: 114772425525139842}
-  - component: {fileID: 114048553196451406}
   - component: {fileID: 61958484541970262}
   - component: {fileID: 50470175552944442}
-  - component: {fileID: 114239470249030132}
   - component: {fileID: 95244872445221534}
   - component: {fileID: 82980569710717058}
   m_Layer: 0
@@ -92,23 +90,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!95 &95244872445221534
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1366649574126776}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 85ae955a178b5824e8e143c994a240fd, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!82 &82980569710717058
 AudioSource:
   m_ObjectHideFlags: 1
@@ -189,32 +170,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114048553196451406
-MonoBehaviour:
+--- !u!95 &95244872445221534
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1366649574126776}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f90f5b154e6c24429e2ee631d8084a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
-  invincibilityTime: 0.5
-  std: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &114239470249030132
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1366649574126776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1725c4686d914d945a24186e9d14aa0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 85ae955a178b5824e8e143c994a240fd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114772425525139842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,6 +198,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43023325c59065747958118245ef3f56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 3
+  invincibilityTime: 0.5
+  std: {r: 1, g: 1, b: 1, a: 1}
+  audioSource: {fileID: 0}
+  hitSound: {fileID: 0}
+  deathSound: {fileID: 0}
   attackingClip: {fileID: 8300000, guid: 8b62bdfeb3045894c969c4f158302b23, type: 3}
   speed: 4
   swarmDistance: 3
@@ -233,10 +211,8 @@ MonoBehaviour:
   swarmDistanceMax: 2
   swarmDistanceMin: -0.5
   randomDistanceSpeed: 30
-  rotate: 0
-  altrotate: 1
-  altrotatemagnitude: 200
-  attackCooldown: 10
+  rotateMagnitude: 100
+  attackCooldown: 7
 --- !u!212 &212331376917000714
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -1,0 +1,282 @@
+fileFormatVersion: 2
+guid: 1dcf0152ad8218b49be8aa5a4d93b1dc
+timeCreated: 1520961629
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_0
+    21300002: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_1
+    21300004: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_2
+    21300006: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_3
+    21300008: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_4
+    21300010: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_5
+    21300012: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_6
+    21300014: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_7
+    21300016: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_8
+    21300018: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_9
+    21300020: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_10
+    21300022: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_11
+    21300024: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_12
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 90
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7112
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_1
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 7112
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_2
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 7112
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_3
+      rect:
+        serializedVersion: 2
+        x: 5760
+        y: 7112
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6032
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_5
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 6032
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_6
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 6032
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_7
+      rect:
+        serializedVersion: 2
+        x: 5760
+        y: 6032
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4952
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_9
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 4952
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_10
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 4952
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_11
+      rect:
+        serializedVersion: 2
+        x: 5760
+        y: 4952
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Atherial_Whale_SprintSheet_Dying_W1920_H1080px_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3872
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

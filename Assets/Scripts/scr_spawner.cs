@@ -50,12 +50,12 @@ public class scr_spawner : MonoBehaviour {
         if (smallest == 0 || smallest == 1)
         {
             edgeX = false;
-            transform.position = new Vector3(scr_utilities.GetEdge(smallest, false), transform.position.y, 0);
+            transform.position = new Vector3(scr_utilities.GetEdge((edgeId)smallest, false), transform.position.y, 0);
         }
         if (smallest == 2 || smallest == 3)
         {
             edgeX = true;
-            transform.position = new Vector3(transform.position.x, scr_utilities.GetEdge(smallest, false), 0);
+            transform.position = new Vector3(transform.position.x, scr_utilities.GetEdge((edgeId)smallest, false), 0);
         }
 
         if (debugSpawnLocation)
@@ -83,8 +83,4 @@ public class scr_spawner : MonoBehaviour {
         }
         Destroy(this);
     }
-
-    // Update is called once per frame
-    void Update () {
-	}
 }

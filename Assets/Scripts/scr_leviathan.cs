@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scr_leviathan : MonoBehaviour {
+public class scr_leviathan : scr_hpsystem {
 
     public List<float> arrivals;
     private bool arrived = false;
@@ -26,8 +26,7 @@ public class scr_leviathan : MonoBehaviour {
     private Vector3 circleCenter;
 
     EdgeCollider2D edgeCollider;
-
-    AudioSource audioSource;
+    
     public AudioClip arrivalSound;
     public AudioClip leaveSound;
 
@@ -39,15 +38,14 @@ public class scr_leviathan : MonoBehaviour {
             Destroy(gameObject);
             return;
         }
-
-        Debug.Log("levAwake");
+        
         instance = this;
     }
 
     // Use this for initialization
     void Start () {
+        HpInit();
         audioSource = GetComponent<AudioSource>();
-        Debug.Log("levStart");
         DontDestroyOnLoad(gameObject);
         edgeCollider = GetComponent<EdgeCollider2D>();
         circleCenter = new Vector3(transform.position.x, transform.position.y - 10, 0);
@@ -56,13 +54,23 @@ public class scr_leviathan : MonoBehaviour {
         StartCoroutine(Timer(arrivals[0]));
 	}
 
+    IEnumerator Soundwave(float timer)
+    {
+        //StartCoroutine(GetComponent<scr_leviathanFinale>().CallForHelp());
+        yield return new WaitForSeconds(timer + 4);
+        Instantiate(GetComponent<scr_leviathanFinale>().soundwaveRef, transform);
+        yield return new WaitForSeconds(0.2f);
+        Instantiate(GetComponent<scr_leviathanFinale>().soundwaveRef, transform);
+    }
+
     private void OnLevelWasLoaded(int level)
     {
-        Debug.Log(1);
         if(level == 0)
         {
             Destroy(gameObject);
         }
+        if (level == 2)
+            StartCoroutine(Soundwave(arrivals[1]));
         if (level == 3)
             Finale();
         else
@@ -128,7 +136,9 @@ public class scr_leviathan : MonoBehaviour {
         randomDistanceAccelerationX *= 0.88f;
         randomDistanceX *= 0.85f;
 
-        transform.Translate(randomDistanceX, randomDistanceY, 0);
+        Vector3 correction = (target - transform.position) * movement * 0.05f;
+
+        transform.Translate(randomDistanceX + correction.x, randomDistanceY + correction.y, 0);
     }
 
     void CircleMovement()
@@ -149,8 +159,10 @@ public class scr_leviathan : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.J))
-            Finale();
+        //if (Input.GetKeyDown(KeyCode.A))
+        //    GetComponent<scr_hpsystem>().takeDamage(1);
+        //if (Input.GetKeyDown(KeyCode.J))
+        //    Finale();
         movement = speed * Time.deltaTime;
         Vector3 vectorFromCenter = target - circleCenter;
 
@@ -173,12 +185,32 @@ public class scr_leviathan : MonoBehaviour {
         if (other.gameObject.tag != "Player")
         {
             Physics2D.IgnoreCollision(edgeCollider, other.collider);
-
         }
         else
         {
             other.gameObject.GetComponent<scr_hpsystem>().takeDamage(collisionDamage);
         }
+    }
+
+    protected override void Die()
+    {
+        GetComponent<scr_leviathanFinale>().enabled = false;
+        GetComponent<Animator>().SetBool("destroyed", true);
+        StartCoroutine(Fall());
+        scr_utilities.instance.Victory();
+    }
+
+    IEnumerator Fall()
+    {
+        float fallspeed = 0;
+        while (transform.position.y > -20)
+        {
+            fallspeed += Time.deltaTime;
+            fallspeed *= 0.995f;
+            transform.Translate(0, -Time.deltaTime * fallspeed, 0);
+            yield return null;
+        }
+        Destroy(gameObject);
     }
 }
 

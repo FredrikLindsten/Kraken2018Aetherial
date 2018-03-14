@@ -12,7 +12,6 @@ public class scr_utilities : MonoBehaviour {
     public static scr_utilities instance = null;
     public static GameObject player;
     public static GameObject leviathan;
-    public static List<scr_skyslugMovement> slugs = new List<scr_skyslugMovement>();
 
     private static float[] edges = new float[4];
     public static float screenWidth, screenHeight;
@@ -30,6 +29,8 @@ public class scr_utilities : MonoBehaviour {
     public GameObject deathScreen;
 
     public GameObject transitionEffect;
+
+    public Texture2D checkpointSprite;
 
     public float aetherLeft = 0;
     private float aetherMax = 0;
@@ -69,8 +70,8 @@ public class scr_utilities : MonoBehaviour {
         if (player != null)
             playerHealthUI.value = player.GetComponent<scr_hpsystem>().getHealthPercent();
         playerAetherUI.value = aetherLeft / aetherMax;
-        if(leviathan != null)
-        leviathanHealthUI.value = leviathan.GetComponent<scr_hpsystem>().getHealthPercent();
+        if (leviathan != null)
+            leviathanHealthUI.value = leviathan.GetComponent<scr_hpsystem>().getHealthPercent() + 0.1f;
 
         if(aetherLeft > aetherMax)
         {
@@ -79,16 +80,8 @@ public class scr_utilities : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (pauseOverlay.activeSelf)
-            {
-                pauseOverlay.SetActive(false);
-                Time.timeScale = 1;
-            }
-            else
-            {
-                pauseOverlay.SetActive(true);
-                Time.timeScale = 0;
-            }
+            pauseOverlay.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 
@@ -111,33 +104,29 @@ public class scr_utilities : MonoBehaviour {
 
     IEnumerator CheckpointWaiting()
     {   
-        scr_stormcloud transition = Instantiate(transitionEffect, new Vector3(scr_utilities.screenWidth + (2 * scr_utilities.padding), 0, 1), Quaternion.identity).GetComponent<scr_stormcloud>();
+        scr_stormcloud transition = Instantiate(transitionEffect, new Vector3(0, 0, 1), Quaternion.identity).GetComponent<scr_stormcloud>();
+        scr_noise noise = transition.transform.GetComponentInChildren<scr_noise>();
+        noise.GetComponent<Renderer>().material.SetTexture("_DetailAlbedoMap", checkpointSprite);
         scr_cloudcontroller.instance.SetIslandCount(0);
         scr_cloudcontroller.instance.SetCloudCover(0);
-        transition.speed = scr_cloud.GetSpeed();
         DontDestroyOnLoad(transition);
         yield return new WaitForSeconds(5);
         checkpoint.SetActive(true);
         waitingAtCheckpoint = true;
-        while(waitingAtCheckpoint)
-            yield return null;
+        yield return new WaitForSeconds(8);
         checkpoint.SetActive(false);
-        transition.speed = scr_cloud.GetSpeed();
+        transition.wait = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public static float GetEdge(edgeId val, bool padded)
     {
-        return GetEdge((int)val, padded);
-    }
-
-    public static float GetEdge(int val, bool padded)
-    {
-        float ret = Mathf.Abs(edges[val]);
+        float ret = edges[(int)val];
         if (padded)
-            ret += padding;
-        if ((edgeId)val == edgeId.Bottom || (edgeId)val == edgeId.Left)
-            return -ret;
+            if (val == edgeId.Bottom || val == edgeId.Left)
+                ret -= padding;
+            else
+                ret += padding;
         return ret;
     }
 }

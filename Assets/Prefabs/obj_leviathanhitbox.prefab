@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4766160895398518}
   - component: {fileID: 212988791365263364}
   - component: {fileID: 61040255898060428}
-  - component: {fileID: 114729220132776648}
   - component: {fileID: 114888557093125862}
   - component: {fileID: 50596846328965380}
   m_Layer: 0
@@ -89,20 +88,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114729220132776648
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1365493718218930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f90f5b154e6c24429e2ee631d8084a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 10
-  invincibilityTime: 0.5
-  std: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &114888557093125862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,6 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5257dc3dec75f47b245b5a070a15c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 10
+  invincibilityTime: 0.5
+  std: {r: 1, g: 1, b: 1, a: 1}
+  audioSource: {fileID: 0}
+  hitSound: {fileID: 0}
+  deathSound: {fileID: 0}
   powerup: {fileID: 1223110685377086, guid: c85a4de69a8a19c43a2d85eab6b1bd73, type: 2}
 --- !u!212 &212988791365263364
 SpriteRenderer:

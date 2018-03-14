@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212510192042831676}
   - component: {fileID: 114460973839399180}
   - component: {fileID: 61876683246194400}
-  - component: {fileID: 114608368105493326}
   - component: {fileID: 50450626830152584}
   - component: {fileID: 95350452627740834}
   - component: {fileID: 82939218874041558}
@@ -199,6 +198,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59090c46a2b72b348802c0d0025e3681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 2
+  invincibilityTime: 0.5
+  std: {r: 1, g: 1, b: 1, a: 1}
+  audioSource: {fileID: 0}
+  hitSound: {fileID: 0}
+  deathSound: {fileID: 0}
   dashCooldown: 7
   attackCooldown: 3
   minDist: 5
@@ -208,23 +213,6 @@ MonoBehaviour:
   damage: 2
   bolt: {fileID: 1565571121715784, guid: 002b626e4fa893449b00a701187ec548, type: 2}
   shootSound: {fileID: 8300000, guid: c5b17574ab1df924697a678d48925427, type: 3}
---- !u!114 &114608368105493326
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1587839123085494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f90f5b154e6c24429e2ee631d8084a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 2
-  invincibilityTime: 0.5
-  std: {r: 1, g: 1, b: 1, a: 1}
-  audioSource: {fileID: 0}
-  hitSound: {fileID: 0}
-  deathSound: {fileID: 0}
 --- !u!212 &212510192042831676
 SpriteRenderer:
   m_ObjectHideFlags: 1

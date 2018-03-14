@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4065236273309908}
   - component: {fileID: 212380329608311640}
   - component: {fileID: 114045366919028908}
-  - component: {fileID: 114388202911525290}
   - component: {fileID: 68231737515909074}
   - component: {fileID: 114155178457067650}
   - component: {fileID: 95232384820359472}
+  - component: {fileID: 82936093035439788}
   m_Layer: 0
   m_Name: obj_leviathan
   m_TagString: Boss
@@ -597,6 +597,86 @@ EdgeCollider2D:
   - {x: 6.63697, y: -2.6592655}
   - {x: -7.9763036, y: -0.47215652}
   - {x: -9.480567, y: -0.24161243}
+--- !u!82 &82936093035439788
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1027010199432554}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.78
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95232384820359472
 Animator:
   serializedVersion: 3
@@ -625,10 +705,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191aaf02e33b89b449ea71c86c3e8b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrivals: []
+  health: 3
+  invincibilityTime: 0
+  std: {r: 1, g: 1, b: 1, a: 1}
+  audioSource: {fileID: 0}
+  hitSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  arrivals:
+  - 70
+  - 70
   collisionDamage: 0
   speed: 2
   arrivalSound: {fileID: 8300000, guid: 6aa49e8850dde4a4db7982e1c025947d, type: 3}
+  leaveSound: {fileID: 8300000, guid: 99371a58a93bbc34298aefbfc60a3c9c, type: 3}
 --- !u!114 &114137706987961916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -657,8 +746,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   position: {x: 11, y: 0, z: 0}
   Cooldown: 2.36
-  BreathWeight: 10
-  RamWeight: 1
+  BreathWeight: 1
+  RamWeight: 0
   SummonWeight: 1
   spawner: {fileID: 1113210661112182, guid: ee1ed5e0a30fad44282c8b2e69f37bfc, type: 2}
   rammingSpeed: 12
@@ -668,6 +757,7 @@ MonoBehaviour:
     type: 2}
   breathRef: {fileID: 1487507612543512, guid: e686f062252237445b5cbbc999135d6f, type: 2}
   mouth: {fileID: 1598762745332612}
+  callSound: {fileID: 8300000, guid: 9369509665e4a7c498c29cf5fd427497, type: 3}
 --- !u!114 &114207622312586618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -683,23 +773,6 @@ MonoBehaviour:
   hitbox: {fileID: 1365493718218930, guid: 86e6f0e48c26ed24db3d408d43327f6c, type: 2}
   health: 2
   pulloffset: 2
---- !u!114 &114388202911525290
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1027010199432554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f90f5b154e6c24429e2ee631d8084a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
-  invincibilityTime: 0
-  std: {r: 1, g: 1, b: 1, a: 1}
-  audioSource: {fileID: 0}
-  hitSound: {fileID: 0}
-  deathSound: {fileID: 0}
 --- !u!114 &114495916804934338
 MonoBehaviour:
   m_ObjectHideFlags: 1

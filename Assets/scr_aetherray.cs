@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scr_aetherray : MonoBehaviour {
+public class scr_aetherray : scr_hpsystem {
     
     public float dashCooldown = 0;
     private float dashTimer = 0;
@@ -15,6 +15,9 @@ public class scr_aetherray : MonoBehaviour {
     public int damage = 0;
 
     public GameObject bolt;
+
+    private int targetId;
+    private bool visibility;
 
     private enum State { attacking, dashing, idling, waiting}
     private State currentState = State.idling;
@@ -29,8 +32,7 @@ public class scr_aetherray : MonoBehaviour {
     private Vector3 move = new Vector3();
     private float dist = 0;
     private float dashProgress = 0;
-
-    AudioSource audioSource;
+    
     public AudioClip shootSound;
 
     // Use this for initialization
@@ -39,6 +41,7 @@ public class scr_aetherray : MonoBehaviour {
         currentState = State.idling;
         dashTimer += Random.Range(0, dashCooldown);
         attackTimer += Random.Range(0, attackCooldown);
+        GainSight();
 
         currentState = State.waiting;
         StartCoroutine(TeleportBehaviour());
@@ -67,18 +70,19 @@ public class scr_aetherray : MonoBehaviour {
             case State.idling:
                 RandomMovement();
                 dashTimer += Time.deltaTime;
-                attackTimer += Time.deltaTime;
-                float distance = (scr_utilities.player.transform.position - transform.position).magnitude;
-                if (distance < minDist)
-                    dashTimer += Time.deltaTime * (minDist / distance);
                 if (dashTimer > dashCooldown)
                 {
                     currentState = State.waiting;
                     StartCoroutine(TeleportBehaviour());
                     dashTimer = 0;
                 }
-
-                if(attackTimer > attackCooldown && distance < maxDist)
+                if (!visibility)
+                    break;
+                attackTimer += Time.deltaTime;
+                float distance = (scr_utilities.player.transform.position - transform.position).magnitude;
+                if (distance < minDist)
+                    dashTimer += Time.deltaTime * (minDist / distance);
+                if (attackTimer > attackCooldown && distance < maxDist)
                 {
                     currentState = State.attacking;
                     StartCoroutine(Attack());
@@ -102,8 +106,6 @@ public class scr_aetherray : MonoBehaviour {
         yield return new WaitForSeconds(attackSpeed);
         GetComponent<Animator>().SetBool("attack", false);
         currentState = State.idling;
-        if ((scr_utilities.player.transform.position - transform.position).magnitude > maxDist)
-            yield break;
         Instantiate(bolt, gameObject.transform);
         //scr_utilities.player.GetComponent<scr_hpsystem>().takeDamage(damage);
 
@@ -118,6 +120,7 @@ public class scr_aetherray : MonoBehaviour {
         {
             dashProgress = 0;
             currentState = State.idling;
+            GetComponent<Animator>().SetBool("dash", false);
         }
     }
 
@@ -127,7 +130,10 @@ public class scr_aetherray : MonoBehaviour {
         {
             dest.x = Random.Range(scr_utilities.GetEdge(edgeId.Left,false), scr_utilities.GetEdge(edgeId.Right, false));
             dest.y = Random.Range(scr_utilities.GetEdge(edgeId.Bottom,false), scr_utilities.GetEdge(edgeId.Top,false));
-            dist = (dest - scr_utilities.player.transform.position).magnitude;
+            if(visibility)
+                dist = (dest - scr_utilities.player.transform.position).magnitude;
+            else
+                dist = (dest - scr_powerup.instance.GetGhost(targetId)).magnitude;
             if (minDist < dist && dist < maxDist)
             {
                 return true;
@@ -143,11 +149,30 @@ public class scr_aetherray : MonoBehaviour {
             yield return null;
             if (FindTargetLocation())
             {
+                GetComponent<Animator>().SetBool("dash", true);
                 orig = transform.position;
                 move = dest - orig;
                 currentState = State.dashing;
                 break;
             }
         }
+    }
+
+    public override void LoseSight()
+    {
+        visibility = false;
+        targetId = Random.Range(0, scr_powerup.instance.nrOfGhosts);
+    }
+
+    public override void GainSight()
+    {
+        visibility = true;
+    }
+
+    protected override void Die()
+    {
+        enabled = false;
+        GetComponent<Animator>().SetBool("death", true);
+        Destroy(gameObject, GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
     }
 }

@@ -32,11 +32,9 @@ public class scr_leviathanFinale : MonoBehaviour {
 
     AudioSource audioSource;
     public AudioClip callSound;
-    public AudioClip deathSound;
 
     private void Awake()
     {
-        Debug.Log("finAwake");
         main = GetComponent<scr_leviathan>();
     }
 
@@ -44,9 +42,9 @@ public class scr_leviathanFinale : MonoBehaviour {
     void Start ()
     {
         audioSource = GetComponent<AudioSource>();
-        Debug.Log("finStart");
         transform.localScale = new Vector3(-1, 1, 1);
         transform.position = new Vector3(20, 0, 0);
+        GetComponent<Animator>().SetBool("finale", true);
         StartCoroutine(Entry());
     }
 
@@ -65,9 +63,6 @@ public class scr_leviathanFinale : MonoBehaviour {
             yield return null;
         }
         scr_cloud.SetSpeed(0);
-        yield return new WaitForSeconds(2);
-        Debug.Log(transform.position.x);
-        Debug.Log(position.x);
         while (transform.position.x > position.x)
         {
             transform.Translate(toPos * Time.deltaTime * speed);
@@ -105,13 +100,7 @@ public class scr_leviathanFinale : MonoBehaviour {
         //randomMovementAcc *= 0.85f;
         //randomMovement += randomMovementAcc;
         //transform.Translate(new Vector3(0, randomMovement - transform.position.y * 0.1f, 0));
-
-        if (GetComponent<scr_hpsystem>().health < 1)
-        {
-            transform.Translate(0, -Time.deltaTime * 4, 0);
-            return;
-        }
-
+        
         switch (state)
         {
             case StateEnum.Idling:
@@ -134,7 +123,7 @@ public class scr_leviathanFinale : MonoBehaviour {
 
     }
 
-    IEnumerator CallForHelp()
+    public IEnumerator CallForHelp()
     {
         //TODO balance/balance tools
 
@@ -144,8 +133,8 @@ public class scr_leviathanFinale : MonoBehaviour {
             yield return null;
         }
 
-        Instantiate(soundwaveRef, transform);
         audioSource.PlayOneShot(callSound);
+        Instantiate(soundwaveRef, transform);
         yield return new WaitForSeconds(0.2f);
         Instantiate(soundwaveRef, transform);
         yield return new WaitForSeconds(0.2f);
@@ -196,16 +185,19 @@ public class scr_leviathanFinale : MonoBehaviour {
     IEnumerator BreathAttack()
     {
         //TODO balance/balance tools
-
+        
         StartCoroutine(Animate(2));
         while (animating)
         {
+            transform.Translate(0, Mathf.Sign(scr_utilities.player.transform.position.y - transform.position.y) * Time.deltaTime, 0);
             yield return null;
         }
         Transform breath = Instantiate(breathRef, transform).transform;
         breath.localPosition = new Vector3(14, -2, 0);
         breath.localScale = new Vector3(-3, 2, 0);
-        
+        while (Mathf.Abs(transform.position.y - position.y) > 0.01f)
+            transform.Translate(0, Mathf.Sign(position.y - transform.position.y) * Time.deltaTime, 0);
+        transform.position = position;
     }
 
     IEnumerator RamAttack()
@@ -262,11 +254,5 @@ public class scr_leviathanFinale : MonoBehaviour {
         yield return new WaitForSeconds(1);
         mouth.SetActive(false);
         state = StateEnum.Idling;
-    }
-
-    private void OnDestroy()
-    {
-        //Instantiate gibs
-        scr_utilities.instance.Victory();
     }
 }

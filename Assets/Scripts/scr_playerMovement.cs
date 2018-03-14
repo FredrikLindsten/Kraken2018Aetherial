@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scr_playerMovement : MonoBehaviour {
+public class scr_playerMovement : scr_hpsystem {
     KeyCode UpKey = KeyCode.W;
     KeyCode DownKey = KeyCode.S;
     KeyCode RightKey = KeyCode.D;
@@ -26,20 +26,34 @@ public class scr_playerMovement : MonoBehaviour {
     public float turnSpeed;
     private float turnZ;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
+        HpInit();
         rb = GetComponent<Rigidbody2D>();
         transform = GetComponent<Transform>();
     }
 
-    private void OnDestroy()
+    protected override void Die()
     {
-        scr_utilities.player = scr_utilities.leviathan;
-        scr_utilities.instance.Death();
+        enabled = false;
+        StartCoroutine(Explosion());
+    }
+
+    IEnumerator Explosion()
+    {
+        GetComponent<Renderer>().material.color = Color.white;
+        GetComponent<Animator>().SetBool("destroyed", true);
+        yield return new WaitForSeconds(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
         Destroy(GameObject.FindGameObjectWithTag("Harpoon"));
+        Destroy(GameObject.FindGameObjectWithTag("Weapon"));
+        Destroy(gameObject);
+        scr_utilities.instance.Death();
     }
 
     // Update is called once per frame
-    void FixedUpdate () {
+    void FixedUpdate ()
+    {
+        HpUpdate();
         if (Input.GetKey(UpKey) && thrustY < maxThrust) {
             thrustY += shipSpeed;
         } else if(!Input.GetKey(UpKey) && thrustY > standStill) {
@@ -113,9 +127,7 @@ public class scr_playerMovement : MonoBehaviour {
             {
 
             }
-        } 
-
-
+        }
     }
 
     private void Update()

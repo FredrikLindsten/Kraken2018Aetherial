@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scr_crystal : MonoBehaviour {
+public class scr_crystal : scr_hpsystem {
     // Use this for initialization
-
-    AudioSource audioSource;
     
 	void Start ()
     {
@@ -14,16 +12,12 @@ public class scr_crystal : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
 	}
 
-    private void OnDestroy()
+    protected override void Die()
     {
+        GetComponent<Animator>().SetBool("destroyed", true);
         scr_utilities.instance.aetherLeft += 10;
+        Destroy(gameObject, GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
     }
-
-    // Update is called once per frame
-    void Update () {
-
-    }
-
 
     void OnTriggerEnter2D(Collider2D other)
     {

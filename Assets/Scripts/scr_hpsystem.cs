@@ -15,39 +15,29 @@ public class scr_hpsystem : MonoBehaviour {
     public AudioClip deathSound;
 
 	// Use this for initialization
-	void Start () {
+	 protected void HpInit () {
         time = 1.0f;
         invincible = false;
         maxhealth = health;
 	}
 	
-	// Update is called once per frame
-	void FixedUpdate () {
+    protected void HpUpdate()
+    {
         time += Time.deltaTime;
         if (time >= invincibilityTime)
         {
             invincible = false;
             gameObject.GetComponent<Renderer>().material.color = std;
-        } else
+        }
+        else
         {
             invincible = true;
         }
-        if (getHealth() <= 0)
-        {
-            if (deathSound != null && audioSource.isPlaying == false)
-            {
-                audioSource.PlayOneShot(deathSound);
-            }
-            if (GetComponent<Animator>())
-            {
-                GetComponent<Animator>().SetBool("destroyed", true);
-                Destroy(this.gameObject, GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
-            } else
-            {
-                Destroy(this.gameObject);
-            }
-            
-        }
+    }
+
+	// Update is called once per frame
+	void FixedUpdate () {
+        HpUpdate();
 	}
 
     public void takeDamage(int damage)
@@ -64,11 +54,24 @@ public class scr_hpsystem : MonoBehaviour {
             scr_hpsystem parent = gameObject.GetComponentInParent<scr_hpsystem>();
             if (parent != this)
                 parent.takeDamage(damage);
+            if (getHealth() <= 0)
+            {
+                if (deathSound != null && audioSource.isPlaying == false)
+                {
+                    audioSource.PlayOneShot(deathSound);
+                }
+                Die();
+            }
         }
-
-
-
     }
+
+    protected virtual void Die()
+    {
+        Destroy(gameObject);
+    }
+
+    public virtual void LoseSight() {}
+    public virtual void GainSight() {}
 
     public int getHealth()
     {

@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scr_skyslugMovement : MonoBehaviour {
-
-    AudioSource audioSource;
+public class scr_skyslugMovement : scr_hpsystem {
+    
     public AudioClip attackingClip;
-    bool attackSoundPlayed;
 
     public float speed = 0;
     private float movement = 0;
@@ -18,10 +16,8 @@ public class scr_skyslugMovement : MonoBehaviour {
     private float randomDistance = 0;
     private float randomDistanceAcceleration = 0;
     public float randomDistanceSpeed = 0;
-
-    public bool rotate = false;
-    public bool altrotate = false;
-    public float altrotatemagnitude = 100;
+    
+    public float rotateMagnitude = 100;
 
     public float attackCooldown = 0;
     private float attackTimer = 0;
@@ -37,16 +33,17 @@ public class scr_skyslugMovement : MonoBehaviour {
     private int targetId;
 
     private bool visibility = true;
-    public void LoseSight()
+    public override void LoseSight()
     {
         if (!visibility)
             return;
+        state = stateEnum.Hunting;
         visibility = false;
         targetId = Random.Range(0, scr_powerup.instance.nrOfGhosts);
         swarmDistance -= 1;
         speed *= 0.5f;
     }
-    public void GainSight()
+    public override void GainSight()
     {
         if (visibility)
             return;
@@ -59,22 +56,15 @@ public class scr_skyslugMovement : MonoBehaviour {
     private stateEnum state = stateEnum.Hunting;
     
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         audioSource = GetComponent<AudioSource>();
         attackTimer += Random.Range(0, attackCooldown);
-        scr_utilities.slugs.Add(this);
-        attackSoundPlayed = false;
 	}
 
     // Update is called once per frame
     void Update ()
     {
-        if(GetComponent<scr_hpsystem>().health < 1)
-        {
-            transform.Translate(0, -Time.deltaTime*5, 0);
-            return;
-        }
-
         if (Time.timeScale == 0)
             return;
         movement = Time.deltaTime * speed;
@@ -94,17 +84,10 @@ public class scr_skyslugMovement : MonoBehaviour {
                 Attacking();
                 break;
         }
-        
-        if (rotate)
-            transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, destination));
-        if (altrotate) { 
-            if (state == stateEnum.Attacking && rotate)
-                transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, destination));
-            transform.rotation = Quaternion.Euler(0, 0, altrotatemagnitude * ((destination.normalized*movement).y - (destination.normalized * movement).x));
+        transform.rotation = Quaternion.Euler(0, 0, rotateMagnitude * ((destination.normalized*movement).y - (destination.normalized * movement).x));
         gameObject.GetComponent<Animator>().speed = 0.8f + (destination.normalized.x/2);
-        }
+        
         transform.Translate(destination.normalized * movement, Space.World);
-        //TODO collision
     }
 
     void UpdateRandomMovement()
@@ -153,30 +136,58 @@ public class scr_skyslugMovement : MonoBehaviour {
         if (attackTimer > attackCooldown)
         {
             //attack player
+            audioSource.PlayOneShot(attackingClip);
             state = stateEnum.Attacking;
+            StartCoroutine(AttackMove());
         }
-        if(attackMove < 0)
-            attackMove += Time.deltaTime * 3.5f;
         FindPointOnCircle();
     }
 
     void Attacking()
     {
-        attackMove -= Time.deltaTime * 2.5f;
-
-        if(attackSoundPlayed == false)
-        {
-            audioSource.PlayOneShot(attackingClip);
-            attackSoundPlayed = true;
-        }
-
-
-        if (distanceToPlayer < 0.6f)//TODO change for if collision
-        {
-            attackTimer = 0;
-            state = stateEnum.Swarming;
-            attackSoundPlayed = false;
-        }
         FindPointOnCircle();
+    }
+
+    IEnumerator AttackMove()
+    {
+        while(state == stateEnum.Attacking)
+        {
+            attackMove -= Time.deltaTime * 2;
+            yield return null;
+        }
+        while (attackMove < 0)
+        {
+            attackMove += Time.deltaTime * 2;
+            yield return null;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag != "Player" || state != stateEnum.Attacking)
+            return;
+        attackTimer = 0;
+        state = stateEnum.Swarming;
+        collision.GetComponent<scr_hpsystem>().takeDamage(1);
+    }
+
+    protected override void Die()
+    {
+        enabled = false;
+        GetComponent<Renderer>().material.color = Color.white;
+        GetComponent<Animator>().SetBool("destroyed", true);
+        Destroy(GetComponent<Rigidbody2D>());
+        Destroy(GetComponent<BoxCollider2D>());
+        StartCoroutine(Tumble());
+    }
+
+    IEnumerator Tumble()
+    {
+        while (transform.position.y > scr_utilities.GetEdge(edgeId.Bottom, true))
+        {
+            transform.Translate(0, -Time.deltaTime * 3, 0);
+            yield return null;
+        }
+        Destroy(gameObject);
     }
 }

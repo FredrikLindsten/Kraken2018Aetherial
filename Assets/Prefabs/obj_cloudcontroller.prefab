@@ -56,6 +56,10 @@ MonoBehaviour:
   speed: 8
   islandRef: {fileID: 1270489531704154, guid: 47b7db38465c012449854ed3de0202d5, type: 2}
   cloudRef: {fileID: 1128721312362376, guid: eada23476061c1549b7b7f0a29f48461, type: 2}
+  crystalRef: {fileID: 0}
+  crystalSpawnTimers: []
+  islandArt: {fileID: 0}
+  crystalArt: {fileID: 0}
 --- !u!114 &114532681769996788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -70,6 +74,7 @@ MonoBehaviour:
   cloudCover: 20
   islandCount: 5
   pauseOverlay: {fileID: 0}
+  checkpoint: {fileID: 0}
   playerHealthUI: {fileID: 0}
   playerAetherUI: {fileID: 0}
   leviathanHealthUI: {fileID: 0}
@@ -77,6 +82,7 @@ MonoBehaviour:
   deathScreen: {fileID: 0}
   transitionEffect: {fileID: 1252820976441552, guid: cd3e775da4a761e4b89e176ee40c1759,
     type: 2}
+  checkpointSprite: {fileID: 2800000, guid: 75f890fd73245e44dbbbf990fcb0c696, type: 3}
   aetherLeft: 10
 --- !u!212 &212970727976991936
 SpriteRenderer:

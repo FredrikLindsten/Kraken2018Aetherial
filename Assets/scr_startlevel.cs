@@ -7,6 +7,7 @@ public class scr_startlevel : MonoBehaviour {
 
     public GameObject Mainmenu;
     public GameObject Controls;
+    public GameObject Credits;
 
     public void EnterControls()
     {
@@ -17,6 +18,18 @@ public class scr_startlevel : MonoBehaviour {
     public void LeaveControls()
     {
         Controls.SetActive(false);
+        Mainmenu.SetActive(true);
+    }
+
+    public void EnterCredits()
+    {
+        Credits.SetActive(true);
+        Mainmenu.SetActive(false);
+    }
+
+    public void LeaveCredits()
+    {
+        Credits.SetActive(false);
         Mainmenu.SetActive(true);
     }
 

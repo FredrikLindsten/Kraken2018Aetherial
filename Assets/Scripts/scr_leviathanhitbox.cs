@@ -2,24 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scr_leviathanhitbox : MonoBehaviour {
+public class scr_leviathanhitbox : scr_hpsystem {
 
     public GameObject powerup = null;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-
-    void OnDestroy()
+    protected override void Die()
     {
         GetComponentInParent<scr_leviathan>().Leave();
-        GetComponentInParent<scr_hpsystem>().takeDamage(1);
         Instantiate(powerup, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }
