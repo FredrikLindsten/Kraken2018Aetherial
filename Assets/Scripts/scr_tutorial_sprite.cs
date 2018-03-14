@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class scr_tutorial_sprite : MonoBehaviour {
 
-    bool startFirst;
-    bool startSecond;
-    bool startThird;
-    bool startFourth;
-    bool startFifth;
-    bool startSixth;
-    bool startSeventh;
-    bool startEighth;
-    bool startNinth;
 
     private void Update()
     {
