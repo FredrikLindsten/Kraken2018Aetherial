@@ -22,7 +22,7 @@ public class scr_weapon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        
+        transform.position = new Vector3 (GameObject.FindGameObjectWithTag("Player").transform.position.x, GameObject.FindGameObjectWithTag("Player").transform.position.y - 0.25f, GameObject.FindGameObjectWithTag("Player").transform.position.z);
         
         Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         dir.Normalize();
@@ -48,11 +48,14 @@ public class scr_weapon : MonoBehaviour {
                 return;
             }
         }
-        if (Mathf.DeltaAngle(rb.rotation,z)< rotationZone && Mathf.DeltaAngle(rb.rotation, z)> - rotationZone && !GameObject.FindGameObjectWithTag("Beam"))
+        if (Mathf.DeltaAngle(rb.rotation,z)< rotationZone && Mathf.DeltaAngle(rb.rotation, z)> -(rotationZone) && !GameObject.FindGameObjectWithTag("Beam"))
+        {
+            rb.rotation = z;
+        } else if (Mathf.DeltaAngle(rb.rotation, z) < rotationZone/10 && Mathf.DeltaAngle(rb.rotation, z) > -(rotationZone)/10)
         {
             rb.rotation = z;
         }
-
+        Debug.Log(Mathf.DeltaAngle(rb.rotation, z));
         /*transform.rotation = Quaternion.Euler(0f, 0f, z); */
         Debug.DrawRay(transform.position, transform.right);
 
