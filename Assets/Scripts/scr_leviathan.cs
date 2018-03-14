@@ -58,12 +58,14 @@ public class scr_leviathan : scr_hpsystem {
 
     IEnumerator Soundwave(float timer)
     {
-        yield return StartCoroutine(GetComponent<scr_leviathanFinale>().CallForHelp());
+        //yield return StartCoroutine(GetComponent<scr_leviathanFinale>().CallForHelp());
 
-        //yield return new WaitForSeconds(timer + 4);
-        //Instantiate(GetComponent<scr_leviathanFinale>().soundwaveRef, transform);
-        //yield return new WaitForSeconds(0.2f);
-        //Instantiate(GetComponent<scr_leviathanFinale>().soundwaveRef, transform);
+        yield return new WaitForSeconds(timer + 6);
+        Instantiate(GetComponent<scr_leviathanFinale>().soundwaveRef, transform);
+        yield return new WaitForSeconds(0.2f);
+        Instantiate(GetComponent<scr_leviathanFinale>().soundwaveRef, transform);
+        yield return new WaitForSeconds(0.2f);
+        Instantiate(GetComponent<scr_leviathanFinale>().soundwaveRef, transform);
     }
 
     private void OnLevelWasLoaded(int level)

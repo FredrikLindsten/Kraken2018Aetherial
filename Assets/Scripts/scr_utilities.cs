@@ -69,6 +69,8 @@ public class scr_utilities : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.V))
             Time.timeScale = 8;
+        if (Input.GetKeyDown(KeyCode.H))
+            player.GetComponent<scr_hpsystem>().health += 5;
         if (Input.GetKeyUp(KeyCode.V))
             Time.timeScale = 1;
         if (player != null)
@@ -113,7 +115,7 @@ public class scr_utilities : MonoBehaviour {
 
     IEnumerator CheckpointWaiting()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(12);
         scr_stormcloud transition = Instantiate(transitionEffect, new Vector3(0, 0, 1), Quaternion.identity).GetComponent<scr_stormcloud>();
         scr_noise noise = transition.transform.GetComponentInChildren<scr_noise>();
         noise.GetComponent<Renderer>().material.SetTexture("_DetailAlbedoMap", checkpointSprite);

@@ -685,7 +685,7 @@ MonoBehaviour:
   position: {x: 11, y: 0, z: 0}
   Cooldown: 2.36
   BreathWeight: 1
-  RamWeight: 10
+  RamWeight: 1
   SummonWeight: 1
   spawner: {fileID: 1113210661112182, guid: ee1ed5e0a30fad44282c8b2e69f37bfc, type: 2}
   rammingSpeed: 10

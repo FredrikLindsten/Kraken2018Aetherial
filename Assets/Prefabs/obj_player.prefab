@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4849610753190768}
   - component: {fileID: 212651522284593306}
   - component: {fileID: 114658257840663986}
-  - component: {fileID: 50931482922900890}
+  - component: {fileID: 50272642306658474}
   m_Layer: 0
   m_Name: obj_weapon
   m_TagString: Weapon
@@ -79,13 +79,13 @@ Transform:
   m_Father: {fileID: 4498049020428782}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50584377806090160
+--- !u!50 &50272642306658474
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1811129498192544}
+  m_GameObject: {fileID: 1107976506336678}
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -94,18 +94,18 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 23d0c7014cdce9247a8a1937eb920a91, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!50 &50931482922900890
+--- !u!50 &50584377806090160
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1107976506336678}
+  m_GameObject: {fileID: 1811129498192544}
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -301,7 +301,7 @@ MonoBehaviour:
   transform: {fileID: 0}
   beam: {fileID: 1044690977345144, guid: 632a780be3ed38549b2713938bfd4f45, type: 2}
   harpoon: {fileID: 1152643724381404, guid: 3c052992b8149fb489a1f378d953e237, type: 2}
-  rotationSpeed: 10
+  rotationSpeed: 30
 --- !u!114 &114795766891085714
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -53,7 +53,8 @@ public class scr_tutorial_sprite : MonoBehaviour {
         while(scr_cloudcontroller.instance.crystalSpawnTimers.Count < 100)
             scr_cloudcontroller.instance.crystalSpawnTimers.Add(0);
         while (scr_utilities.instance.aetherLeft < 1)
-            yield return null;
+        { scr_utilities.instance.aetherLeft = 0;
+            yield return null; }
         scr_cloudcontroller.instance.crystalSpawnTimers.Clear();
         yield return new WaitForSeconds(2);
         Deactivate(4);

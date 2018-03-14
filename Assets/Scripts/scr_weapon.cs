@@ -22,7 +22,7 @@ public class scr_weapon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        transform.position = new Vector3 (GameObject.FindGameObjectWithTag("Player").transform.position.x, GameObject.FindGameObjectWithTag("Player").transform.position.y - 0.25f, GameObject.FindGameObjectWithTag("Player").transform.position.z) ;
+        
         
         Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         dir.Normalize();
@@ -51,11 +51,8 @@ public class scr_weapon : MonoBehaviour {
         if (Mathf.DeltaAngle(rb.rotation,z)< rotationZone && Mathf.DeltaAngle(rb.rotation, z)> - rotationZone && !GameObject.FindGameObjectWithTag("Beam"))
         {
             rb.rotation = z;
-        }  else if (Mathf.DeltaAngle(rb.rotation, z) < rotationZone/10 && Mathf.DeltaAngle(rb.rotation, z) > -rotationZone/10)
-        {
-            rb.rotation = z;    
         }
-        
+
         /*transform.rotation = Quaternion.Euler(0f, 0f, z); */
         Debug.DrawRay(transform.position, transform.right);
 
@@ -63,7 +60,7 @@ public class scr_weapon : MonoBehaviour {
         if (!GameObject.FindGameObjectWithTag("Beam"))
         {
             rotationSpeed = 500;
-            //scr_utilities.instance.aetherLeft += 0.2f * Time.deltaTime; //passive aether regeneration
+            scr_utilities.instance.aetherLeft += 0.2f * Time.deltaTime; //passive aether regeneration
         } else
         {
             rotationSpeed = 50;
@@ -111,5 +108,4 @@ public class scr_weapon : MonoBehaviour {
     {
         return Quaternion.Euler(0, 0, rb.rotation);
     }
-
 }

@@ -24,7 +24,7 @@ public class beam : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-       // scr_utilities.instance.aetherLeft -= 1 * Time.deltaTime;
+        scr_utilities.instance.aetherLeft -= 1 * Time.deltaTime;
         if (scr_utilities.instance.aetherLeft < 0)
             Destroy(this.gameObject);
         originPoint = GameObject.FindGameObjectWithTag("Weapon").GetComponent<scr_weapon>().transform.position;
