@@ -747,6 +747,7 @@ MonoBehaviour:
   deathScreen: {fileID: 1397088730}
   transitionEffect: {fileID: 1252820976441552, guid: cd3e775da4a761e4b89e176ee40c1759,
     type: 2}
+  checkpointSprite: {fileID: 0}
   aetherLeft: 10
 --- !u!1001 &1794900030
 Prefab:
@@ -805,7 +806,7 @@ Prefab:
     - target: {fileID: 114358483689903544, guid: 34b2b19fee26dd74885cd07c88bb15a1,
         type: 2}
       propertyPath: speed
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114358483689903544, guid: 34b2b19fee26dd74885cd07c88bb15a1,
         type: 2}
