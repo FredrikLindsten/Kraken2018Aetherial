@@ -60,7 +60,7 @@ public class scr_weapon : MonoBehaviour {
         if (!GameObject.FindGameObjectWithTag("Beam"))
         {
             rotationSpeed = 500;
-            scr_utilities.instance.aetherLeft += 0.2f * Time.deltaTime; //passive aether regeneration
+            //scr_utilities.instance.aetherLeft += 0.2f * Time.deltaTime; //passive aether regeneration
         } else
         {
             rotationSpeed = 50;

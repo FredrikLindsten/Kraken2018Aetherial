@@ -67,6 +67,10 @@ public class scr_utilities : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.V))
+            Time.timeScale = 8;
+        if (Input.GetKeyUp(KeyCode.V))
+            Time.timeScale = 1;
         if (player != null)
             playerHealthUI.value = player.GetComponent<scr_hpsystem>().getHealthPercent();
         playerAetherUI.value = aetherLeft / aetherMax;
@@ -103,7 +107,8 @@ public class scr_utilities : MonoBehaviour {
     }
 
     IEnumerator CheckpointWaiting()
-    {   
+    {
+        yield return new WaitForSeconds(10);
         scr_stormcloud transition = Instantiate(transitionEffect, new Vector3(0, 0, 1), Quaternion.identity).GetComponent<scr_stormcloud>();
         scr_noise noise = transition.transform.GetComponentInChildren<scr_noise>();
         noise.GetComponent<Renderer>().material.SetTexture("_DetailAlbedoMap", checkpointSprite);
@@ -112,7 +117,6 @@ public class scr_utilities : MonoBehaviour {
         DontDestroyOnLoad(transition);
         yield return new WaitForSeconds(5);
         checkpoint.SetActive(true);
-        waitingAtCheckpoint = true;
         yield return new WaitForSeconds(8);
         checkpoint.SetActive(false);
         transition.wait = false;

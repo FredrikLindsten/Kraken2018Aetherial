@@ -14,7 +14,8 @@ public class scr_cloudcontroller : MonoBehaviour {
     public List<float> crystalSpawnTimers;
 
     public Sprite islandArt;
-    public Sprite crystalArt;
+    public Sprite cloudArt;
+    public bool crystalArt;
     public static scr_cloudcontroller instance = null;
 
     private List<GameObject> cloudsBg = new List<GameObject>();
@@ -37,6 +38,7 @@ public class scr_cloudcontroller : MonoBehaviour {
             //spawn clouds
             float distance = (scr_utilities.screenWidth + (2 * scr_utilities.padding));
             cloudsBg.Add(Instantiate(cloudRef, new Vector3(distance * (1 + (float)i / diff) - scr_utilities.GetEdge(edgeId.Right, false), 0), Quaternion.identity));
+            cloudsBg[cloudsBg.Count - 1].GetComponent<SpriteRenderer>().sprite = cloudArt;
         }
         while (cloudsBg.Count > cloudCount)
         {
@@ -56,6 +58,7 @@ public class scr_cloudcontroller : MonoBehaviour {
             //spawn islands
             float distance = (scr_utilities.screenWidth + (2 * scr_utilities.padding));
             islands.Add(Instantiate(islandRef, new Vector3(distance * (1 + (float)i / diff) - scr_utilities.GetEdge(edgeId.Right,false), 0), Quaternion.identity));
+            islands[islands.Count - 1].GetComponent<SpriteRenderer>().sprite = islandArt;
         }
         while (islands.Count > islandCount)
         {

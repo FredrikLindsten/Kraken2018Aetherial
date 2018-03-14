@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: f03067ed29afd25498127f7d31ceb881
-timeCreated: 1521036150
+guid: 86d92dfab99eb9c418c5f369b48e5955
+timeCreated: 1521033596
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Mousa for beam control_0
-    21300002: Mousa for beam control_1
+    21300000: Whale boss bar straight(recropped(1240x1024))_0
+    21300002: Whale boss bar straight(recropped(1240x1024))_1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -82,13 +82,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mousa for beam control_0
+      name: Whale boss bar straight(recropped(1240x1024))_0
       rect:
         serializedVersion: 2
-        x: 742
-        y: 315
-        width: 473
-        height: 547
+        x: 0
+        y: 474
+        width: 1240
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -96,13 +96,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mousa for beam control_1
+      name: Whale boss bar straight(recropped(1240x1024))_1
       rect:
         serializedVersion: 2
-        x: 935
-        y: 483
-        width: 23
-        height: 25
+        x: 0
+        y: 0
+        width: 1240
+        height: 350
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

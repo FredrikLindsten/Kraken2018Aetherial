@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: f03067ed29afd25498127f7d31ceb881
-timeCreated: 1521036150
+guid: 4bf431f24aef8aa49884e1089b61f922
+timeCreated: 1521031419
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Mousa for beam control_0
-    21300002: Mousa for beam control_1
+  fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -42,13 +40,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 300
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -80,35 +78,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Mousa for beam control_0
-      rect:
-        serializedVersion: 2
-        x: 742
-        y: 315
-        width: 473
-        height: 547
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mousa for beam control_1
-      rect:
-        serializedVersion: 2
-        x: 935
-        y: 483
-        width: 23
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
+    sprites: []
     outline: []
     physicsShape: []
   spritePackingTag: 

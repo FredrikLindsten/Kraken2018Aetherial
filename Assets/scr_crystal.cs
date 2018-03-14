@@ -8,7 +8,7 @@ public class scr_crystal : scr_hpsystem {
 	void Start ()
     {
         transform.localScale = new Vector3(0.2f / transform.parent.localScale.x, 0.2f / transform.parent.localScale.y, 1);
-        GetComponent<SpriteRenderer>().sprite = scr_cloudcontroller.instance.crystalArt;
+        GetComponent<Animator>().SetBool("art2",scr_cloudcontroller.instance.crystalArt);
         audioSource = GetComponent<AudioSource>();
 	}
 

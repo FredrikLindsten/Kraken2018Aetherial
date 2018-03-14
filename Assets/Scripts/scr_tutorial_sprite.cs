@@ -37,6 +37,7 @@ public class scr_tutorial_sprite : MonoBehaviour {
 
         Activate(3);
         Activate(9);
+        scr_cloudcontroller.instance.SetIslandCount(3);
         GameObject notQuiteAWhale = Instantiate(Resources.Load("obj_skyslug"), new Vector3(scr_utilities.GetEdge(edgeId.Right, false), 0), Quaternion.identity) as GameObject;
         while (notQuiteAWhale.GetComponent<scr_hpsystem>().getHealth() > 0)
             yield return null;
@@ -84,6 +85,10 @@ public class scr_tutorial_sprite : MonoBehaviour {
         yield return new WaitForSeconds(8);
         Deactivate(8);
         Deactivate(12);
+
+        Activate(16);
+        yield return new WaitForSeconds(8);
+        Deactivate(16);
     }
 
     void Activate(int number)
