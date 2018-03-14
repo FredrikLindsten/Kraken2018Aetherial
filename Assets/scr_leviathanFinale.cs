@@ -210,7 +210,7 @@ public class scr_leviathanFinale : MonoBehaviour {
         //float animationDelay = 0;
         //yield return new WaitForSeconds(animationDelay);
         int std = main.collisionDamage;
-        main.collisionDamage = 1;
+        main.collisionDamage = 4;
         StartCoroutine(SpeedUp());
         Vector3 toPlayer = scr_utilities.player.transform.position - transform.position;
         toPlayer.y *= 0.8f;

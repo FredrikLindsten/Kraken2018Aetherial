@@ -78,7 +78,7 @@ public class scr_leviathan : scr_hpsystem {
             StartCoroutine(Soundwave(arrivals[2]));
         if (level == 4)
             Finale();
-        else
+        else if(level != 0)
         {
             /*
             transform.position = circleCenter + new Vector3(-10,0, 0);

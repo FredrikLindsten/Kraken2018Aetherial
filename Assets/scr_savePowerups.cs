@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class scr_savePowerups : MonoBehaviour {
 
-    int powerupCharges;
+    int powerupCharges = 0;
     static scr_savePowerups instance;
 
     public void storePower(int powerups)
@@ -19,7 +19,7 @@ public class scr_savePowerups : MonoBehaviour {
             powerupCharges = 0;
         else
             for (int i = 0; i < powerupCharges; i++)
-                FindObjectOfType<scr_powerup>().gainPowerup();
+                scr_utilities.player.GetComponent<scr_powerup>().gainPowerup();
     }
 
     private void Awake()

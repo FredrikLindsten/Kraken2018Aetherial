@@ -11,9 +11,10 @@ public class MusicManager : MonoBehaviour {
     public AudioClip tutorialTheme;
     public AudioClip scene2Theme;
     public AudioClip scene3Theme;
+    public AudioClip scene4Theme;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         audioSource = GetComponent<AudioSource>();
 	}
 	
@@ -34,9 +35,14 @@ public class MusicManager : MonoBehaviour {
             audioSource.PlayOneShot(tutorialTheme);
         } else if (SceneManager.GetActiveScene().buildIndex == 2) {
             audioSource.PlayOneShot(scene2Theme);
-        } else if (SceneManager.GetActiveScene().buildIndex == 3)
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             audioSource.PlayOneShot(scene3Theme);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            audioSource.PlayOneShot(scene4Theme);
         }
     }
 }

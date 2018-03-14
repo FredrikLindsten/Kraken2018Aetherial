@@ -21,6 +21,7 @@ TagManager:
   - Controls
   - PlayerAvatar
   - Logo
+  - PowerupStore
   layers:
   - Default
   - TransparentFX

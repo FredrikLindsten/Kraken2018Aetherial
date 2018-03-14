@@ -105,6 +105,6 @@ public class scr_powerup : MonoBehaviour {
 
     private void OnDestroy()
     {
-        FindObjectOfType<scr_savePowerups>().storePower(powerupCharges);
+        GameObject.FindGameObjectWithTag("PowerupStore").GetComponent<scr_savePowerups>().storePower(powerupCharges);
     }
 }
