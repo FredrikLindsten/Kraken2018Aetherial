@@ -17,23 +17,23 @@ public class beam : MonoBehaviour {
         gameObject.tag = "Beam";
         originPoint = GameObject.FindGameObjectWithTag("Weapon").GetComponent<scr_weapon>().transform.position;
         lineRenderer = GetComponent<LineRenderer>();
-        collider = gameObject.AddComponent<BoxCollider2D>();
+        collider = gameObject.GetComponent<BoxCollider2D>();
         collider.isTrigger = true;
         collider.sharedMaterial = material;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        scr_utilities.instance.aetherLeft -= 1 * Time.deltaTime;
+       // scr_utilities.instance.aetherLeft -= 1 * Time.deltaTime;
         if (scr_utilities.instance.aetherLeft < 0)
             Destroy(this.gameObject);
         originPoint = GameObject.FindGameObjectWithTag("Weapon").GetComponent<scr_weapon>().transform.position;
         lineRenderer.SetPosition(0, originPoint);
         lineRenderer.SetPosition(1, endPoint = originPoint + transform.right * beamLength);
-        transform.rotation = GameObject.FindGameObjectWithTag("Weapon").GetComponent<scr_weapon>().transform.rotation;
+        transform.rotation = GameObject.FindGameObjectWithTag("Weapon").GetComponent<scr_weapon>().GetRigidBodyRotation();
         collider.size = new Vector2(beamLength, lineRenderer.startWidth * 5);
         //collider.size = new Vector2(originPoint.x, lineRenderer.startWidth);
-        collider.transform.position = originPoint + (endPoint - originPoint) / 2;
+        collider.transform.position = originPoint + (endPoint - originPoint) / 2;  
 
         if (!GameObject.FindGameObjectWithTag("Player"))
         {
@@ -50,6 +50,13 @@ public class beam : MonoBehaviour {
             {
                 other.GetComponent<scr_hpsystem>().takeDamage(damage);
             }
+        }
+    }
+    void OnTriggerEnter2D (Collider2D other)
+    {
+        if(other.gameObject.tag == "Weapon")
+        {
+            Physics2D.IgnoreCollision(collider, other);
         }
     }
 }

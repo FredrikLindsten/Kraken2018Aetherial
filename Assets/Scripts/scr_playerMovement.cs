@@ -148,5 +148,6 @@ public class scr_playerMovement : scr_hpsystem {
         {
             Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), other);
         }
+        
     }
 }

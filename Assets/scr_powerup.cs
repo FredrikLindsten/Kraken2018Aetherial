@@ -22,6 +22,7 @@ public class scr_powerup : MonoBehaviour {
     public Animator powerupIcon;
 
     public AudioClip useClip;
+    public AudioClip rainClip;
     private AudioSource audioSource;
 
     public void gainPowerup()
@@ -82,6 +83,10 @@ public class scr_powerup : MonoBehaviour {
             stormcloud = Instantiate(stormcloudref, new Vector3(0, 0, 1), Quaternion.identity).GetComponent<scr_stormcloud>();
             powerOn = true;
             StartCoroutine(Timer(powerupTime));
+        }
+        if (audioSource.isPlaying == false && powerOn == true)
+        {
+            audioSource.PlayOneShot(rainClip);
         }
         for (int i = 0; i < ghosts.Count; ++i)
         {

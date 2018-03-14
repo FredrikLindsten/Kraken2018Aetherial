@@ -30,6 +30,8 @@ public class scr_leviathan : scr_hpsystem {
     public AudioClip arrivalSound;
     public AudioClip leaveSound;
 
+    Vector2 bossToPlayer; //collision stuff 
+
 
     private void Awake()
     {
@@ -180,7 +182,7 @@ public class scr_leviathan : scr_hpsystem {
         RandomMovement();
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.tag != "Player")
         {
@@ -189,7 +191,36 @@ public class scr_leviathan : scr_hpsystem {
         else
         {
             other.gameObject.GetComponent<scr_hpsystem>().takeDamage(collisionDamage);
+            Vector2 bossToPlayerTemp = (Vector2)(other.transform.position - transform.position);
+            Vector3 playerVel = other.rigidbody.velocity;
+            float playerVelAngle = Mathf.Atan2(playerVel.y, playerVel.x) * Mathf.Rad2Deg;
+            if (Mathf.Sign(playerVelAngle) == 1) //getting player reverse orientation
+            {
+                playerVelAngle -= 180;
+            } else
+            {
+                playerVelAngle += 180;
+            }
+            Vector2 playerOffset = new Vector2(Mathf.Cos(playerVelAngle * Mathf.Deg2Rad), Mathf.Sin(playerVelAngle * Mathf.Deg2Rad));
+            other.transform.position = new Vector3(other.transform.position.x + playerOffset.x/2,other.transform.position.y + playerOffset.y/2, other.transform.position.z);
+            /*if (Mathf.Abs(bossToPlayerTemp.x) > Mathf.Abs(bossToPlayerTemp.y))
+                other.transform.position = new Vector3(other.transform.position.x, bossToPlayer.y + 1, -3);
+            else
+                other.transform.position = new Vector3(transform.position.x + (Mathf.Sign(bossToPlayerTemp.x) * transform.localScale.x / 2), other.transform.position.y, -3);
+                */
         }
+    }
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag != "Player")
+        {
+            Physics2D.IgnoreCollision(edgeCollider, other.collider);
+        }
+        else
+        {
+            bossToPlayer = (Vector2)(other.transform.position - transform.position);
+        }
+
     }
 
     protected override void Die()
