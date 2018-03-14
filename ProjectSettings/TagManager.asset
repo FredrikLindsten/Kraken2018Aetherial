@@ -20,6 +20,7 @@ TagManager:
   - Bossbar
   - Controls
   - PlayerAvatar
+  - Logo
   layers:
   - Default
   - TransparentFX

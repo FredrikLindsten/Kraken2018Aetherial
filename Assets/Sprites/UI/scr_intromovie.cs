@@ -7,24 +7,26 @@ using UnityEngine;
 public class scr_intromovie : MonoBehaviour {
 
     VideoPlayer videoPlayer;
-    scr_intromovie instance = null;
 
     public GameObject Canvas;
     public GameObject Background;
 
     private void Awake()
     {
-        if (instance != null)
-            Destroy(this);
-        else
-            instance = this;
-        DontDestroyOnLoad(this);
+
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        Destroy(gameObject);
     }
 
     // Use this for initialization
     void Start () {
         videoPlayer = GetComponent<VideoPlayer>();
-	}
+        Canvas.SetActive(false);
+        Background.SetActive(false);
+    }
 	
 	// Update is called once per frame
 	void Update () {

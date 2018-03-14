@@ -6,6 +6,7 @@ using UnityEngine;
 public class scr_savePowerups : MonoBehaviour {
 
     int powerupCharges;
+    static scr_savePowerups instance;
 
     public void storePower(int powerups)
     {
@@ -23,6 +24,12 @@ public class scr_savePowerups : MonoBehaviour {
 
     private void Awake()
     {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
         DontDestroyOnLoad(this);
     }
 }
