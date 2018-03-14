@@ -163,8 +163,8 @@ public class scr_leviathan : scr_hpsystem {
     {
         //if (Input.GetKeyDown(KeyCode.A))
         //    GetComponent<scr_hpsystem>().takeDamage(1);
-        //if (Input.GetKeyDown(KeyCode.J))
-        //    Finale();
+        if (Input.GetKeyDown(KeyCode.J))
+           Finale();
         movement = speed * Time.deltaTime;
         Vector3 vectorFromCenter = target - circleCenter;
 
@@ -191,7 +191,6 @@ public class scr_leviathan : scr_hpsystem {
         else
         {
             other.gameObject.GetComponent<scr_hpsystem>().takeDamage(collisionDamage);
-            Vector2 bossToPlayerTemp = (Vector2)(other.transform.position - transform.position);
             Vector3 playerVel = other.rigidbody.velocity;
             float playerVelAngle = Mathf.Atan2(playerVel.y, playerVel.x) * Mathf.Rad2Deg;
             if (Mathf.Sign(playerVelAngle) == 1) //getting player reverse orientation
