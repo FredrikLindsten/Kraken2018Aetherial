@@ -82,12 +82,12 @@ public class scr_tutorial_sprite : MonoBehaviour {
 
         Activate(8);
         Activate(12);
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(6);
         Deactivate(8);
         Deactivate(12);
 
         Activate(16);
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(6);
         Deactivate(16);
     }
 
