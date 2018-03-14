@@ -9,7 +9,7 @@ public class scr_mouthHitbox : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         hp = GetComponentInParent<scr_hpsystem>();
-        hp.health = 3;
+        hp.health = 4;
 	}
 	
 	// Update is called once per frame

@@ -57,6 +57,7 @@ public class scr_leviathanFinale : MonoBehaviour {
         float speed = 2;
 
         yield return new WaitForSeconds(5);
+
         while (scr_cloud.GetSpeed()>0.1)
         {
             scr_cloud.SetSpeed(scr_cloud.GetSpeed() - (Time.deltaTime * 2));
@@ -107,6 +108,7 @@ public class scr_leviathanFinale : MonoBehaviour {
                 timer += Time.deltaTime;
                 if (timer > Cooldown)
                 {
+                    gameObject.GetComponent<Renderer>().material.color = Color.white;
                     timer -= Cooldown;
                     PickAttack();
                 }
@@ -205,7 +207,7 @@ public class scr_leviathanFinale : MonoBehaviour {
         //float animationDelay = 0;
         //yield return new WaitForSeconds(animationDelay);
         int std = main.collisionDamage;
-        main.collisionDamage = 10;
+        main.collisionDamage = 1;
         StartCoroutine(SpeedUp());
         Vector3 toPlayer = scr_utilities.player.transform.position - transform.position;
         toPlayer.y *= 0.8f;

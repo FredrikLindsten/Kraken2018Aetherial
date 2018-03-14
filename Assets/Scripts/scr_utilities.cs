@@ -90,6 +90,11 @@ public class scr_utilities : MonoBehaviour {
         if (SceneManager.GetActiveScene().buildIndex == (SceneManager.sceneCountInBuildSettings - 1))
         {
             victoryScreen.SetActive(true);
+            Destroy(GameObject.FindGameObjectWithTag("Player"));
+            for (int i = 0; i< GameObject.FindGameObjectsWithTag("Enemy").Length;i++)
+            {
+                Destroy(GameObject.FindGameObjectsWithTag("Enemy")[i]);
+            }
         }
         else
         {
