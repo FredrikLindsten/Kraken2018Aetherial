@@ -58,11 +58,12 @@ public class scr_leviathan : scr_hpsystem {
 
     IEnumerator Soundwave(float timer)
     {
-        //StartCoroutine(GetComponent<scr_leviathanFinale>().CallForHelp());
-        yield return new WaitForSeconds(timer + 4);
-        Instantiate(GetComponent<scr_leviathanFinale>().soundwaveRef, transform);
-        yield return new WaitForSeconds(0.2f);
-        Instantiate(GetComponent<scr_leviathanFinale>().soundwaveRef, transform);
+        yield return StartCoroutine(GetComponent<scr_leviathanFinale>().CallForHelp());
+
+        //yield return new WaitForSeconds(timer + 4);
+        //Instantiate(GetComponent<scr_leviathanFinale>().soundwaveRef, transform);
+        //yield return new WaitForSeconds(0.2f);
+        //Instantiate(GetComponent<scr_leviathanFinale>().soundwaveRef, transform);
     }
 
     private void OnLevelWasLoaded(int level)
@@ -71,9 +72,9 @@ public class scr_leviathan : scr_hpsystem {
         {
             Destroy(gameObject);
         }
-        if (level == 2)
-            StartCoroutine(Soundwave(arrivals[1]));
         if (level == 3)
+            StartCoroutine(Soundwave(arrivals[1]));
+        if (level == 4)
             Finale();
         else
         {

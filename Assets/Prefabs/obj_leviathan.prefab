@@ -733,7 +733,8 @@ MonoBehaviour:
   hitSound: {fileID: 0}
   deathSound: {fileID: 0}
   arrivals:
-  - 1
+  - 70
+  - 90
   - 70
   collisionDamage: 0
   speed: 2

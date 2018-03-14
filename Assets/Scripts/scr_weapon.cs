@@ -56,7 +56,6 @@ public class scr_weapon : MonoBehaviour {
             rb.rotation = z;    
         }
         
-        Debug.Log(Mathf.DeltaAngle(rb.rotation, z));
         /*transform.rotation = Quaternion.Euler(0f, 0f, z); */
         Debug.DrawRay(transform.position, transform.right);
 
