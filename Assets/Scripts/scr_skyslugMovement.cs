@@ -36,7 +36,7 @@ public class scr_skyslugMovement : MonoBehaviour {
     private Vector2 destination;
     private int targetId;
 
-    private bool visibility = true;
+    public bool visibility = true;
     public void LoseSight()
     {
         if (!visibility)

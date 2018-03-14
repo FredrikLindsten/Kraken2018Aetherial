@@ -16,7 +16,7 @@ public class skyslugattack : MonoBehaviour {
 
     void OnTriggerEnter2D (Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && GetComponent<scr_skyslugMovement>().visibility == true && GameObject.FindGameObjectWithTag("Player").GetComponent<scr_powerup>().powerOn == false)
         {
             other.gameObject.GetComponent<scr_hpsystem>().takeDamage(damage);
         }

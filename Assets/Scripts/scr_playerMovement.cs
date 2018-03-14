@@ -136,5 +136,6 @@ public class scr_playerMovement : MonoBehaviour {
         {
             Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), other);
         }
+        
     }
 }

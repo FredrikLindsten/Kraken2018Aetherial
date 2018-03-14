@@ -16,12 +16,13 @@ public class scr_powerup : MonoBehaviour {
 
     public int powerupCharges = 0;
     public float powerupTime = 0;
-    private bool powerOn = false;
+    public bool powerOn = false;
     private scr_stormcloud stormcloud;
     public GameObject stormcloudref;
     public Animator powerupIcon;
 
     public AudioClip useClip;
+    public AudioClip rainClip;
     private AudioSource audioSource;
 
     public void gainPowerup()
@@ -84,6 +85,10 @@ public class scr_powerup : MonoBehaviour {
             powerOn = true;
             StartCoroutine(Timer(powerupTime));
             stormcloud.speed = scr_cloud.GetSpeed();
+        }
+        if (audioSource.isPlaying == false && powerOn == true)
+        {
+            audioSource.PlayOneShot(rainClip);
         }
         if (powerOn)
         {

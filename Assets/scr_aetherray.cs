@@ -78,7 +78,7 @@ public class scr_aetherray : MonoBehaviour {
                     dashTimer = 0;
                 }
 
-                if(attackTimer > attackCooldown && distance < maxDist)
+                if(attackTimer > attackCooldown && distance < maxDist && GameObject.FindGameObjectWithTag("Player").GetComponent<scr_powerup>().powerOn == false) // only shoot when powerup is not on
                 {
                     currentState = State.attacking;
                     StartCoroutine(Attack());

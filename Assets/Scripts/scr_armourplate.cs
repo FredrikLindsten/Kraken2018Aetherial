@@ -27,6 +27,7 @@ public class scr_armourplate : MonoBehaviour {
                 if (hpcounter >= health)
                 {
                     Instantiate(hitbox, transform.parent.position, Quaternion.identity).transform.parent = transform.parent.parent;
+                    GameObject.FindGameObjectWithTag("MainCamera").GetComponent<cameraShake>().shakeCamera(0.1f, 1);
                     Destroy(transform.parent.gameObject);
                     Destroy(this.gameObject);
                 }
