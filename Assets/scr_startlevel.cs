@@ -8,6 +8,7 @@ public class scr_startlevel : MonoBehaviour {
     public GameObject Mainmenu;
     public GameObject Controls;
     public GameObject Credits;
+    public GameObject SoundCredits;
 
     public void EnterControls()
     {
@@ -30,6 +31,18 @@ public class scr_startlevel : MonoBehaviour {
     public void LeaveCredits()
     {
         Credits.SetActive(false);
+        Mainmenu.SetActive(true);
+    }
+    public void EnterSoundCredits()
+    {
+        SoundCredits.SetActive(true);
+        Mainmenu.SetActive(false);
+        Credits.SetActive(false);
+    }
+
+    public void LeaveSoundCredits()
+    {
+        SoundCredits.SetActive(false);
         Mainmenu.SetActive(true);
     }
 

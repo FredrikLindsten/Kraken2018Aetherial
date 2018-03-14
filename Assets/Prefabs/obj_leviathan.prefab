@@ -77,7 +77,6 @@ GameObject:
   - component: {fileID: 4136742013145700}
   - component: {fileID: 212971617064303122}
   - component: {fileID: 60111236945565450}
-  - component: {fileID: 50828973854052380}
   m_Layer: 0
   m_Name: crystal_4
   m_TagString: BossCrystal
@@ -112,7 +111,6 @@ GameObject:
   - component: {fileID: 4840321581899640}
   - component: {fileID: 212748389154684674}
   - component: {fileID: 60354528352386444}
-  - component: {fileID: 50590437597188994}
   m_Layer: 0
   m_Name: crystal_2
   m_TagString: BossCrystal
@@ -130,7 +128,6 @@ GameObject:
   - component: {fileID: 4609523135001690}
   - component: {fileID: 212057550359190498}
   - component: {fileID: 60947644653243302}
-  - component: {fileID: 50004316919885188}
   m_Layer: 0
   m_Name: crystal_3
   m_TagString: BossCrystal
@@ -165,7 +162,6 @@ GameObject:
   - component: {fileID: 4386347795719462}
   - component: {fileID: 212485076344484742}
   - component: {fileID: 60815852622396274}
-  - component: {fileID: 50370826069491282}
   m_Layer: 0
   m_Name: crystal_1
   m_TagString: BossCrystal
@@ -329,46 +325,6 @@ Transform:
   m_Father: {fileID: 4065236273309908}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50004316919885188
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1540592317460084}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 0
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!50 &50370826069491282
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1968456955658058}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 0
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!50 &50372311458489040
 Rigidbody2D:
   serializedVersion: 4
@@ -389,46 +345,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!50 &50590437597188994
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1432932126159260}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 0
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!50 &50828973854052380
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1301767173175858}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 0
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!60 &60111236945565450
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -438,7 +354,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -473,7 +389,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -508,7 +424,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -543,7 +459,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -769,10 +685,10 @@ MonoBehaviour:
   position: {x: 11, y: 0, z: 0}
   Cooldown: 2.36
   BreathWeight: 1
-  RamWeight: 0
+  RamWeight: 10
   SummonWeight: 1
   spawner: {fileID: 1113210661112182, guid: ee1ed5e0a30fad44282c8b2e69f37bfc, type: 2}
-  rammingSpeed: 12
+  rammingSpeed: 10
   timeToFullRamSpeed: 2
   ramDistanceLimit: 0
   soundwaveRef: {fileID: 1045909921676052, guid: 0bbb9d1dd789ccc4dbcfebbba3253065,
