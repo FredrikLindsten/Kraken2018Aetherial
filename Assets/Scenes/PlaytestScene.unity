@@ -196,7 +196,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 0dea72a4c5a6d794a8ba2218fd64dd05, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -265,6 +265,16 @@ Prefab:
     - target: {fileID: 4065236273309908, guid: 1e2f9d5ec85c03f42968b3c8aaa650d5, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114155178457067650, guid: 1e2f9d5ec85c03f42968b3c8aaa650d5,
+        type: 2}
+      propertyPath: BreathWeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114155178457067650, guid: 1e2f9d5ec85c03f42968b3c8aaa650d5,
+        type: 2}
+      propertyPath: RamWeight
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1e2f9d5ec85c03f42968b3c8aaa650d5, type: 2}
@@ -717,7 +727,7 @@ Prefab:
     - target: {fileID: 224496195518859576, guid: df050f36b1204b24f88ab7db97d93c27,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -0.5600586
+      value: -0.5600891
       objectReference: {fileID: 0}
     - target: {fileID: 224308921692007010, guid: df050f36b1204b24f88ab7db97d93c27,
         type: 2}

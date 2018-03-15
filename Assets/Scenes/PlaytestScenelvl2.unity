@@ -824,6 +824,7 @@ GameObject:
   - component: {fileID: 645155966}
   - component: {fileID: 645155965}
   - component: {fileID: 645155969}
+  - component: {fileID: 645155970}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -907,6 +908,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeTimer: 0
   shakePower: 0
+--- !u!114 &645155970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 645155964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c289f6ea170a244881fc282e71583f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 2800000, guid: 2e9162ba4ada322458307fb4f645b698, type: 3}
 --- !u!1 &694524818 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1538180990127040, guid: df050f36b1204b24f88ab7db97d93c27,
@@ -1193,6 +1206,11 @@ Prefab:
       propertyPath: m_AnchoredPosition.x
       value: 0.000022888184
       objectReference: {fileID: 0}
+    - target: {fileID: 224496195518859576, guid: df050f36b1204b24f88ab7db97d93c27,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.5600281
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: df050f36b1204b24f88ab7db97d93c27, type: 2}
   m_IsPrefabParent: 0
@@ -1418,7 +1436,7 @@ Prefab:
     - target: {fileID: 114358483689903544, guid: 34b2b19fee26dd74885cd07c88bb15a1,
         type: 2}
       propertyPath: crystalSpawnTimers.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4240570352571668, guid: 34b2b19fee26dd74885cd07c88bb15a1, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1483,22 +1501,22 @@ Prefab:
     - target: {fileID: 114358483689903544, guid: 34b2b19fee26dd74885cd07c88bb15a1,
         type: 2}
       propertyPath: crystalSpawnTimers.Array.data[0]
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 114358483689903544, guid: 34b2b19fee26dd74885cd07c88bb15a1,
         type: 2}
       propertyPath: crystalSpawnTimers.Array.data[1]
-      value: 60
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 114358483689903544, guid: 34b2b19fee26dd74885cd07c88bb15a1,
         type: 2}
       propertyPath: crystalSpawnTimers.Array.data[2]
-      value: 90
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 114358483689903544, guid: 34b2b19fee26dd74885cd07c88bb15a1,
         type: 2}
       propertyPath: crystalSpawnTimers.Array.data[3]
-      value: 0
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 114358483689903544, guid: 34b2b19fee26dd74885cd07c88bb15a1,
         type: 2}
@@ -1511,6 +1529,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 4bf431f24aef8aa49884e1089b61f922,
         type: 3}
+    - target: {fileID: 114358483689903544, guid: 34b2b19fee26dd74885cd07c88bb15a1,
+        type: 2}
+      propertyPath: crystalSpawnTimers.Array.data[4]
+      value: 90
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114532681769996788, guid: 34b2b19fee26dd74885cd07c88bb15a1, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 34b2b19fee26dd74885cd07c88bb15a1, type: 2}
@@ -1689,7 +1712,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 0dea72a4c5a6d794a8ba2218fd64dd05, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
